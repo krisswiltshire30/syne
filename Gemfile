@@ -51,6 +51,12 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem "rspec-rails", "~> 3.5"
+  gem "rubocop-rails"
+  gem "rubocop-rails_config"
+  gem "simplecov", require: false
+  gem "simplecov-console", require: false
+  gem "orderly"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

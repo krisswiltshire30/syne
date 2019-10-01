@@ -1,0 +1,22 @@
+{
+  "name": "syne",
+  "version": "1.0.0",
+  "description": "Audio visualizer",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krisswiltshire30/syne.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/krisswiltshire30/syne/issues"
+  },
+  "homepage": "https://github.com/krisswiltshire30/syne#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}

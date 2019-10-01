@@ -8,8 +8,8 @@ services:
   - postgresql
 before_script:
   - bundle install
-  - bundle exec rake db:create
-  - bundle exec rake db:migrate
+  # - bundle exec rake db:create
+  # - bundle exec rake db:migrate
   - bundle exec rspec
   - bundle exec rubocop
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -26,6 +26,6 @@ deploy:
   app: syne
   on:
     repo: krisswiltshire30/syne
-  run:
-    - 'rake db:migrate'
-    - 'rake cleanup'
+  # run:
+  #   - 'rake db:migrate'
+  #   - 'rake cleanup'

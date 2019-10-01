@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/shapes.js"></script>
+</head>
+<body>
+  <div id="square_container">
+
+  </div>
+  <script>
+    let size = 100;
+    let square = createSquare(size);
+    let container = document.getElementById('square_container');
+    draw(square, container);
+    function main() {
+      update(square, size);
+      size += Math.random() > 0.5 ? 2 : -2;
+      requestAnimationFrame(main);
+    }
+    requestAnimationFrame(main);
+  </script>
+</body>
+</html>

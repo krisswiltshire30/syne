@@ -1,5 +1,5 @@
-const drawSquare = require('../lib/squares.js').drawSquare
+const draw = require('../lib/shapes.js').draw
 
-describe('drawSquare', () => {
-    test('should take a number and create <div> element with height = number', () => {});
+describe('draw', () => {
+    test('puts a child in a parent', () => {});
 });

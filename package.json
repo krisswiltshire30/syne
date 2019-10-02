@@ -9,7 +9,7 @@
     "turbolinks": "^5.2.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "version": "0.1.0",
   "devDependencies": {

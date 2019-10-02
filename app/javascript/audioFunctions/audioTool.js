@@ -25,7 +25,14 @@ class AudioTool {
 
     return audioAnalyserNode;
   }
-  
+
+  static getLevels(analyser) {
+    analyser.fftSize = 2048;
+    let bufferLength = analyser.frequencyBinCount;
+    let dataArray = new Uint8Array(bufferLength);
+    analyser.getByteFrequencyData(dataArray);
+    return dataArray
+  }
 }
 
 module.exports = AudioTool;

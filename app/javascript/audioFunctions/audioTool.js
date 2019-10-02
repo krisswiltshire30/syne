@@ -1,6 +1,6 @@
 class AudioTool {
 
-  static async getAudioStream(audioCtx) {
+  static async getAudioInput(audioCtx) {
 
     if (navigator.mediaDevices.getUserMedia) {
         console.log('getUserMedia supported');
@@ -15,8 +15,17 @@ class AudioTool {
     } else {
         console.log('getUserMedia not supported on your browser!');
     }
-    
+
   }
+
+  static getAnalyser(audioStream, audioContext) {
+    
+    const audioAnalyserNode = audioContext.createAnalyser();
+    audioStream.connect(audioAnalyserNode);
+
+    return audioAnalyserNode;
+  }
+  
 }
 
 module.exports = AudioTool;

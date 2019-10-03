@@ -1,21 +1,22 @@
 {
   "name": "syne",
-  "private": true,
-  "dependencies": {
-    "@rails/actioncable": "^6.0.0-alpha",
-    "@rails/activestorage": "^6.0.0-alpha",
-    "@rails/ujs": "^6.0.0-alpha",
-    "@rails/webpacker": "^4.0.7",
-    "turbolinks": "^5.2.0"
-  },
+  "private": false,
   "scripts": {
-    "test": "jest"
+    "test": "karma start --browsers Firefox --single-run",
+    "linter": "eslint . --fix"
   },
   "version": "0.1.0",
   "devDependencies": {
     "eslint": "^6.5.1",
     "eslint-config-google": "^0.14.0",
-    "jest": "^24.9.0",
-    "webpack-dev-server": "^3.8.1"
-  }
+    "eslint-plugin-jasmine": "^2.10.1",
+    "jasmine": "^3.5.0",
+    "jasmine-core": "^3.5.0",
+    "karma": "^4.3.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^1.2.0",
+    "karma-jasmine": "^2.0.1",
+    "karma-safari-launcher": "^1.0.0"
+  },
+  "license": "MIT"
 }

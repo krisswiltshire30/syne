@@ -1,9 +1,9 @@
 env:
   global:
     - CC_TEST_REPORTER_ID=d6929fd6ddab0f1f51827d572ebb0190ff12d2d63ca3e2f6ae76d6cee603a39f
-language: ruby
-rvm:
-  - 2.5.0
+language: node_js
+node_js:
+  - "10"
 before_script:
   - npm install
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
@@ -13,13 +13,13 @@ script:
   - npm test
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-deploy:
-  provider: heroku
-  api_key:
-    secure: RZxWyXDaA1Uybv2tU8JcgaqsD8a6dUrEcA19t8KwLboKdj+U8U1Gkl/7bx36Xg2kIj/3QZtuBU7ioZpvyOk7pSQCFan8298BPE55Amv01rbq7omf0BYA2AAq5j0bGiS8IBGfBmsospOTBVzIP+/+L9BAwdL5TX2jnYF2wTutlKzSmes6tPMV82ItQJtJy6bfoAJ4YYjSIh8lmxBs9dosRwd+CdTFCORWSO3/NP80ZJFz5P4/O8QcCSdpsXuDClWVRTUqvhdT2gsHEURM3flPNLb6ECPB4hBYa0LtljvrJxMsOLTtpWFE5XPixBl+9dHKvTOQR5lE2fseBUGzYr9hT1mJEH/8xzqJMY79bFVDvV54TgrmeSWJUxSZBGVajpwxDLPRi6Rn9D7AJXumW30m6Q8QkoVY4gE/8YXIoh4CevzWsUF7zCGCKnl2JbVA1uVNbYBFuzuRPUtaVRW5yZQ4hMVGiT6hPuJr+TEdPiJKmJVetM640peKN8iycFupNZyCnVwaCA7usY8+NCjiWTLEYcaYpJ5XmRqY/ondOCoVCEoaGXlROqp2DyWGrNe3t7DQ4QtM3AIoOnZKN48z6yXn24gLzlE8r9jXB6WLInuVkw9O83vGabSGNcyubGjGcTKCNzLa08ypgdEkM/XhbtmhJkH7nJNzdV7xwIaqHU90rJ0=
-  app: syne
-  on:
-    repo: krisswiltshire30/syne
-  # run:
-  #   - 'rake db:migrate'
-  #   - 'rake cleanup'
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: RZxWyXDaA1Uybv2tU8JcgaqsD8a6dUrEcA19t8KwLboKdj+U8U1Gkl/7bx36Xg2kIj/3QZtuBU7ioZpvyOk7pSQCFan8298BPE55Amv01rbq7omf0BYA2AAq5j0bGiS8IBGfBmsospOTBVzIP+/+L9BAwdL5TX2jnYF2wTutlKzSmes6tPMV82ItQJtJy6bfoAJ4YYjSIh8lmxBs9dosRwd+CdTFCORWSO3/NP80ZJFz5P4/O8QcCSdpsXuDClWVRTUqvhdT2gsHEURM3flPNLb6ECPB4hBYa0LtljvrJxMsOLTtpWFE5XPixBl+9dHKvTOQR5lE2fseBUGzYr9hT1mJEH/8xzqJMY79bFVDvV54TgrmeSWJUxSZBGVajpwxDLPRi6Rn9D7AJXumW30m6Q8QkoVY4gE/8YXIoh4CevzWsUF7zCGCKnl2JbVA1uVNbYBFuzuRPUtaVRW5yZQ4hMVGiT6hPuJr+TEdPiJKmJVetM640peKN8iycFupNZyCnVwaCA7usY8+NCjiWTLEYcaYpJ5XmRqY/ondOCoVCEoaGXlROqp2DyWGrNe3t7DQ4QtM3AIoOnZKN48z6yXn24gLzlE8r9jXB6WLInuVkw9O83vGabSGNcyubGjGcTKCNzLa08ypgdEkM/XhbtmhJkH7nJNzdV7xwIaqHU90rJ0=
+#   app: syne
+#   on:
+#     repo: krisswiltshire30/syne
+#   # run:
+#   #   - 'rake db:migrate'
+#   #   - 'rake cleanup'

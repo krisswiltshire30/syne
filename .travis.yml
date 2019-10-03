@@ -3,7 +3,9 @@ env:
     - CC_TEST_REPORTER_ID=d6929fd6ddab0f1f51827d572ebb0190ff12d2d63ca3e2f6ae76d6cee603a39f
 language: node_js
 node_js:
-  - "4"
+  - "10"
+services:
+  - xvfb
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start

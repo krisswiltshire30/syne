@@ -1,15 +1,12 @@
 describe('AudioTool', () => {
-    describe('::getLevels', () => {
+    beforeEach(()=> {
+        var audioCtx = new AudioContext;
+    });
 
-        var AudioTool;
-        var audioCtx = jasmine.createSpyObj('audioCtx')
-
-        beforeEach(function () {
-            AudioTool = new AudioTool();
-        });
-
-        it('expects a promise from getAudioInput', () => {
-            expect(AudioTool.getAudioInput(audioCtx)).toEqual(typeof "function")
+    it('Should be async and return media stream', function(done) {
+        AudioTool.getAudioInput(audioCtx).then(function(result) {
+            expect(result.constructor.name).toBe('MediaStreamAudioSourceNode');
+            done();
         });
     });
 });

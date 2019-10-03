@@ -22,6 +22,7 @@ class Cube {
   animate(size) {
     var animateShape = function (instance) {
       instance.cube.scale.set(size, size, size);
+      requestAnimationFrame(animateShape(this));
       instance.renderer.render(instance.scene, instance.camera);
     }
     animateShape(this);

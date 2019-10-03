@@ -2,12 +2,8 @@
   "name": "syne",
   "private": false,
   "scripts": {
-<<<<<<< HEAD
-    "test": "jest --passWithNoTests"
-=======
     "test": "karma start --browsers Firefox --single-run",
     "linter": "eslint . --fix"
->>>>>>> 56b4732b071749df8cae37fd30384a14176bcd01
   },
   "version": "0.1.0",
   "devDependencies": {

@@ -46,6 +46,42 @@ class AudioTool {
   static getTrebleEnergy() {
     return this.getLevels(analyser).slice(205, 1023);
   }
+
+  static getAvg(energy) {
+    return Math.floor(this.sum(energy) / energy.length)
+  }
+
+  static sum(array) {
+    return array.reduce((a, b) => a + b, 0)
+  }
+
+  static getBassAverage() {
+    return this.getAvg(this.getBassEnergy());
+  }
+
+  static getMidAverage() {
+    return this.getAvg(this.getMidEnergy());
+  }
+
+  static getTrebleAverage() {
+    return this.getAvg(this.getTrebleEnergy());
+  }
+
+  static getMaxLevel(array) {
+    return Math.max(...array)
+  }
+
+  static getBassMax() {
+    return this.getMaxLevel(this.getBassEnergy());
+  }
+
+  static getMidMax() {
+    return this.getMaxLevel(this.getMidEnergy());
+  }
+
+  static getTrebleMax() {
+    return this.getMaxLevel(this.getTrebleEnergy());
+  }
 }
 
 module.exports = AudioTool;

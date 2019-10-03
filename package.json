@@ -3,12 +3,13 @@
   "private": false,
   "scripts": {
     "test": "karma start karma.conf.js --single-run",
-    "linter": "eslint ."
+    "linter": "eslint . --fix"
   },
   "version": "0.1.0",
   "devDependencies": {
     "eslint": "^6.5.1",
     "eslint-config-google": "^0.14.0",
+    "eslint-plugin-jasmine": "^2.10.1",
     "jasmine": "^3.5.0",
     "jasmine-core": "^3.5.0",
     "karma": "^4.3.0",

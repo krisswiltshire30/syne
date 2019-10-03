@@ -5,7 +5,7 @@
         "es6": true
     },
     "extends": [
-        "google"
+        "eslint:recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -16,5 +16,10 @@
         "sourceType": "module"
     },
     "rules": {
-    }
+        "no-undef": "off",
+        "no-unused-vars": "off"
+    },
+    "plugins": [
+        "jasmine"
+    ]
 }

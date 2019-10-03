@@ -4,6 +4,9 @@ env:
 language: node_js
 node_js:
   - "10"
+before_install:
+  — export DISPLAY=:99.0
+  — sh -e /etc/init.d/xvfb start
 before_script:
   - npm install
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter

@@ -2,7 +2,7 @@
   "name": "syne",
   "private": false,
   "scripts": {
-    "test": "karma start karma.conf.js --single-run",
+    "test": "karma start --browsers Firefox --single-run",
     "linter": "eslint . --fix"
   },
   "version": "0.1.0",

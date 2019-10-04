@@ -1,3 +1,5 @@
+var THREE = require('three');
+
 const sphere1 = new Sphere(150, -500, 0, 0, scene);
 const cube1 = new Cube(200, 200, 200, 0, 0, 0, scene);
 const tetra1 = new Tetra(200, 500, 0, 0, scene);

@@ -21,4 +21,4 @@ class Sphere {
     this.sphere.position.y = posY;
     this.sphere.position.z = posZ;
   }
-};
+}

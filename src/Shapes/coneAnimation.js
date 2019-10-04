@@ -21,4 +21,4 @@ class Tetra {
       this.tetra.position.y = posY;
       this.tetra.position.z = posZ;
     }
-};
+}

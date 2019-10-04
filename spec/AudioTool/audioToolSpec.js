@@ -1,6 +1,7 @@
 describe('AudioTool', () => {
 
     var audioCtx = new AudioContext;
+    let analyser;
 
     describe('getAudioInput', () => {
 
@@ -33,7 +34,7 @@ describe('AudioTool', () => {
             });
             let analyser = AudioTool.getAnalyser(stream, audioCtx);
 
-            expect(AudioTool.getLevels(analyser)).toEqual(jasmine.any(Uint8Array))
+            expect(AudioTool.getLevels(analyser)).toEqual(jasmine.any(Uint8Array));
         });
 
         it('it should be the correct length', () => {
@@ -42,8 +43,17 @@ describe('AudioTool', () => {
             });
             let analyser = AudioTool.getAnalyser(stream, audioCtx);
 
-            expect(AudioTool.getLevels(analyser).length).toEqual(1024)
+            expect(AudioTool.getLevels(analyser).length).toEqual(1024);
         })
     });
 
+    describe('::getBassEnergy', () => {
+      it('returns an array with just the bass values', () => {
+        let stream = jasmine.createSpyObj('AudioNode', {
+          'connect': true
+        });
+        analyser = AudioTool.getAnalyser(stream, audioCtx)
+        expect(AudioTool.getBassEnergy(analyser).length).toEqual(25);
+      });
+    });
 });

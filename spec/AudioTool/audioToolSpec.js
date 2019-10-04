@@ -146,4 +146,34 @@ describe('AudioTool', () => {
         expect(AudioTool.getTrebleMax(analyser)).toEqual(0);
       });
     });
+
+    describe('::getBassScale', () => {
+      it('should return a fixed float to 2 decimal places', () => {
+        let stream = jasmine.createSpyObj('AudioNode', {
+          'connect': true
+        });
+        let analyser = AudioTool.getAnalyser(stream, audioCtx);
+        expect(AudioTool.getBassScale(analyser)).toEqual('1.00');
+      });
+    });
+
+    describe('::getMidScale', () => {
+      it('should return a fixed float to 2 decimal places', () => {
+        let stream = jasmine.createSpyObj('AudioNode', {
+          'connect': true
+        });
+        let analyser = AudioTool.getAnalyser(stream, audioCtx);
+        expect(AudioTool.getMidScale(analyser)).toEqual('1.00');
+      });
+    });
+
+    describe('::getTrebleScale', () => {
+      it('should return a fixed float to 2 decimal places', () => {
+        let stream = jasmine.createSpyObj('AudioNode', {
+          'connect': true
+        });
+        let analyser = AudioTool.getAnalyser(stream, audioCtx);
+        expect(AudioTool.getTrebleScale(analyser)).toEqual('1.00');
+      });
+    });
 });

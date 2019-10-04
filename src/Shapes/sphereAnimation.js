@@ -1,7 +1,7 @@
 
 class Sphere {
     constructor() {
-       this.geometry = new THREE.SphereGeometry(5);
+       this.geometry = new THREE.SphereGeometry(5, 32, 32);
        this.material = new THREE.MeshBasicMaterial( {color: 0xffff00}  );
        this.sphere = new THREE.Mesh(this.geometry, this.material );
        scene.add( this.sphere );

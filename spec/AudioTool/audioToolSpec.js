@@ -13,7 +13,6 @@ describe('AudioTool', () => {
 
     });
     
-
     describe('::getAnalyser', () => {
       
       it('returns an audio analyser node', function () {
@@ -25,6 +24,17 @@ describe('AudioTool', () => {
         expect(analyser.constructor.name).toEqual('AnalyserNode');
       });
 
+    });
+
+    describe('::getLevels', () => {
+      it('returns an array', () => {
+        let stream = jasmine.createSpyObj('AudioNode', {
+          'connect': true
+        });
+        let analyser = AudioTool.getAnalyser(stream, audioCtx);
+
+        expect(AudioTool.getLevels(analyser)).toEqual(jasmine.any(Uint8Array))
+      });
     });
     
 });

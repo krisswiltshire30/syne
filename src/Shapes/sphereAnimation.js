@@ -13,7 +13,7 @@ class Sphere {
           instance.sphere.scale.z = size;
           renderer.render(scene, camera);
       }
-      this.sphere.position.y = (position, position, position);
+      this.sphere.position.y = position;
       animateShape(this);
     }
 };

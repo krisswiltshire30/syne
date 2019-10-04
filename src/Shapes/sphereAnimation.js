@@ -6,11 +6,11 @@ class Sphere {
        scene.add( this.sphere );
     }
 
-    animate(size, position) {
+    animate(sizeScaler, position) {
         var animateShape = function(instance) {
-          instance.sphere.scale.x = size;
-          instance.sphere.scale.y = size;
-          instance.sphere.scale.z = size;
+          instance.sphere.scale.x = sizeScaler;
+          instance.sphere.scale.y = sizeScaler;
+          instance.sphere.scale.z = sizeScaler;
           renderer.render(scene, camera);
       }
       this.sphere.position.y = position;

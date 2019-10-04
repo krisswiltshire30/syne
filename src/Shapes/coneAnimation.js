@@ -6,15 +6,29 @@ class Cone {
         scene.add( this.cone );
     }
 
-    animate(size, position) {
+    animate(sizeScaler, position) {
         var animateShape = function(instance) {
-          instance.cone.scale.x = size;
-          instance.cone.scale.y = size;
-          instance.cone.scale.z = size;
+          instance.cone.scale.x = sizeScaler;
+          instance.cone.scale.y = sizeScaler;
+          instance.cone.scale.z = sizeScaler;
           renderer.render(scene, camera);
       }
-      this.cone.position.y = position;
+      this.cone.position.x = position;
       animateShape(this);
     }
 };
 
+
+// changing origin of rotation
+// var cyl_material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+// var cyl_width = 1;
+// var cyl_height = 5;
+// // THREE.CylinderGeometry(bottomRadius, topRadius, height, segmentsRadius, 
+//  segmentsHeight, openEnded )
+//  var cylGeometry = new THREE.CylinderGeometry(cyl_width, cyl_width, cyl_height, 20, 1, false);
+// // translate the cylinder geometry so that the desired point within the 
+// geometry is now at the origin
+// cylGeometry.applyMatrix( new THREE.Matrix4().makeTranslation( 0, cyl_height/2, 0 ) );
+// var cylinder = new THREE.Mesh(cylGeometry, cyl_material);
+
+// scene.add( cylinder );

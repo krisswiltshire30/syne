@@ -71,15 +71,15 @@ class AudioTool {
     return Math.max(...array)
   }
 
-  static getBassMax() {
-    return this.getMaxLevel(this.getBassEnergy());
+  static getBassMax(analyser) {
+    return this.getMaxLevel(this.getBassEnergy(analyser));
   }
 
-  static getMidMax() {
-    return this.getMaxLevel(this.getMidEnergy());
+  static getMidMax(analyser) {
+    return this.getMaxLevel(this.getMidEnergy(analyser));
   }
 
-  static getTrebleMax() {
-    return this.getMaxLevel(this.getTrebleEnergy());
+  static getTrebleMax(analyser) {
+    return this.getMaxLevel(this.getTrebleEnergy(analyser));
   }
 }

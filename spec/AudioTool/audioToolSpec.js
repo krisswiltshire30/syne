@@ -2,7 +2,7 @@ describe('AudioTool', () => {
 
     var audioCtx = new AudioContext;
 
-    describe('getAudioInput', () => {
+    describe('::getAudioInput', () => {
 
         it('Should be async and return media stream', function (done) {
             AudioTool.getAudioInput(audioCtx).then(function (result) {
@@ -117,7 +117,44 @@ describe('AudioTool', () => {
             let analyser = AudioTool.getAnalyser(stream, audioCtx);
 
 
-            expect(AudioTool.getTrebleAverage(analyser)).toEqual(0)
-        })
-    })
+            expect(AudioTool.getTrebleAverage(analyser)).toEqual(0);
+        });
+    });
+
+    describe('::getMaxLevel', () => {
+      it('should return the highest value in an array', () => {
+        energy = [174, 180, 194, 154]
+        expect(AudioTool.getMaxLevel(energy)).toEqual(194);
+      });
+    });
+
+    describe('::getBassMax', () => {
+      it('should return max bass value', () => {
+        let stream = jasmine.createSpyObj('AudioNode', {
+          'connect': true
+        });
+        let analyser = AudioTool.getAnalyser(stream, audioCtx);
+        expect(AudioTool.getBassMax(analyser)).toEqual(0);
+      });
+    });
+
+    describe('::getMidMax', () => {
+      it('should return max bass value', () => {
+        let stream = jasmine.createSpyObj('AudioNode', {
+          'connect': true
+        });
+        let analyser = AudioTool.getAnalyser(stream, audioCtx);
+        expect(AudioTool.getMidMax(analyser)).toEqual(0);
+      });
+    });
+
+    describe('::getTrebleMax', () => {
+      it('should return max bass value', () => {
+        let stream = jasmine.createSpyObj('AudioNode', {
+          'connect': true
+        });
+        let analyser = AudioTool.getAnalyser(stream, audioCtx);
+        expect(AudioTool.getTrebleMax(analyser)).toEqual(0);
+      });
+    });
 });

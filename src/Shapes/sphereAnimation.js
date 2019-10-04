@@ -1,4 +1,3 @@
-
 class Sphere {
     constructor() {
        this.geometry = new THREE.SphereGeometry(5, 32, 32);
@@ -17,5 +16,4 @@ class Sphere {
       this.sphere.position.y = (position, position, position);
       animateShape(this);
     }
-
 };

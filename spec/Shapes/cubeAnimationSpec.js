@@ -6,10 +6,6 @@ describe('Cube', () => {
     cube = new Cube(1, 0, 1, 1, 2, 3, scene);
   })
 
-  it('Constructs a cube', () => {
-    expect(cube.geometry.type).toEqual("BoxGeometry");
-  });
-
   it('Can change the position of the cube', () => {
     expect(cube.changePosition(400, 100, 200)).toEqual(new THREE.Vector3(400, 100, 200))
   })

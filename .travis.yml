@@ -3,7 +3,7 @@ env:
     - CC_TEST_REPORTER_ID=d6929fd6ddab0f1f51827d572ebb0190ff12d2d63ca3e2f6ae76d6cee603a39f
 language: node_js
 node_js:
-  - "10"
+  - '10'
 services:
   - xvfb # service necessary for launching a virtual display (for mocha testing in Firefox)
 before_script:

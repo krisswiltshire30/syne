@@ -2,13 +2,6 @@ describe('AudioTool', () => {
 
     var audioCtx = new AudioContext;
 
-    //beforeEach(function () {
-    //    let stream = jasmine.createSpyObj('AudioNode', {
-    //        'connect': true
-    //    });
-    //    const analyserNode = AudioTool.getAnalyser(stream, audioCtx);
-    //})
-
     describe('getAudioInput', () => {
 
         it('Should be async and return media stream', function (done) {
@@ -80,6 +73,14 @@ describe('AudioTool', () => {
             let analyser = AudioTool.getAnalyser(stream, audioCtx);
             expect(AudioTool.getTrebleEnergy(analyser).length).toEqual(820);
         });
+    });
+
+    describe('::getAvg', () => {
+      it('should return an average frequency value from given array', () => {
+          energy = [174, 180, 194, 154]
+          function sum(array) { array.reduce((a,b) => a+b, 0)}
+          expect(AudioTool.getAvg(energy)).toEqual(175);
+      });
     });
 
 });

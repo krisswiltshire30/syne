@@ -44,7 +44,7 @@ class AudioTool {
   }
 
   static getTrebleEnergy(analyser) {
-    return this.getLevels(analyser).slice(204, 1025);
+    return this.getLevels(analyser).slice(204, 522);
   }
 
   static getAvg(energy) {

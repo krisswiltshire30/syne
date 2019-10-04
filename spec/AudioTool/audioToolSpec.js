@@ -1,7 +1,13 @@
 describe('AudioTool', () => {
 
     var audioCtx = new AudioContext;
-    let analyser;
+
+    //beforeEach(function () {
+    //    let stream = jasmine.createSpyObj('AudioNode', {
+    //        'connect': true
+    //    });
+    //    const analyserNode = AudioTool.getAnalyser(stream, audioCtx);
+    //})
 
     describe('getAudioInput', () => {
 
@@ -48,12 +54,32 @@ describe('AudioTool', () => {
     });
 
     describe('::getBassEnergy', () => {
-      it('returns an array with just the bass values', () => {
-        let stream = jasmine.createSpyObj('AudioNode', {
-          'connect': true
+        it('returns an array with just the bass values', () => {
+            let stream = jasmine.createSpyObj('AudioNode', {
+                'connect': true
+            });
+            let analyser = AudioTool.getAnalyser(stream, audioCtx);
+            expect(AudioTool.getBassEnergy(analyser).length).toEqual(25);
         });
-        analyser = AudioTool.getAnalyser(stream, audioCtx)
-        expect(AudioTool.getBassEnergy(analyser).length).toEqual(25);
-      });
     });
+    describe('::getMidEnergy', () => {
+        it('returns an array with just the mid values', () => {
+            let stream = jasmine.createSpyObj('AudioNode', {
+                'connect': true
+            });
+            let analyser = AudioTool.getAnalyser(stream, audioCtx);
+            expect(AudioTool.getMidEnergy(analyser).length).toEqual(179);
+        });
+    });
+
+    describe('::getTrebleEnergy', () => {
+        it('returns an array with just the treble values', () => {
+            let stream = jasmine.createSpyObj('AudioNode', {
+                'connect': true
+            });
+            let analyser = AudioTool.getAnalyser(stream, audioCtx);
+            expect(AudioTool.getTrebleEnergy(analyser).length).toEqual(820);
+        });
+    });
+
 });

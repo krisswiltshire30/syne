@@ -40,11 +40,11 @@ class AudioTool {
   }
 
   static getMidEnergy(analyser) {
-    return this.getLevels(analyser).slice(26, 205);
+    return this.getLevels(analyser).slice(25, 204);
   }
 
   static getTrebleEnergy(analyser) {
-    return this.getLevels(analyser).slice(206, 1023);
+    return this.getLevels(analyser).slice(204, 1025);
   }
 
   static getAvg(energy) {

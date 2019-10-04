@@ -6,11 +6,11 @@ class Cone {
         scene.add( this.cone );
     }
 
-    animate(sizeScaler, position) {
+    animate(sizeScalerX, sizeScalerY, sizeScalerZ, position) {
         var animateShape = function(instance) {
-          instance.cone.scale.x = sizeScaler;
-          instance.cone.scale.y = sizeScaler;
-          instance.cone.scale.z = sizeScaler;
+          instance.cone.scale.x = sizeScalerX;
+          instance.cone.scale.y = sizeScalerY;
+          instance.cone.scale.z = sizeScalerZ;
           renderer.render(scene, camera);
       }
       this.cone.position.x = position;

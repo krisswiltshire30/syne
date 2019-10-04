@@ -1,20 +1,24 @@
-class Cone {
-    constructor() {
+class Tetra {
+  constructor(radius, posX, posY, posZ, scene) {
         //do we want to input geometry values into constructor?
-        this.geometry = new THREE.ConeGeometry( 5, 20, 32 );
-        this.material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-        this.cone = new THREE.Mesh( this.geometry, this.material );
-        scene.add( this.cone );
-        renderer.render(scene, camera);
+        this.geometry = new THREE.TetrahedronGeometry( radius );
+        this.material = new THREE.MeshNormalMaterial( {wireframe: true} );
+        this.tetra = new THREE.Mesh( this.geometry, this.material );
+        this.tetra.position.x = posX
+        this.tetra.position.y = posY
+        this.tetra.position.z = posZ
+        scene.add( this.tetra );
     }
 
-    animate(sizeScalerX, sizeScalerY, sizeScalerZ) {
-        var animateShape = function(instance) {
-          instance.cone.scale.x = sizeScalerX;
-          instance.cone.scale.y = sizeScalerY;
-          instance.cone.scale.z = sizeScalerZ;
-          renderer.render(scene, camera);
-      }
-      animateShape(this);
+    changeScale(sizeScaler) {
+      this.tetra.scale.x = sizeScaler;
+      this.tetra.scale.y = sizeScaler;
+      this.tetra.scale.z = sizeScaler;
+    }
+  
+    changePosition(posX, posY, posZ) {
+      this.tetra.position.x = posX;
+      this.tetra.position.y = posY;
+      this.tetra.position.z = posZ;
     }
 };

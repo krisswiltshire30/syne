@@ -1,7 +1,7 @@
 class Sphere {
   constructor(radius, posX, posY, posZ, scene) {
     this.geometry = new THREE.SphereGeometry(radius, 64, 64);
-    this.material = new THREE.MeshBasicMaterial( {wireframe: true}  );
+    this.material = new THREE.MeshNormalMaterial( {wireframe: true}  );
     this.sphere = new THREE.Mesh(this.geometry, this.material );
     this.sphere.position.x = posX
     this.sphere.position.y = posY

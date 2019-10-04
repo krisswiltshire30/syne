@@ -14,6 +14,7 @@
       height: 100%;
     }
   </style>
+  <script src="./src/AudioTool/audioTool.js"></script>
 </head>
 
 <body>
@@ -22,9 +23,9 @@
   <script src="./src/Shapes/sphereAnimation.js"></script>
   <script src="./src/Shapes/coneAnimation.js"></script>
   <script>
+    // Setting up WebGL environment
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
-    // renderer.setClearColorHex(0xefefef, 1);
     document.body.appendChild(renderer.domElement);
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
@@ -33,26 +34,49 @@
     camera.rotation.x = 0.70;
     var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     scene.add( light );
-    sphere1 = new Sphere(150, 0, 0, 0, scene);
-    cube1 = new Cube(200, 200, 200, 400, 0, 0, scene);
 
-    let scalar = 0.8;
-    function getBass(){
-      return Math.random();
-    };
-    let baseScaleLevel = sphere1.sphere.scale.x;
+    // Creating objects
+    const sphere1 = new Sphere(150, -500, 0, 0, scene);
+    const cube1 = new Cube(200, 200, 200, 0, 0, 0, scene);
+    const tetra1 = new Tetra(200, 500, 0, 0, scene);
+
+    // Setting up audio environment
+    let audioContext;
+    let audioIn;
+    let analyser;
+
+    (async function audioInit() {
+      audioContext = new AudioContext;
+      audioIn = await AudioTool.getAudioInput(audioContext);
+      analyser = AudioTool.getAnalyser(audioIn, audioContext);
+      audioIn.connect(audioContext.destination);
+    })();
+
+    let sphereScale = 1;
+    let cubeScale = 1;
+    let tetraScale = 1;
+
     function mainLoop(){
-      let scale = getBass();
-      sphere1.changeScale(scale);
-      cube1.changeScale(scale);
+      if (analyser) {
+        sphereScale = AudioTool.getBassScale(analyser);
+        cubeScale = AudioTool.getMidScale(analyser);
+        tetraScale = AudioTool.getTrebleScale(analyser);
+      }
+
+      sphere1.changeScale(sphereScale);
+      cube1.changeScale(cubeScale);
+      tetra1.changeScale(tetraScale);
+      sphere1.sphere.rotation.z += 0.01;
+      cube1.cube.rotation.x += 0.01;
+      cube1.cube.rotation.y += 0.01;
+      tetra1.tetra.rotation.x += 0.01;
+      tetra1.tetra.rotation.y += 0.01;
+
       renderer.render(scene, camera);
       requestAnimationFrame(mainLoop);
     }
     mainLoop();
-    // var plane = new THREE.Mesh(
-    //   new THREE.PlaneGeometry(800, 800, 1),
-    //   new THREE.MeshNormalMaterial()
-    // );
+    
   </script>
 </body>
 

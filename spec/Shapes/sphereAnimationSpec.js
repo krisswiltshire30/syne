@@ -1,4 +1,4 @@
-describe('sphere', () => {
+describe('Sphere', () => {
   let sphere;
 
   beforeEach(() => {

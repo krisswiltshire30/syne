@@ -1,5 +1,3 @@
-// let THREE = reqiure('three');
-
 class Cube {
   constructor(width, height, depth, posX, posY, posZ, scene) {
     this.geometry = new THREE.BoxGeometry(width, height, depth);

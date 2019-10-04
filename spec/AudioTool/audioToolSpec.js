@@ -76,11 +76,48 @@ describe('AudioTool', () => {
     });
 
     describe('::getAvg', () => {
-      it('should return an average frequency value from given array', () => {
-          energy = [174, 180, 194, 154]
-          function sum(array) { array.reduce((a,b) => a+b, 0)}
-          expect(AudioTool.getAvg(energy)).toEqual(175);
-      });
+        it('should return an average frequency value from given array', () => {
+            energy = [174, 180, 194, 154]
+
+            function sum(array) {
+                array.reduce((a, b) => a + b, 0)
+            }
+            expect(AudioTool.getAvg(energy)).toEqual(175);
+        });
     });
 
+    describe('::getBassAverage', () => {
+        it('should return an average value for Bass', () => {
+            let stream = jasmine.createSpyObj('AudioNode', {
+                'connect': true
+            });
+            let analyser = AudioTool.getAnalyser(stream, audioCtx);
+
+
+            expect(AudioTool.getBassAverage(analyser)).toEqual(0)
+        })
+    })
+    describe('::getMidAverage', () => {
+        it('should return an average value for Mid', () => {
+            let stream = jasmine.createSpyObj('AudioNode', {
+                'connect': true
+            });
+            let analyser = AudioTool.getAnalyser(stream, audioCtx);
+
+
+            expect(AudioTool.getMidAverage(analyser)).toEqual(0)
+        })
+    })
+
+    describe('::getTrebleAverage', () => {
+        it('should return an average value for Treble', () => {
+            let stream = jasmine.createSpyObj('AudioNode', {
+                'connect': true
+            });
+            let analyser = AudioTool.getAnalyser(stream, audioCtx);
+
+
+            expect(AudioTool.getTrebleAverage(analyser)).toEqual(0)
+        })
+    })
 });

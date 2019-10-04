@@ -55,16 +55,16 @@ class AudioTool {
     return array.reduce((a, b) => a + b, 0)
   }
 
-  static getBassAverage() {
-    return this.getAvg(this.getBassEnergy());
+  static getBassAverage(analyser) {
+    return this.getAvg(this.getBassEnergy(analyser));
   }
 
-  static getMidAverage() {
-    return this.getAvg(this.getMidEnergy());
+  static getMidAverage(analyser) {
+    return this.getAvg(this.getMidEnergy(analyser));
   }
 
-  static getTrebleAverage() {
-    return this.getAvg(this.getTrebleEnergy());
+  static getTrebleAverage(analyser) {
+    return this.getAvg(this.getTrebleEnergy(analyser));
   }
 
   static getMaxLevel(array) {

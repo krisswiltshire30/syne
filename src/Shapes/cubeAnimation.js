@@ -1,23 +1,26 @@
 // let THREE = reqiure('three');
 
 class Cube {
-  constructor() {
-    this.geometry = new THREE.BoxGeometry(1, 1, 1);
-    this.material = new THREE.MeshBasicMaterial({
-      color: 0x00ff00,
-      wireframe: true
-    });
+  constructor(width, height, depth, posX, posY, posZ, scene) {
+    this.geometry = new THREE.BoxGeometry(width, height, depth);
+    this.material = new THREE.MeshNormalMaterial();
     this.cube = new THREE.Mesh(this.geometry, this.material);
+    this.cube.position.x = posX
+    this.cube.position.y = posY
+    this.cube.position.z = posZ
     scene.add(this.cube);
   }
 
-  animate(size, position) {
-    var animateShape = function (instance) {
-      requestAnimationFrame(animate);
-      instance.cube.scale.set(size, size, size);
-      renderer.render(scene, camera);
-    };
-    this.cube.position.y = (position, position, position);
-    animateShape(this);
+  changeScale(sizeScaler) {
+    this.cube.scale.x = sizeScaler;
+    this.cube.scale.y = sizeScaler;
+    this.cube.scale.z = sizeScaler;
+    
+  }
+
+  changePosition(posX, posY, posZ) {
+    this.cube.position.x = posX;
+    this.cube.position.y = posY;
+    this.cube.position.z = posZ;
   }
 }

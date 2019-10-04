@@ -1,20 +1,24 @@
 class Sphere {
-    constructor() {
-       this.geometry = new THREE.SphereGeometry( 5, 32, 32 );
-       this.material = new THREE.MeshBasicMaterial( {color: 0xffff00}  );
-       this.sphere = new THREE.Mesh(this.geometry, this.material );
-       scene.add( this.sphere );
-       renderer.render(scene, camera);
-    }
+  constructor(radius, posX, posY, posZ, scene) {
+    this.geometry = new THREE.SphereGeometry(radius, 64, 64);
+    this.material = new THREE.MeshBasicMaterial( {wireframe: true}  );
+    this.sphere = new THREE.Mesh(this.geometry, this.material );
+    this.sphere.position.x = posX
+    this.sphere.position.y = posY
+    this.sphere.position.z = posZ
+    scene.add( this.sphere );
+  }
 
-    animate(sizeScalerX, sizeScalerY, sizeScalerZ) {
-        var animateShape = function(instance) {
-          instance.sphere.scale.x = sizeScalerX;
-          instance.sphere.scale.y = sizeScalerY;
-          instance.sphere.scale.z = sizeScalerZ;
-          renderer.render(scene, camera);
-      }
+  changeScale(sizeScaler) {
+    this.sphere.scale.x = sizeScaler;
+    this.sphere.scale.y = sizeScaler;
+    this.sphere.scale.z = sizeScaler;
+    
+  }
 
-      animateShape(this);
-    }
+  changePosition(posX, posY, posZ) {
+    this.sphere.position.x = posX;
+    this.sphere.position.y = posY;
+    this.sphere.position.z = posZ;
+  }
 };

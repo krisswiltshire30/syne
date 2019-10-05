@@ -25,8 +25,12 @@ function mainLoop(){
   cube1.shape.rotation.y += 0.01;
   tetra1.shape.rotation.x += 0.01;
   tetra1.shape.rotation.y += 0.01;
+  torus1.shape.rotation.x += 0.01;
+  torus1.shape.rotation.y += 0.01;
 
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }
+
 mainLoop();
+

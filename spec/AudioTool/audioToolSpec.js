@@ -29,6 +29,12 @@ describe('AudioTool', () => {
             expect(AudioTool.getBassEnergy(analyser).length).toEqual(22);
         });
     });
+
+    describe('::getSubBassEnergy', () => {
+        it('returns an array with just the sub bass values', () => {
+            expect(AudioTool.getSubBassEnergy(analyser).length).toEqual(3);
+        });
+    });
     describe('::getMidEnergy', () => {
         it('returns an array with just the mid values', () => {
             expect(AudioTool.getMidEnergy(analyser).length).toEqual(179);
@@ -50,10 +56,6 @@ describe('AudioTool', () => {
     describe('::getAvg', () => {
         it('should return an average frequency value from given array', () => {
             energy = [174, 180, 194, 154]
-
-            function sum(array) {
-                array.reduce((a, b) => a + b, 0)
-            }
             expect(AudioTool.getAvg(energy)).toEqual(175);
         });
     });
@@ -62,10 +64,16 @@ describe('AudioTool', () => {
         it('should return an average value for Bass', () => {
             expect(AudioTool.getBassAverage(analyser)).toEqual(0)
         })
-    })
+    });
+
+    describe('::getSubBassAverage', () => {
+        it('should return an average values for Sub Bass', () => {
+            expect(AudioTool.getSubBassAverage(analyser)).toEqual(0);
+        });
+    });
     describe('::getMidAverage', () => {
         it('should return an average value for Mid', () => {
-            expect(AudioTool.getMidAverage(analyser)).toEqual(0)
+            expect(AudioTool.getMidAverage(analyser)).toEqual(0);
         })
     })
 
@@ -88,6 +96,12 @@ describe('AudioTool', () => {
         });
     });
 
+    describe('::getSubBassMax', () => {
+        it('should return max sub bass value', () => {
+            expect(AudioTool.getSubBassMax(analyser)).toEqual(0);
+        });
+    });
+
     describe('::getMidMax', () => {
         it('should return max bass value', () => {
             expect(AudioTool.getMidMax(analyser)).toEqual(0);
@@ -101,6 +115,12 @@ describe('AudioTool', () => {
     });
 
     describe('::getBassScale', () => {
+        it('should return a fixed float to 2 decimal places', () => {
+            expect(AudioTool.getBassScale(analyser)).toEqual('1.00');
+        });
+    });
+
+    describe('::getSubBassScale', () => {
         it('should return a fixed float to 2 decimal places', () => {
             expect(AudioTool.getBassScale(analyser)).toEqual('1.00');
         });

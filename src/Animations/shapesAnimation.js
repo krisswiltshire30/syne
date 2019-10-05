@@ -16,11 +16,11 @@ function mainLoop(){
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
-  sphere1.sphere.rotation.z += 0.01;
-  cube1.cube.rotation.x += 0.01;
-  cube1.cube.rotation.y += 0.01;
-  tetra1.tetra.rotation.x += 0.01;
-  tetra1.tetra.rotation.y += 0.01;
+  sphere1.shape.rotation.z += 0.01;
+  cube1.shape.rotation.x += 0.01;
+  cube1.shape.rotation.y += 0.01;
+  tetra1.shape.rotation.x += 0.01;
+  tetra1.shape.rotation.y += 0.01;
 
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);

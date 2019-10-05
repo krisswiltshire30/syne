@@ -1,24 +1,24 @@
-class Tetra {
+class Tetra extends Solid{
   constructor(radius, posX, posY, posZ, scene) {
     super(scene)
     this.geometry = new THREE.TetrahedronGeometry( radius );
     this.material = new THREE.MeshNormalMaterial( {wireframe: true} );
-    this.tetra = new THREE.Mesh( this.geometry, this.material );
-    this.tetra.position.x = posX
-    this.tetra.position.y = posY
-    this.tetra.position.z = posZ
-    this.scene.add( this.tetra );
+    this.shape = new THREE.Mesh( this.geometry, this.material );
+    this.shape.position.x = posX
+    this.shape.position.y = posY
+    this.shape.position.z = posZ
+    this.scene.add( this.shape );
   }
 
   changeScale(sizeScaler) {
-    this.tetra.scale.x = sizeScaler;
-    this.tetra.scale.y = sizeScaler;
-    this.tetra.scale.z = sizeScaler;
+    this.shape.scale.x = sizeScaler;
+    this.shape.scale.y = sizeScaler;
+    this.shape.scale.z = sizeScaler;
   }
 
   changePosition(posX, posY, posZ) {
-    this.tetra.position.x = posX;
-    this.tetra.position.y = posY;
-    this.tetra.position.z = posZ;
+    this.shape.position.x = posX;
+    this.shape.position.y = posY;
+    this.shape.position.z = posZ;
   }
 }

@@ -1,6 +1,6 @@
 class AudioToolGraphics extends AudioTool {
     static getBassScale(analyser) {
-        return ((this.getBassAverage(analyser) * (1 / 255)) + 1).toFixed(2);
+        return scale1of255(this.getBassAverage(analyser));
     }
 
     static getTrebleScale(analyser) {
@@ -42,7 +42,7 @@ class AudioToolGraphics extends AudioTool {
         for (i = 0; i < this.getMidEnergy(analyser).length; i++) {
             scaleArray.push((this.getMidEnergy(analyser)[i] * (1 / 255)) + 1).toFixed(2)
         };
-        return tscaleArray;
+        return scaleArray;
     }
     static getTreble1to2(analyser) {
         let scaleArray = [];

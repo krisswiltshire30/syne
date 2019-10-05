@@ -26,12 +26,18 @@ describe('AudioTool', () => {
 
     describe('::getBassEnergy', () => {
         it('returns an array with just the bass values', () => {
-            expect(AudioTool.getBassEnergy(analyser).length).toEqual(17);
+            expect(AudioTool.getBassEnergy(analyser).length).toEqual(22);
         });
     });
     describe('::getMidEnergy', () => {
         it('returns an array with just the mid values', () => {
             expect(AudioTool.getMidEnergy(analyser).length).toEqual(179);
+        });
+    });
+
+    describe('::getSubBassEnergy', () => {
+        it('returns an array with just the bass values', () => {
+            expect(AudioTool.getSubBassEnergy(analyser).length).toEqual(3);
         });
     });
 

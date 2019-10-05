@@ -34,7 +34,11 @@ class AudioTool {
   }
 
   static getBassEnergy(analyser) {
-    return this.getLevels(analyser).slice(0, 25);
+    return this.getLevels(analyser).slice(8, 25);
+  }
+  
+  static getSubBassEnergy(analyser) {
+    return this.getLevels(analyser).slice(0, 8);
   }
 
   static getMidEnergy(analyser) {
@@ -55,6 +59,10 @@ class AudioTool {
 
   static getBassAverage(analyser) {
     return this.getAvg(this.getBassEnergy(analyser));
+  }
+
+  static getSubBassAverage(analyser) {
+    return this.getAvg(this.getSubBassEnergy(analyser));
   }
 
   static getMidAverage(analyser) {
@@ -85,6 +93,9 @@ class AudioTool {
     return ((this.getBassAverage(analyser) * (1/255)) + 1).toFixed(2);
   }
 
+  static getSubBassScale(analyser) {
+    return ((this.getSubBassAverage(analyser) * (1/255)) +1).toFixed(2);
+  }
   static getTrebleScale(analyser) {
     return ((this.getTrebleAverage(analyser) * (1/255)) + 1).toFixed(2);
   }

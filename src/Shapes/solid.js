@@ -3,6 +3,13 @@ class Solid {
     this.scene = scene;
   }
 
+  changeOpacity(sizeScaler) {
+    //temporary conversion into scaler between 0-1.0
+    var sizeScalerDecimal = (sizeScaler - 1);
+    this.shape.material.transparent = true;
+    this.shape.material.opacity = sizeScalerDecimal;
+  }
+
   changeScale(sizeScaler) {
     this.shape.scale.x = sizeScaler;
     this.shape.scale.y = sizeScaler;

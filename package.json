@@ -18,5 +18,8 @@
     "karma-jasmine": "^2.0.1",
     "karma-safari-launcher": "^1.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dat.gui": "^0.7.6"
+  }
 }

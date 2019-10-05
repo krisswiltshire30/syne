@@ -1,27 +1,14 @@
-class Sphere {
+class Sphere extends Solid{
   constructor(radius, posX, posY, posZ, scene) {
+    super(scene);
     this.geometry = new THREE.SphereGeometry(radius, 64, 64);
     this.material = new THREE.MeshNormalMaterial({
       wireframe: true
     });
-    this.sphere = new THREE.Mesh(this.geometry, this.material);
-    this.sphere.position.x = posX
-    this.sphere.position.y = posY
-    this.sphere.position.z = posZ
-    scene.add(this.sphere);
-  }
-
-  changeScale(sizeScaler) {
-    this.sphere.scale.x = sizeScaler;
-    this.sphere.scale.y = sizeScaler;
-    this.sphere.scale.z = sizeScaler;
-    return this.sphere.scale
-  }
-
-  changePosition(posX, posY, posZ) {
-    this.sphere.position.x = posX;
-    this.sphere.position.y = posY;
-    this.sphere.position.z = posZ;
-    return this.sphere.position
+    this.shape = new THREE.Mesh(this.geometry, this.material);
+    this.shape.position.x = posX
+    this.shape.position.y = posY
+    this.shape.position.z = posZ
+    this.scene.add(this.shape);
   }
 }

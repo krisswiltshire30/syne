@@ -81,6 +81,10 @@ class AudioTool {
     return this.getMaxLevel(this.getBassEnergy(analyser));
   }
 
+  static getSubBassMax(analyser) {
+    return this.getMaxLevel(this.getSubBassEnergy(analyser));
+  }
+
   static getMidMax(analyser) {
     return this.getMaxLevel(this.getMidEnergy(analyser));
   }

@@ -26,4 +26,30 @@ class AudioToolGraphics extends AudioTool {
     static scale1of255(value) {
         return ((value * (1 / 255)) + 1).toFixed(2)
     }
+
+    static getBass1to2(analyser) {
+        let scaleArray = [];
+        let i = 0;
+        for (i = 0; i < this.getBassEnergy(analyser).length; i++) {
+            scaleArray.push((this.getBassEnergy(analyser)[i] * (1 / 255)) + 1).toFixed(2)
+        };
+        return scaleArray;
+    }
+
+    static getMid1to2(analyser) {
+        let scaleArray = [];
+        let i = 0;
+        for (i = 0; i < this.getMidEnergy(analyser).length; i++) {
+            scaleArray.push((this.getMidEnergy(analyser)[i] * (1 / 255)) + 1).toFixed(2)
+        };
+        return tscaleArray;
+    }
+    static getTreble1to2(analyser) {
+        let scaleArray = [];
+        let i = 0;
+        for (i = 0; i < this.getTrebleEnergy(analyser).length; i++) {
+            scaleArray.push((this.getTrebleEnergy(analyser)[i] * (1 / 255)) + 1).toFixed(2)
+        };
+        return scaleArray;
+    }
 }

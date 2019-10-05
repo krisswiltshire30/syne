@@ -16,11 +16,9 @@ class AudioTool {
     } else {
       console.log('getUserMedia not supported on your browser!');
     }
-
   }
 
   static getAnalyser(audioStream, audioContext) {
-
     const audioAnalyserNode = audioContext.createAnalyser();
     audioStream.connect(audioAnalyserNode);
 

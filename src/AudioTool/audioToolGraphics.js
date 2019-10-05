@@ -1,14 +1,14 @@
 class AudioToolGraphics extends AudioTool {
     static getBassScale(analyser) {
-        return scale1of255(this.getBassAverage(analyser));
+        return this.scale1of255(this.getBassAverage(analyser));
     }
 
     static getTrebleScale(analyser) {
-        return ((this.getTrebleAverage(analyser) * (1 / 255)) + 1).toFixed(2);
+        return this.scale1of255(this.getTrebleAverage(analyser));
     }
 
     static getMidScale(analyser) {
-        return ((this.getMidAverage(analyser) * (1 / 255)) + 1).toFixed(2);
+        return this.scale1of255(this.getTrebleAverage(analyser));
     }
     static getMaster() { //analyser is the argument 
 

@@ -15,9 +15,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './lib/three.js',
+      'lib/three.js',
+      'src/**/solid.js',
       'src/**/*.js',
-      'spec/**/*.js',
+      'spec/**/*.js', 
     ],
 
 

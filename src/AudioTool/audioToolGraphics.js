@@ -52,4 +52,24 @@ class AudioToolGraphics extends AudioTool {
         };
         return scaleArray;
     }
+
+    static getToDecimal(analyser) {
+        return ((analyser * (1 / 255).toFixed(2)) / 4)
+    }
+
+    static getBassDecimal(analyser) {
+        return (this.scale1of255(this.getBassAverage(analyser)) - 1) / 2;
+    }
+
+    static getMidDecimal(analyser) {
+        return (this.scale1of255(this.getMidAverage(analyser)) - 1) / 2;
+    }
+
+    static getTrebleDecimal(analyser) {
+        return (this.scale1of255(this.getTrebleAverage(analyser)) - 1) / 2;
+    }
+
+    static getSubBassDecimal(analyser) {
+        return (this.scale1of255(this.getSubBassAverage(analyser)) - 1) / 2;
+    }
 }

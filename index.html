@@ -21,7 +21,7 @@
   <script src="./lib/three.js"></script>
   <script src="./src/Shapes/cubeAnimation.js"></script>
   <script src="./src/Shapes/sphereAnimation.js"></script>
-  <script src="./src/Shapes/coneAnimation.js"></script>
+  <script src="./src/Shapes/tetraAnimation.js"></script>
   <script>
     // Setting up WebGL environment
     var renderer = new THREE.WebGLRenderer();
@@ -49,7 +49,6 @@
       audioContext = new AudioContext;
       audioIn = await AudioTool.getAudioInput(audioContext);
       analyser = AudioTool.getAnalyser(audioIn, audioContext);
-      audioIn.connect(audioContext.destination);
     })();
 
     let sphereScale = 1;

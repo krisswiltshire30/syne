@@ -26,7 +26,7 @@ describe('AudioTool', () => {
 
     describe('::getBassEnergy', () => {
         it('returns an array with just the bass values', () => {
-            expect(AudioTool.getBassEnergy(analyser).length).toEqual(17);
+            expect(AudioTool.getBassEnergy(analyser).length).toEqual(22);
         });
     });
     describe('::getMidEnergy', () => {

@@ -34,11 +34,11 @@ class AudioTool {
   }
 
   static getBassEnergy(analyser) {
-    return this.getLevels(analyser).slice(8, 25);
+    return this.getLevels(analyser).slice(3, 25);
   }
   
   static getSubBassEnergy(analyser) {
-    return this.getLevels(analyser).slice(0, 8);
+    return this.getLevels(analyser).slice(0, 3);
   }
 
   static getMidEnergy(analyser) {

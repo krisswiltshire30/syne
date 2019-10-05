@@ -17,7 +17,8 @@ module.exports = function(config) {
     files: [
       'lib/three.js',
       'src/**/solid.js',
-      'src/**/*.js',
+      'src/AudioTool/*.js',
+      'src/Shapes/*.js',
       'spec/**/*.js', 
     ],
 

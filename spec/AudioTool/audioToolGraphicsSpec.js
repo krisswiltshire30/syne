@@ -22,4 +22,29 @@ describe('AudioToolGraphics', () => {
             expect(AudioToolGraphics.getMidScale(analyser)).toEqual('1.00');
         });
     });
+
+    describe('::getLevels1to2', () => {
+        it('returns an array with numbers between 1 and 2', () => {
+            expect(AudioToolGraphics.getLevels1to2(analyser)).toEqual(jasmine.any(Array));
+        });
+    })
+
+    describe('::getBass1to2', () => {
+        it('returns an array with numbers between 1 and 2', () => {
+            expect(AudioToolGraphics.getBass1to2(analyser)).toEqual(jasmine.any(Array));
+        });
+    })
+
+    describe('::getMid1to2', () => {
+        it('returns an array with numbers between 1 and 2', () => {
+            expect(AudioToolGraphics.getMid1to2(analyser)).toEqual(jasmine.any(Array));
+        });
+    })
+
+    describe('::getTreble1to2', () => {
+        it('returns an array with numbers between 1 and 2', () => {
+            expect(AudioToolGraphics.getTreble1to2(analyser)).toEqual(jasmine.any(Array));
+        });
+    })
+
 })

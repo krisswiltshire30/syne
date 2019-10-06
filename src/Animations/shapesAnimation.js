@@ -16,8 +16,6 @@ function mainLoop(){
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
-  tetra1.changeOpacity(tetraScale);
-  sphere1.changeOpacity(sphereScale);
   sphere1.shape.rotation.z += 0.01;
   cube1.shape.rotation.x += 0.01;
   cube1.shape.rotation.y += 0.01;

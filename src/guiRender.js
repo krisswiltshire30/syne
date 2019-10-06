@@ -42,7 +42,14 @@ window.onload = function () {
     tetra.material.color.set(tetra.color);
   });
 
-
+  tetraFolder.add(tetra, 'wireframe').onChange(function () {
+    if (tetra.material.wireframe) {
+      tetra.material.wireframe = false
+    } else {
+      tetra.material.wireframe = true
+      return
+    }
+  });
 
 
 

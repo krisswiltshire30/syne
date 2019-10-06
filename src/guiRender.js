@@ -51,6 +51,10 @@ window.onload = function () {
     }
   });
 
+  //Background colour
+  canvasFolder.addColor(color, "value").name("background").onChange((value) => {
+    c.set(value);
+  })
 
 
 }

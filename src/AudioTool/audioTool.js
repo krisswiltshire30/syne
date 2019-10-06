@@ -1,6 +1,8 @@
-class AudioTool {
+const AudioTool = {
 
-  static async getAudioInput(audioCtx) {
+  audioContext: new AudioContext || new webkitAudioContext,
+
+  setup: async function() {
 
     if (navigator.mediaDevices.getUserMedia) {
       console.log('getUserMedia supported');
@@ -8,88 +10,93 @@ class AudioTool {
         audio: true
       }
       try {
-        const stream = await navigator.mediaDevices.getUserMedia(constraints)
-        return audioCtx.createMediaStreamSource(stream);
+        let stream = await navigator.mediaDevices.getUserMedia(constraints);
+        // set AudioTool.source as a MediaStreamAudioSourceNode
+        this.source = this.audioContext.createMediaStreamSource(stream);
+        // set AudioTool
+        this.getAnalyser();
+        this.isSetup = true;
+        return this.source;
       } catch (err) {
         console.log('This following gUM error occured: ' + err);
       }
     } else {
       console.log('getUserMedia not supported on your browser!');
     }
-  }
+  },
 
-  static getAnalyser(audioStream, audioContext) {
-    const audioAnalyserNode = audioContext.createAnalyser();
-    audioStream.connect(audioAnalyserNode);
+  getAnalyser: function() {
+    this.analyser = this.audioContext.createAnalyser();
+    this.source.connect(this.analyser);
 
-    return audioAnalyserNode;
-  }
+    return this.analyser;
+  },
 
-  static getLevels(analyser) {
-    analyser.fftSize = 2048;
-    let bufferLength = analyser.frequencyBinCount;
+  getLevels: function() {
+    this.analyser.fftSize = 2048;
+    let bufferLength = this.analyser.frequencyBinCount;
     let dataArray = new Uint8Array(bufferLength);
-    analyser.getByteFrequencyData(dataArray);
+    this.analyser.getByteFrequencyData(dataArray);
     return dataArray
-  }
+  },
 
-  static getBassEnergy(analyser) {
-    return this.getLevels(analyser).slice(0, 25);
-  }
+  getBassEnergy: function() {
+    return this.getLevels().slice(0, 25);
+  },
 
-  static getMidEnergy(analyser) {
-    return this.getLevels(analyser).slice(25, 204);
-  }
+  getMidEnergy: function() {
+    return this.getLevels().slice(25, 204);
+  },
 
-  static getTrebleEnergy(analyser) {
-    return this.getLevels(analyser).slice(204, 522);
-  }
+  getTrebleEnergy: function() {
+    return this.getLevels().slice(204, 522);
+  },
 
-  static getAvg(energy) {
+  getAvg: function(energy) {
     return Math.floor(this.sum(energy) / energy.length)
-  }
+  },
 
-  static sum(array) {
+  sum: function(array) {
     return array.reduce((a, b) => a + b, 0)
-  }
+  },
 
-  static getBassAverage(analyser) {
-    return this.getAvg(this.getBassEnergy(analyser));
-  }
+  getBassAverage: function() {
+    return this.getAvg(this.getBassEnergy());
+  },
 
-  static getMidAverage(analyser) {
-    return this.getAvg(this.getMidEnergy(analyser));
-  }
+  getMidAverage: function() {
+    return this.getAvg(this.getMidEnergy());
+  },
 
-  static getTrebleAverage(analyser) {
-    return this.getAvg(this.getTrebleEnergy(analyser));
-  }
+  getTrebleAverage: function() {
+    return this.getAvg(this.getTrebleEnergy());
+  },
 
-  static getMaxLevel(array) {
+  getMaxLevel: function(array) {
     return Math.max(...array)
-  }
+  },
 
-  static getBassMax(analyser) {
-    return this.getMaxLevel(this.getBassEnergy(analyser));
-  }
+  getBassMax: function() {
+    return this.getMaxLevel(this.getBassEnergy());
+  },
 
-  static getMidMax(analyser) {
-    return this.getMaxLevel(this.getMidEnergy(analyser));
-  }
+  getMidMax: function() {
+    return this.getMaxLevel(this.getMidEnergy());
+  },
 
-  static getTrebleMax(analyser) {
-    return this.getMaxLevel(this.getTrebleEnergy(analyser));
-  }
+  getTrebleMax: function() {
+    return this.getMaxLevel(this.getTrebleEnergy());
+  },
 
-  static getBassScale(analyser) {
-    return ((this.getBassAverage(analyser) * (1/255)) + 1).toFixed(2);
-  }
+  getBassScale: function() {
+    return ((this.getBassAverage() * (1/255)) + 1).toFixed(2);
+  },
 
-  static getTrebleScale(analyser) {
-    return ((this.getTrebleAverage(analyser) * (1/255)) + 1).toFixed(2);
-  }
+  getTrebleScale: function() {
+    return ((this.getTrebleAverage() * (1/255)) + 1).toFixed(2);
+  },
 
-  static getMidScale(analyser) {
-    return ((this.getMidAverage(analyser) * (1/255)) + 1).toFixed(2);
+  getMidScale: function() {
+    return ((this.getMidAverage() * (1/255)) + 1).toFixed(2);
   }
 }

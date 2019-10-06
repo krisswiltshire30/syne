@@ -6,11 +6,13 @@ let sphereScale = 1;
 let cubeScale = 1;
 let tetraScale = 1;
 
+AudioTool.setup();
+
 function mainLoop(){
-  if (analyser) {
-    sphereScale = AudioTool.getBassScale(analyser);
-    cubeScale = AudioTool.getMidScale(analyser);
-    tetraScale = AudioTool.getTrebleScale(analyser);
+  if (AudioTool.isSetup) {
+    sphereScale = AudioTool.getBassScale();
+    cubeScale = AudioTool.getMidScale();
+    tetraScale = AudioTool.getTrebleScale();
   }
 
   sphere1.changeScale(sphereScale);

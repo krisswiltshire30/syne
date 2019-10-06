@@ -6,12 +6,12 @@ class Solid {
     });
   }
 
-  changeOpacity(sizeScaler) {
+  changeOpacity(scalingValue) {
     //temporary conversion into scaler between 0-1.0
-    var sizeScalerDecimal = (sizeScaler - 1);
+    var scalingValueDecimal = (scalingValue - 1);
 
     this.material.transparent = true;
-    this.material.opacity = sizeScalerDecimal;
+    this.material.opacity = scalingValueDecimal;
 
     return this.material.opacity;
   }

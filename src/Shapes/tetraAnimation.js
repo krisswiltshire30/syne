@@ -1,8 +1,13 @@
 class Tetra {
   constructor(radius, posX, posY, posZ, scene) {
+    // this.texture = new THREE.TextureLoader().load("textures/gomme.png");
+    this.color = "#003e98"
+    this.wireframe = true
+    this.texture = null
     this.geometry = new THREE.TetrahedronGeometry(radius);
-    this.material = new THREE.MeshNormalMaterial({
-      wireframe: true
+    this.material = new THREE.MeshBasicMaterial({
+      wireframe: this.wireframe,
+      color: this.color
     });
     this.tetra = new THREE.Mesh(this.geometry, this.material);
     this.tetra.position.x = posX

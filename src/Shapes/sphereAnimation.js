@@ -1,8 +1,11 @@
 class Sphere {
   constructor(radius, posX, posY, posZ, scene) {
+    this.color = "#003e98"
+    this.wireframe = true
     this.geometry = new THREE.SphereGeometry(radius, 64, 64);
-    this.material = new THREE.MeshNormalMaterial({
-      wireframe: true
+    this.material = new THREE.MeshBasicMaterial({
+      wireframe: this.wireframe,
+      color: this.color
     });
     this.sphere = new THREE.Mesh(this.geometry, this.material);
     this.sphere.position.x = posX

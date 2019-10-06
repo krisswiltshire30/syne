@@ -1,6 +1,16 @@
 window.onload = function () {
 
-  var gui = new dat.GUI();
+  var gui = new dat.GUI({
+    load: JSON
+  });
+  // var cube = this.cube;
+  // var sphere = this.sphere;
+  // var tetra = this.tetra;
+  // var scene = this.scene;
+
+  gui.remember(cube, sphere, tetra, scene);
+
+
 
   // Create folders
   var cubeFolder = gui.addFolder('Cube');
@@ -21,6 +31,8 @@ window.onload = function () {
       return
     }
   });
+
+  // cubeFolder.add(cube, 'texture1')
 
   //Sphere options
   sphereFolder.addColor(sphere, 'color').onChange(function () {
@@ -56,5 +68,25 @@ window.onload = function () {
     c.set(value);
   })
 
+  gui.add('FullScreen')
 
+
+
+
+  var elem = scene
+
+  function openFullscreen() {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      /* Firefox */
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      /* Chrome, Safari & Opera */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      /* IE/Edge */
+      elem.msRequestFullscreen();
+    }
+  }
 }

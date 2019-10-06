@@ -1,13 +1,13 @@
 class Cube {
   constructor(width, height, depth, posX, posY, posZ, scene) {
-    // this.texture = new THREE.TextureLoader().load("textures/gomme.png");
+    this.texture1 = new THREE.TextureLoader().load("textures/gomme.png");
     this.color = "#003e98"
     this.wireframe = true
     this.geometry = new THREE.BoxGeometry(width, height, depth);
     this.material = new THREE.MeshBasicMaterial({
-      // map: this.texture,
+      map: this.texture1,
       color: this.color,
-      wireframe: this.wireframe
+      // wireframe: this.wireframe
     });
     this.cube = new THREE.Mesh(this.geometry, this.material);
     this.cube.position.x = posX;

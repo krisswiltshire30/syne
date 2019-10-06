@@ -27,6 +27,14 @@ window.onload = function () {
     sphere.material.color.set(sphere.color);
   });
 
+  sphereFolder.add(sphere, 'wireframe').onChange(function () {
+    if (sphere.material.wireframe) {
+      sphere.material.wireframe = false
+    } else {
+      sphere.material.wireframe = true
+      return
+    }
+  });
 
 
 

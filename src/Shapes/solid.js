@@ -1,13 +1,19 @@
 class Solid {
   constructor(scene) {
     this.scene = scene;
+    this.material = new THREE.MeshNormalMaterial({
+      wireframe: true
+    });
   }
 
   changeOpacity(sizeScaler) {
     //temporary conversion into scaler between 0-1.0
     var sizeScalerDecimal = (sizeScaler - 1);
-    this.shape.material.transparent = true;
-    this.shape.material.opacity = sizeScalerDecimal;
+
+    this.material.transparent = true;
+    this.material.opacity = sizeScalerDecimal;
+
+    return this.material.opacity;
   }
 
   changeScale(sizeScaler) {

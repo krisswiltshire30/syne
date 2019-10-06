@@ -22,6 +22,11 @@ window.onload = function () {
     }
   });
 
+  //Sphere options
+  sphereFolder.addColor(sphere, 'color').onChange(function () {
+    sphere.material.color.set(sphere.color);
+  });
+
 
 
 

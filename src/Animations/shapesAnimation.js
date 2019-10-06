@@ -6,7 +6,7 @@ let sphereScale = 1;
 let cubeScale = 1;
 let tetraScale = 1;
 
-function mainLoop(){
+function mainLoop() {
   if (analyser) {
     sphereScale = AudioTool.getBassScale(analyser);
     cubeScale = AudioTool.getMidScale(analyser);

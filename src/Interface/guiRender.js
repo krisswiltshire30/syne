@@ -4,6 +4,11 @@ window.onload = function () {
     load: JSON
   });
 
+  var cube = this.cube;
+  var sphere = this.sphere;
+  var tetra = this.tetra;
+  var scene = this.scene;
+
   gui.remember(cube, sphere, tetra, scene);
 
 
@@ -63,26 +68,4 @@ window.onload = function () {
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {
     c.set(value);
   })
-
-  gui.add('FullScreen')
-
-
-
-
-  var elem = scene
-
-  function openFullscreen() {
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) {
-      /* Firefox */
-      elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) {
-      /* Chrome, Safari & Opera */
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-      /* IE/Edge */
-      elem.msRequestFullscreen();
-    }
-  }
 }

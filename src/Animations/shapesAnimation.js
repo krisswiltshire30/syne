@@ -6,6 +6,10 @@ let sphereScale = 1;
 let cubeScale = 1;
 let tetraScale = 1;
 
+this.cube = cube1
+this.sphere = sphere1
+this.tetra = tetra1
+
 function mainLoop() {
   if (analyser) {
     sphereScale = AudioTool.getBassScale(analyser);

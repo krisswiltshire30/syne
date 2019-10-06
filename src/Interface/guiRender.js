@@ -11,8 +11,6 @@ window.onload = function () {
 
   gui.remember(cube, sphere, tetra, scene);
 
-
-
   // Create folders
   var cubeFolder = gui.addFolder('Cube');
   var sphereFolder = gui.addFolder('Sphere');

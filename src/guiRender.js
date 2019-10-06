@@ -13,7 +13,14 @@ window.onload = function () {
     cube.material.color.set(cube.color);
   });
 
-
+  cubeFolder.add(cube, 'wireframe').onChange(function () {
+    if (cube.material.wireframe) {
+      cube.material.wireframe = false
+    } else {
+      cube.material.wireframe = true
+      return
+    }
+  });
 
 
 

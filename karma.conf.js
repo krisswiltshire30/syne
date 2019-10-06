@@ -15,9 +15,10 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './lib/dat.gui.min.js',
-      './lib/three.js',
-      'src/**/*.js',
+      'lib/three.js',
+      'src/**/solid.js',
+      'src/AudioTool/*.js',
+      'src/Shapes/*.js',
       'spec/**/*.js',
     ],
 

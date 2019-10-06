@@ -3,10 +3,6 @@ window.onload = function () {
   var gui = new dat.GUI({
     load: JSON
   });
-  // var cube = this.cube;
-  // var sphere = this.sphere;
-  // var tetra = this.tetra;
-  // var scene = this.scene;
 
   gui.remember(cube, sphere, tetra, scene);
 

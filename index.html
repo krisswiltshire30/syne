@@ -3,92 +3,24 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>My first three.js app</title>
-  <style>
-    body {
-      margin: 0;
-    }
-
-    canvas {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+  <title>Syne</title>
+  <link rel="stylesheet" type="text/css" href="./Public/Styles/index.css">
   <script src="./src/AudioTool/audioTool.js"></script>
 </head>
 
 <body>
-  <script type='text/javascript' src='./lib/dat.gui.min.js'></script>
+  <!-- Importing ThreeJS Library -->
   <script src="./lib/three.js"></script>
-  <script src="./src/Shapes/cubeAnimation.js"></script>
-  <script src="./src/Shapes/sphereAnimation.js"></script>
-  <script src="./src/Shapes/tetraAnimation.js"></script>
-  <script src="./src/guiRender.js"></script>
-  <script>
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
-    camera.position.y = -800;
-    camera.position.z = 800;
-    camera.rotation.x = 0.70;
-
-    //background color set - important for dat.gui
-    var c = new THREE.Color(0x000000);
-    var color = {
-      value: c.getHex()
-    }
-    this.scene.background = c
-
-
-    // Creating objects
-    let sphere1 = new Sphere(150, -500, 0, 0, scene);
-    let cube1 = new Cube(200, 200, 200, 0, 0, 0, scene);
-    let tetra1 = new Tetra(200, 500, 0, 0, scene);
-    this.sphere = sphere1;
-    this.cube = cube1;
-    this.tetra = tetra1;
-
-    // Setting up audio environment
-    let audioContext;
-    let audioIn;
-    let analyser;
-
-    (async function audioInit() {
-      audioContext = new AudioContext;
-      audioIn = await AudioTool.getAudioInput(audioContext);
-      analyser = AudioTool.getAnalyser(audioIn, audioContext);
-    })();
-
-    let sphereScale = 1;
-    let cubeScale = 1;
-    let tetraScale = 1;
-
-    var object = new THREE.Object3D();
-    scene.add(object);
-
-    function mainLoop() {
-      if (analyser) {
-        sphereScale = AudioTool.getBassScale(analyser);
-        cubeScale = AudioTool.getMidScale(analyser);
-        tetraScale = AudioTool.getTrebleScale(analyser);
-      }
-
-      sphere1.changeScale(sphereScale);
-      cube1.changeScale(cubeScale);
-      tetra1.changeScale(tetraScale);
-      sphere1.sphere.rotation.z += 0.01;
-      cube1.cube.rotation.x += 0.01;
-      cube1.cube.rotation.y += 0.01;
-      tetra1.tetra.rotation.x += 0.01;
-      tetra1.tetra.rotation.y += 0.01;
-
-      renderer.render(scene, camera);
-      requestAnimationFrame(mainLoop);
-    }
-    mainLoop();
-  </script>
+  <!-- Setting up WebGL Canvas -->
+  <script src="./src/Animations/setUpCanvas.js"></script>
+  <!-- Setting up Web Audio Api -->
+  <script src="./src/AudioTool/setUpAudio.js"></script>
+  <!-- List of animation files -->
+  <script src="./src/Shapes/solid.js"></script>
+  <script src="./src/Shapes/cube.js"></script>
+  <script src="./src/Shapes/sphere.js"></script>
+  <script src="./src/Shapes/tetra.js"></script>
+  <script src="./src/Animations/shapesAnimation.js"></script>
 </body>
 
 </html>

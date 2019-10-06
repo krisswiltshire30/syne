@@ -37,6 +37,10 @@ window.onload = function () {
   });
 
 
+  //Tetra options
+  tetraFolder.addColor(tetra, 'color').onChange(function () {
+    tetra.material.color.set(tetra.color);
+  });
 
 
 

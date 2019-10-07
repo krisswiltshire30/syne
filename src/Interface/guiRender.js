@@ -4,6 +4,7 @@ window.onload = function () {
     loadFile: function () {
       document.getElementById('myInput').click();
     }
+
   };
 
   var gui = new dat.GUI({
@@ -27,7 +28,7 @@ window.onload = function () {
     cube1.material.wireframe = !cube1.material.wireframe
   });
 
-  cubeFolder.add(params, 'loadFile').name('Load texture');
+  // cubeFolder.add(cube1, 'texture');
 
   //Sphere options
   sphereFolder.addColor(sphere1, 'color').onChange(function () {
@@ -37,10 +38,6 @@ window.onload = function () {
   sphereFolder.add(sphere1, 'wireframe').onChange(function () {
     sphere1.material.wireframe = !sphere1.material.wireframe
   });
-
-  sphereFolder.add(sphere1, 'thetaStart').onChange(function () {
-    sphere1.geometry = new THREE.SphereGeometry(this.radius, 64, 64, 100, sphere1.thetaStart);
-  })
 
   //Tetra options
   tetraFolder.addColor(tetra1, 'color').onChange(function () {
@@ -55,6 +52,5 @@ window.onload = function () {
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {
     bgColor.set(value);
   });
-
 
 }

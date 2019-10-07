@@ -3,7 +3,8 @@ class Cube extends Solid {
     super(scene);
     this.color = "#003e98";
     this.wireframe = true;
-    this.geometry = new THREE.BoxGeometry(width, height, depth);
+    this.segments = 40;
+    this.geometry = new THREE.BoxGeometry(width, height, depth, this.segments, this.segments, this.segments);
     this.material = new THREE.MeshBasicMaterial({
       wireframe: this.wireframe,
       color: this.color

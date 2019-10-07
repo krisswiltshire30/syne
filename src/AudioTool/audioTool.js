@@ -1,7 +1,7 @@
-class AudioTool {
+const AudioTool = {
+  audioContext: new AudioContext || new webkitAudioContext,
 
-  static async getAudioInput(audioCtx) {
-
+  setup: async function () {
     if (navigator.mediaDevices.getUserMedia) {
       console.log('getUserMedia supported');
       var constraints = {
@@ -9,87 +9,128 @@ class AudioTool {
       }
       try {
         const stream = await navigator.mediaDevices.getUserMedia(constraints)
-        return audioCtx.createMediaStreamSource(stream);
+        this.source = this.audioContext.createMediaStreamSource(stream);
+        this.getAnalyser();
+        this.isSetup = true;
+        return this.source;
       } catch (err) {
         console.log('This following gUM error occured: ' + err);
       }
     } else {
       console.log('getUserMedia not supported on your browser!');
     }
-  }
+  },
 
-  static getAnalyser(audioStream, audioContext) {
-    const audioAnalyserNode = audioContext.createAnalyser();
-    audioStream.connect(audioAnalyserNode);
+  getAnalyser: function () {
+    this.analyser = this.audioContext.createAnalyser();
+    this.source.connect(this.analyser);
+    return this.analyser;
+  },
 
-    return audioAnalyserNode;
-  }
-
-  static getLevels(analyser) {
-    analyser.fftSize = 2048;
-    let bufferLength = analyser.frequencyBinCount;
+  getLevels: function () {
+    this.analyser.fftSize = 2048;
+    let bufferLength = this.analyser.frequencyBinCount;
     let dataArray = new Uint8Array(bufferLength);
-    analyser.getByteFrequencyData(dataArray);
+    this.analyser.getByteFrequencyData(dataArray);
+
+
     return dataArray
-  }
+  },
 
-  static getBassEnergy(analyser) {
-    return this.getLevels(analyser).slice(0, 25);
-  }
+  getPercent: function (value) {
+    return (value / 255);
 
-  static getMidEnergy(analyser) {
-    return this.getLevels(analyser).slice(25, 204);
-  }
+  },
 
-  static getTrebleEnergy(analyser) {
-    return this.getLevels(analyser).slice(204, 522);
-  }
+  getBassEnergy: function () {
+    return this.getLevels().slice(3, 25);
+  },
 
-  static getAvg(energy) {
-    return Math.floor(this.sum(energy) / energy.length)
-  }
+  getSubBassEnergy: function () {
+    return this.getLevels().slice(0, 3);
+  },
 
-  static sum(array) {
+  getMidEnergy: function () {
+    return this.getLevels().slice(25, 204);
+  },
+
+  getTrebleEnergy: function () {
+    return this.getLevels().slice(204, 522);
+  },
+
+  getAvg: function (energy) {
+    return (this.sum(energy) / energy.length)
+  },
+
+  sum: function (array) {
     return array.reduce((a, b) => a + b, 0)
-  }
+  },
 
-  static getBassAverage(analyser) {
-    return this.getAvg(this.getBassEnergy(analyser));
-  }
+  getBassAverage: function (percent) {
+    value = this.getAvg(this.getBassEnergy());
+    if (percent) {
+      value = this.getPercent(value);
+    }
+    return value
+  },
 
-  static getMidAverage(analyser) {
-    return this.getAvg(this.getMidEnergy(analyser));
-  }
+  getSubBassAverage: function (percent) {
+    value = this.getAvg(this.getSubBassEnergy());
+    if (percent) {
+      value = this.getPercent(value);
+    }
+    return value;
+  },
 
-  static getTrebleAverage(analyser) {
-    return this.getAvg(this.getTrebleEnergy(analyser));
-  }
+  getMidAverage: function (percent) {
+    value = this.getAvg(this.getMidEnergy());
+    if (percent) {
+      value = this.getPercent(value);
+    }
+    return value;
+  },
 
-  static getMaxLevel(array) {
+  getTrebleAverage: function (percent) {
+    value = this.getAvg(this.getTrebleEnergy());
+    if (percent) {
+      value = this.getPercent(value);
+    }
+    return value;
+  },
+
+  getMaxLevel: function (array) {
     return Math.max(...array)
-  }
+  },
 
-  static getBassMax(analyser) {
-    return this.getMaxLevel(this.getBassEnergy(analyser));
-  }
+  getBassMax: function () {
+    return this.getMaxLevel(this.getBassEnergy());
+  },
 
-  static getMidMax(analyser) {
-    return this.getMaxLevel(this.getMidEnergy(analyser));
-  }
+  getSubBassMax: function () {
+    return this.getMaxLevel(this.getSubBassEnergy());
+  },
 
-  static getTrebleMax(analyser) {
-    return this.getMaxLevel(this.getTrebleEnergy(analyser));
-  }
+  getMidMax: function () {
+    return this.getMaxLevel(this.getMidEnergy());
+  },
 
-  static getBassScale(analyser) {
-    return ((this.getBassAverage(analyser) * (1/255)) + 1).toFixed(2);
-  }
+  getTrebleMax: function () {
+    return this.getMaxLevel(this.getTrebleEnergy());
+  },
 
-  static getTrebleScale(analyser) {
-    return ((this.getTrebleAverage(analyser) * (1/255)) + 1).toFixed(2);
-  }
+  getBassScale: function () {
+    return (this.getBassAverage() + 1);
+  },
 
-  static getMidScale(analyser) {
-    return ((this.getMidAverage(analyser) * (1/255)) + 1).toFixed(2);
-  }
+  getSubBassScale: function () {
+    return (this.getSubBassAverage() + 1);
+  },
+  getTrebleScale: function () {
+    return (this.getTrebleAverage() + 1);
+  },
+
+  getMidScale: function () {
+    return (this.getMidAverage() + 1);
+  },
+
 }

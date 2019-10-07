@@ -17,9 +17,14 @@ module.exports = function (config) {
     files: [
       'lib/three.js',
       'src/**/solid.js',
-      'src/AudioTool/*.js',
+      'src/AudioTool/audioTool.js',
       'src/Shapes/*.js',
+<<<<<<< HEAD
       'spec/**/*.js',
+=======
+      'spec/Shapes/*.js',
+      'spec/AudioTool/audioToolSpec.js'
+>>>>>>> master
     ],
 
 

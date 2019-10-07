@@ -3,6 +3,7 @@ const cube1 = new Cube(200, 200, 200, 250, 0, 0, scene);
 const tetra1 = new Tetra(200, 750, 0, 0, scene);
 const torus1 = new Torus(100, -750, 0, 0, scene);
 
+<<<<<<< HEAD
 let sphereScale = 1;
 let cubeScale = 1;
 let tetraScale = 1;
@@ -14,6 +15,17 @@ function mainLoop(){
     cubeScale = AudioTool.getMidScale(analyser);
     tetraScale = AudioTool.getTrebleScale(analyser);
     torusScale = AudioTool.getSubBassScale(analyser);
+=======
+sphereScale = 1;
+cubeScale = 1;
+tetraScale = 1;
+
+function mainLoop() {
+  if (AudioTool.isSetup) {
+    sphereScale = Bass.getScale(true);
+    cubeScale = Mids.getScale(true);
+    tetraScale = Treble.getScale(true);
+>>>>>>> 6963e4eee1b79a799ad1978d2b2fb5f941500912
   }
 
   sphere1.changeScale(sphereScale);

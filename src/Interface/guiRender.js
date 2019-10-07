@@ -50,6 +50,9 @@ window.onload = function () {
     tetra1.material.wireframe = !tetra1.material.wireframe
   });
 
+  tetraFolder.add(animationToggles, 'tetraRotate').name('Rotate');
+
+
   //Background colour
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {
     bgColor.set(value);

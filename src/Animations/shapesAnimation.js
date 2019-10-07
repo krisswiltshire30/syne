@@ -13,6 +13,7 @@ var animationToggles = {
   sphereRotateSpeed: 0.01,
   cubeRotate: true,
   cubeRotateSpeed: 0.01,
+  tetraRotate: true,
 }
 
 function mainLoop() {
@@ -32,9 +33,10 @@ function mainLoop() {
     cube1.shape.rotation.x += animationToggles.cubeRotateSpeed;
     cube1.shape.rotation.y += animationToggles.cubeRotateSpeed;
   }
-  tetra1.shape.rotation.x += 0.01;
-  tetra1.shape.rotation.y += 0.01;
-
+  if (animationToggles.tetraRotate) {
+    tetra1.shape.rotation.x += 0.01;
+    tetra1.shape.rotation.y += 0.01;
+  }
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }

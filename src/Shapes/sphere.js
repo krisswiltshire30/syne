@@ -3,8 +3,7 @@ class Sphere extends Solid {
     super(scene);
     this.color = "#003e98";
     this.wireframe = true;
-    this.thetaStart = 6.3
-    this.geometry = new THREE.SphereGeometry(radius, 64, 64, 100, this.thetaStart);
+    this.geometry = new THREE.SphereGeometry(radius, 64, 64, 100);
     this.material = new THREE.MeshBasicMaterial({
       wireframe: this.wireframe,
       color: this.color

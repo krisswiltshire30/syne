@@ -8,6 +8,10 @@ sphereScale = 1;
 cubeScale = 1;
 tetraScale = 1;
 
+var animationToggles = {
+  sphereRotate: true,
+}
+
 function mainLoop() {
   if (AudioTool.isSetup) {
     sphereScale = Bass.getScale(true);
@@ -18,7 +22,9 @@ function mainLoop() {
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
-  sphere1.shape.rotation.z += 0.01;
+  if (animationToggles.sphereRotate) {
+    sphere1.shape.rotation.z += 0.01;
+  }
   cube1.shape.rotation.x += 0.01;
   cube1.shape.rotation.y += 0.01;
   tetra1.shape.rotation.x += 0.01;

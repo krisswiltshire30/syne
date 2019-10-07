@@ -24,6 +24,8 @@ function mainLoop(){
   tetra1.shape.rotation.x += 0.01;
   tetra1.shape.rotation.y += 0.01;
 
+  controls.update();
+
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }

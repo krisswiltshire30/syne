@@ -8,8 +8,8 @@ camera.position.z = 800;
 camera.rotation.x = 0.70;
 
 //background color set - important for dat.gui
-var c = new THREE.Color(0x000000);
+this.bgColor = new THREE.Color(0x000000);
+this.scene.background = bgColor;
 var color = {
-  value: c.getHex()
+  value: bgColor.getHex()
 }
-this.scene.background = c

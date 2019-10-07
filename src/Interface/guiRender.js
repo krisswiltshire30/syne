@@ -1,15 +1,16 @@
 window.onload = function () {
 
+  var params = {
+    loadFile: function () {
+      document.getElementById('myInput').click();
+    }
+  };
+
   var gui = new dat.GUI({
     load: JSON
   });
 
-  var cube = this.cube;
-  var sphere = this.sphere;
-  var tetra = this.tetra;
-  var scene = this.scene;
-
-  gui.remember(cube, sphere, tetra, scene);
+  gui.remember(cube1, sphere1, tetra1, scene.background);
 
   // Create folders
   var cubeFolder = gui.addFolder('Cube');
@@ -18,52 +19,42 @@ window.onload = function () {
   var canvasFolder = gui.addFolder('Canvas');
 
   //Cube options
-  cubeFolder.addColor(cube, 'color').onChange(function () {
-    cube.material.color.set(cube.color);
+  cubeFolder.addColor(cube1, 'color').onChange(function () {
+    cube1.material.color.set(cube1.color);
   });
 
-  cubeFolder.add(cube, 'wireframe').onChange(function () {
-    if (cube.material.wireframe) {
-      cube.material.wireframe = false
-    } else {
-      cube.material.wireframe = true
-      return
-    }
+  cubeFolder.add(cube1, 'wireframe').onChange(function () {
+    cube1.material.wireframe = !cube1.material.wireframe
   });
 
-  // cubeFolder.add(cube, 'texture1')
+  cubeFolder.add(params, 'loadFile').name('Load texture');
 
   //Sphere options
-  sphereFolder.addColor(sphere, 'color').onChange(function () {
-    sphere.material.color.set(sphere.color);
+  sphereFolder.addColor(sphere1, 'color').onChange(function () {
+    sphere1.material.color.set(sphere1.color);
   });
 
-  sphereFolder.add(sphere, 'wireframe').onChange(function () {
-    if (sphere.material.wireframe) {
-      sphere.material.wireframe = false
-    } else {
-      sphere.material.wireframe = true
-      return
-    }
+  sphereFolder.add(sphere1, 'wireframe').onChange(function () {
+    sphere1.material.wireframe = !sphere1.material.wireframe
   });
 
+  sphereFolder.add(sphere1, 'thetaStart').onChange(function () {
+    sphere1.geometry = new THREE.SphereGeometry(this.radius, 64, 64, 100, sphere1.thetaStart);
+  })
 
   //Tetra options
-  tetraFolder.addColor(tetra, 'color').onChange(function () {
-    tetra.material.color.set(tetra.color);
+  tetraFolder.addColor(tetra1, 'color').onChange(function () {
+    tetra1.material.color.set(tetra1.color);
   });
 
-  tetraFolder.add(tetra, 'wireframe').onChange(function () {
-    if (tetra.material.wireframe) {
-      tetra.material.wireframe = false
-    } else {
-      tetra.material.wireframe = true
-      return
-    }
+  tetraFolder.add(tetra1, 'wireframe').onChange(function () {
+    tetra1.material.wireframe = !tetra1.material.wireframe
   });
 
   //Background colour
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {
-    c.set(value);
-  })
+    bgColor.set(value);
+  });
+
+
 }

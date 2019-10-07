@@ -1,7 +1,7 @@
 class Solid {
   constructor(scene) {
     this.scene = scene;
-    this.material = new THREE.MeshNormalMaterial({
+    this.material = new THREE.MeshBasicMaterial({
       wireframe: true
     });
   }

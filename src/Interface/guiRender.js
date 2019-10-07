@@ -24,6 +24,7 @@ window.onload = function () {
 
   cubeFolder.add(animationToggles, 'cubeRotate').name('Rotate');
 
+  cubeFolder.add(animationToggles, 'cubeRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
   // cubeFolder.add(cube1, 'texture');
 

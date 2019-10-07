@@ -19,7 +19,7 @@ class AudioToolGraphics extends AudioTool {
         let i = 0;
         for (i = 0; i < this.getLevels(analyser).length; i++) {
             transArray.push((this.getLevels(analyser)[i] * (1 / 255)) + 1).toFixed(2)
-        };
+        }
         return transArray;
     }
 
@@ -32,7 +32,7 @@ class AudioToolGraphics extends AudioTool {
         let i = 0;
         for (i = 0; i < this.getBassEnergy(analyser).length; i++) {
             scaleArray.push((this.getBassEnergy(analyser)[i] * (1 / 255)) + 1).toFixed(2)
-        };
+        }
         return scaleArray;
     }
 
@@ -41,7 +41,7 @@ class AudioToolGraphics extends AudioTool {
         let i = 0;
         for (i = 0; i < this.getMidEnergy(analyser).length; i++) {
             scaleArray.push((this.getMidEnergy(analyser)[i] * (1 / 255)) + 1).toFixed(2)
-        };
+        }
         return scaleArray;
     }
     static getTreble1to2(analyser) {
@@ -49,7 +49,7 @@ class AudioToolGraphics extends AudioTool {
         let i = 0;
         for (i = 0; i < this.getTrebleEnergy(analyser).length; i++) {
             scaleArray.push((this.getTrebleEnergy(analyser)[i] * (1 / 255)) + 1).toFixed(2)
-        };
+        }
         return scaleArray;
     }
 

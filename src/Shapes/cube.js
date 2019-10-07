@@ -8,4 +8,22 @@ class Cube extends Solid{
     this.shape.position.z = posZ;
     this.scene.add(this.shape);
   }
+
+  twistCube(twistValue) {
+    const quaternion = new THREE.Quaternion();
+    for (let i = 0; i < this.shape.geometry.vertices.length; i++) {
+      const yPos = this.shape.geometry.vertices[i].y;
+      const twistAmount = twistValue;
+      const upVec = new THREE.Vector3(0, 1, 0);
+
+      quaternion.setFromAxisAngle(
+        upVec, 
+        (Math.PI / 180) * (yPos / twistAmount)
+      );
+
+      this.shape.geometry.vertices[i].applyQuaternion(quaternion);
+    }
+    
+    this.shape.geometry.verticesNeedUpdate = true;
+  }
 }

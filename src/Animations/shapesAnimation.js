@@ -6,16 +6,20 @@ let sphereScale = 1;
 let cubeScale = 1;
 let tetraScale = 1;
 
+
+
 function mainLoop(){
   if (analyser) {
     sphereScale = AudioTool.getBassScale(analyser);
     cubeScale = AudioTool.getMidScale(analyser);
     tetraScale = AudioTool.getTrebleScale(analyser);
   }
+  
 
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
+  // cube1.twist(tetraScale)
   sphere1.shape.rotation.z += 0.01;
   cube1.shape.rotation.x += 0.01;
   cube1.shape.rotation.y += 0.01;

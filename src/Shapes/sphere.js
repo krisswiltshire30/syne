@@ -1,6 +1,6 @@
 class Sphere extends Solid{
   constructor(radius, posX, posY, posZ, scene) {
-    super(scene);
+    super(scene, posX, posY, posZ);
     this.geometry = new THREE.SphereGeometry(radius, 64, 64);
     this.shape = new THREE.Mesh( this.geometry, this.material );
     this.shape.position.x = posX

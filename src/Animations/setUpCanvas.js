@@ -13,3 +13,14 @@ scene.background = bgColor;
 var color = {
   value: bgColor.getHex()
 }
+
+var color1 = Bass.getAvg(true);
+var color2 = Mids.getAvg(true);
+var color3 = Treble.getAvg(true);
+
+function changeColor(red, green, blue) {
+  bgColor.r = red;
+  bgColor.g = green;
+  bgColor.b = blue;
+  return bgColor;
+}

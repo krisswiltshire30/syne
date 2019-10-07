@@ -13,6 +13,9 @@ function mainLoop() {
     sphereScale = Bass.getScale(true);
     cubeScale = Mids.getScale(true);
     tetraScale = Treble.getScale(true);
+    var color1 = Bass.getAvg(true);
+    var color2 = Mids.getAvg(true);
+    var color3 = Treble.getAvg(true);
   }
 
   sphere1.changeScale(sphereScale);
@@ -23,6 +26,10 @@ function mainLoop() {
   cube1.shape.rotation.y += 0.01;
   tetra1.shape.rotation.x += 0.01;
   tetra1.shape.rotation.y += 0.01;
+  bgColor.r = color1;
+  bgColor.g = color2;
+  bgColor.b = color3;
+
 
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);

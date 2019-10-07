@@ -54,7 +54,7 @@ class AudioToolGraphics extends AudioTool {
     }
 
     static getToDecimal(analyser) {
-        return ((analyser * (1 / 255).toFixed(2)) / 4)
+        return ((analyser * (1 / 255).toFixed(2)) / 10)
     }
 
     static getBassDecimal(analyser) {

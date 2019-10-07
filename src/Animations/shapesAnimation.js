@@ -3,14 +3,15 @@ AudioTool.setup();
 const sphere1 = new Sphere(150, -500, 0, 0, scene);
 const cube1 = new Cube(200, 200, 200, 0, 0, 0, scene);
 const tetra1 = new Tetra(200, 500, 0, 0, scene);
-const sphere2 = new Sphere(100, -1000, 0, 0, scene);
+const sphere2 = new Sphere(100, -1000, 0, 0, scene, 600);
+const sphere3 = new Sphere(20, -750, 0, 0, scene, 300);
+
+sphere3.orbitAngleMod = 5
 
 let sphereScale = 1;
 let cubeScale = 1;
 let tetraScale = 1;
 let sphere2Scale = 1;
-let initialXPosition = sphere2.shape.rotation.x = -1000
-let initialYPosition = sphere2.shape.rotation.y = 0
 
 function mainLoop() {
   if (AudioTool.isSetup) {
@@ -18,7 +19,7 @@ function mainLoop() {
     cubeScale = 1 + AudioTool.getMidAverage(true);
     tetraScale = 1 + AudioTool.getTrebleAverage(true);
     sphere2Scale = 1 + AudioTool.getBassAverage(true);
-
+    sphere2.orbitAngleMod = ((AudioTool.getBassAverage(true) + 1) * 2);
   }
 
   sphere2.changeScale(sphere2Scale);
@@ -32,6 +33,8 @@ function mainLoop() {
   tetra1.shape.rotation.x += 0.01;
   tetra1.shape.rotation.y += 0.01;
   sphere2.orbit(sphere1);
+  sphere3.orbit(sphere2);
+
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }

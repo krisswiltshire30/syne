@@ -41,6 +41,12 @@ describe('AudioTool', () => {
         });
     });
 
+    describe('::getSubBassEnergy', () => {
+        it('returns an array with just the bass values', () => {
+            expect(AudioTool.getSubBassEnergy(analyser).length).toEqual(3);
+        });
+    });
+
     describe('::getTrebleEnergy', () => {
         it('returns an array with just the treble values', () => {
             expect(AudioTool.getTrebleEnergy(analyser).length).toEqual(318);

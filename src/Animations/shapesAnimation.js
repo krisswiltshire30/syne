@@ -18,8 +18,8 @@ function mainLoop() {
     sphereScale = 1 + AudioTool.getBassAverage(true);
     cubeScale = 1 + AudioTool.getMidAverage(true);
     tetraScale = 1 + AudioTool.getTrebleAverage(true);
-    sphere2Scale = 1 + AudioTool.getBassAverage(true);
-    sphere2.orbitAngleMod = ((AudioTool.getBassAverage(true) + 1) * 2);
+    //sphere2Scale = 1 + AudioTool.getBassAverage(true);
+    //sphere2.orbitAngleMod = ((AudioTool.getBassAverage(true) + 1) * 5);
   }
 
   sphere2.changeScale(sphere2Scale);

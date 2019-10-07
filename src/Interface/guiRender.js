@@ -25,11 +25,11 @@ window.onload = function () {
   // cubeFolder.add(cube1, 'texture');
 
   //Sphere options
-  sphereFolder.addColor(sphere1, 'color').onChange(function () {
+  sphereFolder.addColor(sphere1, 'color').name('Color').onChange(function () {
     sphere1.material.color.set(sphere1.color);
   });
 
-  sphereFolder.add(sphere1, 'wireframe').onChange(function () {
+  sphereFolder.add(sphere1, 'wireframe').name('Wireframe').onChange(function () {
     sphere1.material.wireframe = !sphere1.material.wireframe
   });
 
@@ -46,5 +46,7 @@ window.onload = function () {
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {
     bgColor.set(value);
   });
+
+  canvasFolder.add(animationToggles, 'bgColor').name("Audio color")
 
 }

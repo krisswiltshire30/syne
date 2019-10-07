@@ -8,6 +8,10 @@ sphereScale = 1;
 cubeScale = 1;
 tetraScale = 1;
 
+var animationToggles = {
+  bgColor: false
+}
+
 function mainLoop() {
   if (AudioTool.isSetup) {
     sphereScale = Bass.getScale(true);
@@ -21,16 +25,18 @@ function mainLoop() {
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
+
+
   sphere1.shape.rotation.z += 0.01;
   cube1.shape.rotation.x += 0.01;
   cube1.shape.rotation.y += 0.01;
   tetra1.shape.rotation.x += 0.01;
   tetra1.shape.rotation.y += 0.01;
-  bgColor.r = color1;
-  bgColor.g = color2;
-  bgColor.b = color3;
-
-
+  if (animationToggles.bgColor) {
+    bgColor.r = color1;
+    bgColor.g = color2;
+    bgColor.b = color3;
+  }
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }

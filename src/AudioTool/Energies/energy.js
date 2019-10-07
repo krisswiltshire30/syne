@@ -13,4 +13,4 @@ Energy.prototype = {
     sum: (array) => { return array.reduce((a, b) => a + b, 0 ) },
     getMaxLevel: function () { return Math.max(...this.getEnergy()) },
     getScale: function() { return this.getAvg(true) + 1}
-}
+};

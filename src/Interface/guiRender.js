@@ -52,6 +52,7 @@ window.onload = function () {
 
   tetraFolder.add(animationToggles, 'tetraRotate').name('Rotate');
 
+  tetraFolder.add(animationToggles, 'tetraRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
   //Background colour
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {

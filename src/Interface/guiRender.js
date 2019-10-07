@@ -33,7 +33,9 @@ window.onload = function () {
     sphere1.material.wireframe = !sphere1.material.wireframe
   });
 
-  sphereFolder.add(animationToggles, 'sphereRotate').name('Rotate')
+  sphereFolder.add(animationToggles, 'sphereRotate').name('Rotate');
+
+  sphereFolder.add(animationToggles, 'sphereRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
   //Tetra options
   tetraFolder.addColor(tetra1, 'color').onChange(function () {

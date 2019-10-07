@@ -10,6 +10,7 @@ tetraScale = 1;
 
 var animationToggles = {
   sphereRotate: true,
+  sphereRotateSpeed: -0.01,
 }
 
 function mainLoop() {
@@ -23,7 +24,7 @@ function mainLoop() {
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
   if (animationToggles.sphereRotate) {
-    sphere1.shape.rotation.z += 0.01;
+    sphere1.shape.rotation.z += animationToggles.sphereRotateSpeed;
   }
   cube1.shape.rotation.x += 0.01;
   cube1.shape.rotation.y += 0.01;

@@ -1,7 +1,7 @@
 describe('AudioTool', () => {
 
     AudioTool.source = jasmine.createSpyObj('AudioNode', {
-      'connect': true
+        'connect': true
     });
 
     let analyser = AudioTool.getAnalyser();
@@ -56,7 +56,7 @@ describe('AudioTool', () => {
     describe('::getAvg', () => {
         it('should return an average frequency value from given array', () => {
             energy = [174, 180, 194, 154]
-            expect(AudioTool.getAvg(energy)).toEqual(175);
+            expect(AudioTool.getAvg(energy)).toEqual(175.5);
         });
     });
 

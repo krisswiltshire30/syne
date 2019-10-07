@@ -10,6 +10,7 @@ class Cube extends Solid{
   }
 
   twistCube(twistValue) {
+    //use values between 0 - 1, but then use the inverse of these to return to original shape
     const quaternion = new THREE.Quaternion();
     for (let i = 0; i < this.shape.geometry.vertices.length; i++) {
       const yPos = this.shape.geometry.vertices[i].y;
@@ -20,10 +21,8 @@ class Cube extends Solid{
         upVec, 
         (Math.PI / 180) * (yPos / twistAmount)
       );
-
       this.shape.geometry.vertices[i].applyQuaternion(quaternion);
     }
-    
     this.shape.geometry.verticesNeedUpdate = true;
   }
 }

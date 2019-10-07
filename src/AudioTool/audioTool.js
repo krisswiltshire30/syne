@@ -93,18 +93,7 @@ class AudioTool {
     return this.getMaxLevel(this.getTrebleEnergy(analyser));
   }
 
-  static getBassScale(analyser) {
-    return ((this.getBassAverage(analyser) * (1/255)) + 1).toFixed(2);
-  }
-
   static getSubBassScale(analyser) {
     return ((this.getSubBassAverage(analyser) * (1/255)) +1).toFixed(2);
-  }
-  static getTrebleScale(analyser) {
-    return ((this.getTrebleAverage(analyser) * (1/255)) + 1).toFixed(2);
-  }
-
-  static getMidScale(analyser) {
-    return ((this.getMidAverage(analyser) * (1/255)) + 1).toFixed(2);
   }
 }

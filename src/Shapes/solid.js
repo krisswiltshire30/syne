@@ -1,5 +1,5 @@
 class Solid {
-  constructor(scene, orbitAlt, orbitAngle, orbitAngleMod) {
+  constructor(scene, orbitAlt, orbitAngle = 0, orbitAngleMod = 1) {
     this.scene = scene;
     this.material = new THREE.MeshNormalMaterial({
       wireframe: true
@@ -34,11 +34,15 @@ class Solid {
   }
 
   orbit(object) {
-    this.shape.position.x = object.shape.position.x + this.orbitAlt * Math.cos((this.orbitAngle));
-    this.shape.position.y = object.shape.position.y + this.orbitAlt * Math.sin((this.orbitAngle));
+    this.shape.position.x = object.shape.position.x + this.orbitAlt * Math.cos(this.radians(this.orbitAngle));
+    this.shape.position.y = object.shape.position.y + this.orbitAlt * Math.sin(this.radians(this.orbitAngle));
     this.orbitAngle = this.orbitAngle + this.orbitAngleMod;
     if (this.orbitAngle >= 360) {
       this.orbitAngle = 0;
     }
+  }
+
+  radians(degrees) {
+    return (degrees * Math.PI / 180)
   }
 }

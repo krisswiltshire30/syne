@@ -9,7 +9,8 @@ let sphereScale = 1;
 let cubeScale = 1;
 let tetraScale = 1;
 let sphere2Scale = 1;
-
+let initialXPosition = sphere2.shape.rotation.x = -1000
+let initialYPosition = sphere2.shape.rotation.y = 0
 
 function mainLoop() {
   if (AudioTool.isSetup) {
@@ -19,6 +20,7 @@ function mainLoop() {
     sphere2Scale = 1 + AudioTool.getBassAverage(true);
 
   }
+
   sphere2.changeScale(sphere2Scale);
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);

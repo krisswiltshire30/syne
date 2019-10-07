@@ -1,10 +1,10 @@
 describe('AudioTool', () => {
 
-    let stream = jasmine.createSpyObj('AudioNode', {
+    AudioTool.source = jasmine.createSpyObj('AudioNode', {
         'connect': true
     });
-    let audioCtx = new AudioContext;
-    let analyser = AudioTool.getAnalyser(stream, audioCtx);
+
+    let analyser = AudioTool.getAnalyser();
 
     describe('::getAnalyser', () => {
 
@@ -16,56 +16,74 @@ describe('AudioTool', () => {
 
     describe('::getLevels', () => {
         it('returns an array', () => {
-            expect(AudioTool.getLevels(analyser)).toEqual(jasmine.any(Uint8Array));
+            expect(AudioTool.getLevels()).toEqual(jasmine.any(Uint8Array));
         });
 
         it('it should be the correct length', () => {
-            expect(AudioTool.getLevels(analyser).length).toEqual(1024);
+            expect(AudioTool.getLevels().length).toEqual(1024);
         })
     });
 
     describe('::getBassEnergy', () => {
         it('returns an array with just the bass values', () => {
+<<<<<<< HEAD
             expect(AudioTool.getBassEnergy(analyser).length).toEqual(22);
+=======
+            expect(AudioTool.getBassEnergy().length).toEqual(22);
+        });
+    });
+
+    describe('::getSubBassEnergy', () => {
+        it('returns an array with just the sub bass values', () => {
+            expect(AudioTool.getSubBassEnergy().length).toEqual(3);
+>>>>>>> f77a22ec54b274ba0e7fe0a0a74f4726ada35793
         });
     });
     describe('::getMidEnergy', () => {
         it('returns an array with just the mid values', () => {
-            expect(AudioTool.getMidEnergy(analyser).length).toEqual(179);
+            expect(AudioTool.getMidEnergy().length).toEqual(179);
+        });
+    });
+
+    describe('::getSubBassEnergy', () => {
+        it('returns an array with just the bass values', () => {
+            expect(AudioTool.getSubBassEnergy().length).toEqual(3);
         });
     });
 
     describe('::getTrebleEnergy', () => {
         it('returns an array with just the treble values', () => {
-            expect(AudioTool.getTrebleEnergy(analyser).length).toEqual(318);
+            expect(AudioTool.getTrebleEnergy().length).toEqual(318);
         });
     });
 
     describe('::getAvg', () => {
         it('should return an average frequency value from given array', () => {
             energy = [174, 180, 194, 154]
-
-            function sum(array) {
-                array.reduce((a, b) => a + b, 0)
-            }
-            expect(AudioTool.getAvg(energy)).toEqual(175);
+            expect(AudioTool.getAvg(energy)).toEqual(175.5);
         });
     });
 
     describe('::getBassAverage', () => {
         it('should return an average value for Bass', () => {
-            expect(AudioTool.getBassAverage(analyser)).toEqual(0)
+            expect(AudioTool.getBassAverage()).toEqual(0)
         })
-    })
+    });
+
+    describe('::getSubBassAverage', () => {
+        it('should return an average values for Sub Bass', () => {
+            expect(AudioTool.getSubBassAverage()).toEqual(0);
+        });
+    });
     describe('::getMidAverage', () => {
         it('should return an average value for Mid', () => {
-            expect(AudioTool.getMidAverage(analyser)).toEqual(0)
+            expect(AudioTool.getMidAverage()).toEqual(0);
         })
     })
 
     describe('::getTrebleAverage', () => {
         it('should return an average value for Treble', () => {
-            expect(AudioTool.getTrebleAverage(analyser)).toEqual(0);
+            expect(AudioTool.getTrebleAverage()).toEqual(0);
         });
     });
 
@@ -78,37 +96,7 @@ describe('AudioTool', () => {
 
     describe('::getBassMax', () => {
         it('should return max bass value', () => {
-            expect(AudioTool.getBassMax(analyser)).toEqual(0);
-        });
-    });
-
-    describe('::getMidMax', () => {
-        it('should return max bass value', () => {
-            expect(AudioTool.getMidMax(analyser)).toEqual(0);
-        });
-    });
-
-    describe('::getTrebleMax', () => {
-        it('should return max bass value', () => {
-            expect(AudioTool.getTrebleMax(analyser)).toEqual(0);
-        });
-    });
-
-    describe('::getBassScale', () => {
-        it('should return a fixed float to 2 decimal places', () => {
-            expect(AudioTool.getBassScale(analyser)).toEqual('1.00');
-        });
-    });
-
-    describe('::getMidScale', () => {
-        it('should return a fixed float to 2 decimal places', () => {
-            expect(AudioTool.getMidScale(analyser)).toEqual('1.00');
-        });
-    });
-
-    describe('::getTrebleScale', () => {
-        it('should return a fixed float to 2 decimal places', () => {
-            expect(AudioTool.getTrebleScale(analyser)).toEqual('1.00');
+            expect(AudioTool.getBassMax()).toEqual(0);
         });
     });
 });

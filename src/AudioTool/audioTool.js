@@ -133,4 +133,17 @@ const AudioTool = {
     return (this.getMidAverage() + 1);
   },
 
+  getMidPeakFreqs: function () {
+    var a = this.getMidEnergy();
+    maxes = []
+    for (var i = 1; i < a.length - 1; ++i) {
+       if (a[i-1] < a[i] && a[i] > a[i+1])
+       maxes.push({strength: a[i], index: i})
+    } 
+    maxes.sort(function(a, b){
+      return a.strength<b.strength});
+
+    return ((maxes[0].index + 29) * 19.5);
+  }
+
 }

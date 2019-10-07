@@ -10,9 +10,9 @@ let tetraScale = 1;
 
 function mainLoop() {
   if (AudioTool.isSetup) {
-    sphereScale = AudioTool.getBassScale();
-    cubeScale = AudioTool.getMidScale();
-    tetraScale = AudioTool.getTrebleScale();
+    sphereScale = 1 + AudioTool.getBassAverage(true);
+    cubeScale = 1 + AudioTool.getMidAverage(true);
+    tetraScale = 1 + AudioTool.getTrebleAverage(true);
   }
 
   sphere1.changeScale(sphereScale);
@@ -28,4 +28,3 @@ function mainLoop() {
   requestAnimationFrame(mainLoop);
 }
 mainLoop();
-

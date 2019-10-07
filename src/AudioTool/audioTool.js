@@ -27,42 +27,39 @@ const AudioTool = {
     return this.analyser;
   },
 
-  getLevels: function (percent) {
+  getLevels: function () {
     this.analyser.fftSize = 2048;
     let bufferLength = this.analyser.frequencyBinCount;
     let dataArray = new Uint8Array(bufferLength);
     this.analyser.getByteFrequencyData(dataArray);
-    if (percent) {
 
-      let transArray = [];
-      let i = 0;
-      for (i = 0; i < this.getLevels().length; i++) {
-        transArray.push((this.getLevels()[i] * (1 / 255)).toFixed(2))
-      }
-      return transArray;
-    }
 
     return dataArray
   },
 
-  getBassEnergy: function (percent) {
-    return this.getLevels(percent).slice(3, 25);
+  getPercent: function (value) {
+    return (value / 255);
+
   },
 
-  getSubBassEnergy: function (percent) {
-    return this.getLevels(percent).slice(0, 3);
+  getBassEnergy: function () {
+    return this.getLevels().slice(3, 25);
   },
 
-  getMidEnergy: function (percent) {
-    return this.getLevels(percent).slice(25, 204);
+  getSubBassEnergy: function () {
+    return this.getLevels().slice(0, 3);
   },
 
-  getTrebleEnergy: function (percent) {
-    return this.getLevels(percent).slice(204, 522);
+  getMidEnergy: function () {
+    return this.getLevels().slice(25, 204);
+  },
+
+  getTrebleEnergy: function () {
+    return this.getLevels().slice(204, 522);
   },
 
   getAvg: function (energy) {
-    return Math.floor(this.sum(energy) / energy.length)
+    return (this.sum(energy) / energy.length)
   },
 
   sum: function (array) {
@@ -70,38 +67,70 @@ const AudioTool = {
   },
 
   getBassAverage: function (percent) {
-    return this.getAvg(this.getBassEnergy(percent));
+    value = this.getAvg(this.getBassEnergy());
+    if (percent) {
+      value = this.getPercent(value);
+    }
+    return value
   },
 
   getSubBassAverage: function (percent) {
-    return this.getAvg(this.getSubBassEnergy(percent));
+    value = this.getAvg(this.getSubBassEnergy());
+    if (percent) {
+      value = this.getPercent(value);
+    }
+    return value;
   },
 
   getMidAverage: function (percent) {
-    return this.getAvg(this.getMidEnergy(percent));
+    value = this.getAvg(this.getMidEnergy());
+    if (percent) {
+      value = this.getPercent(value);
+    }
+    return value;
   },
 
   getTrebleAverage: function (percent) {
-    return this.getAvg(this.getTrebleEnergy(percent));
+    value = this.getAvg(this.getTrebleEnergy());
+    if (percent) {
+      value = this.getPercent(value);
+    }
+    return value;
   },
 
   getMaxLevel: function (array) {
     return Math.max(...array)
   },
 
-  getBassMax: function (percent) {
-    return this.getMaxLevel(this.getBassEnergy(percent));
+  getBassMax: function () {
+    return this.getMaxLevel(this.getBassEnergy());
   },
 
-  getSubBassMax: function (percent) {
-    return this.getMaxLevel(this.getSubBassEnergy(percent));
+  getSubBassMax: function () {
+    return this.getMaxLevel(this.getSubBassEnergy());
   },
 
-  getMidMax: function (percent) {
-    return this.getMaxLevel(this.getMidEnergy(percent));
+  getMidMax: function () {
+    return this.getMaxLevel(this.getMidEnergy());
   },
 
-  getTrebleMax: function (percent) {
-    return this.getMaxLevel(this.getTrebleEnergy(percent));
+  getTrebleMax: function () {
+    return this.getMaxLevel(this.getTrebleEnergy());
   },
+
+  getBassScale: function () {
+    return (this.getBassAverage() + 1);
+  },
+
+  getSubBassScale: function () {
+    return (this.getSubBassAverage() + 1);
+  },
+  getTrebleScale: function () {
+    return (this.getTrebleAverage() + 1);
+  },
+
+  getMidScale: function () {
+    return (this.getMidAverage() + 1);
+  },
+
 }

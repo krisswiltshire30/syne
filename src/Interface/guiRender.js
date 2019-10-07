@@ -1,11 +1,5 @@
 window.onload = function () {
 
-  var params = {
-    loadFile: function () {
-      document.getElementById('myInput').click();
-    }
-
-  };
 
   var gui = new dat.GUI({
     load: JSON

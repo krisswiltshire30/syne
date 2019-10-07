@@ -1,6 +1,6 @@
-class Cube extends Solid{
-  constructor(width, height, depth, posX, posY, posZ, scene) {
-    super(scene);
+class Cube extends Solid {
+  constructor(width, height, depth, posX, posY, posZ, scene, orbitAlt, orbitAngle = 0, orbitAngleMod = 1) {
+    super(scene, orbitAlt, orbitAngle, orbitAngleMod);
     this.geometry = new THREE.BoxGeometry(width, height, depth);
     this.material = new THREE.MeshNormalMaterial({
       wireframe: true

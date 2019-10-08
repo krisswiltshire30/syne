@@ -27,17 +27,17 @@ function mainLoop() {
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
+
   if (animationToggles.sphereRotate) {
-    sphere1.shape.rotation.z += animationToggles.sphereRotateSpeed;
+    sphere1.changeRotation(animationToggles.sphereRotateSpeed, 0, 0);
   }
   if (animationToggles.cubeRotate) {
-    cube1.shape.rotation.x += animationToggles.cubeRotateSpeed;
-    cube1.shape.rotation.y += animationToggles.cubeRotateSpeed;
+    cube1.changeRotation(animationToggles.cubeRotateSpeed, animationToggles.cubeRotateSpeed, 0);
   }
   if (animationToggles.tetraRotate) {
-    tetra1.shape.rotation.x += animationToggles.tetraRotateSpeed;
-    tetra1.shape.rotation.y += animationToggles.tetraRotateSpeed;
+    tetra1.changeRotation(animationToggles.tetraRotateSpeed, animationToggles.tetraRotateSpeed, 0);
   }
+
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }

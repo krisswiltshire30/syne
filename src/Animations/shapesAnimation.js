@@ -26,6 +26,7 @@ function shapeCreator() {
     return
   }
 }
+
 sphereScale = 1;
 cubeScale = 1;
 tetraScale = 1;
@@ -43,16 +44,32 @@ function mainLoop() {
       shapeCreator();
       presetOneShapes = true
     }
+    if (presetTwoShapes) {
+      sphere1.material.visible = true;
+      cube1.material.visible = true;
+      tetra1.material.visible = true;
+      sphere2.material.visible = false;
+      newObject.material.visible = false;
+      newPlanet.material.visible = false;
+    }
     defaultAnimation();
   } else {
     if (!presetTwoShapes) {
-      console.log(sphere1);
-      sphere1.visible = false;
-      console.log(sphere1.visible);
+      sphere1.material.visible = false;
+      cube1.material.visible = false;
+      tetra1.material.visible = false;
       presetOne = false
       presetTwo = true
       presetTwoShapes = true
       shapeCreator()
+    }
+    if (presetOneShapes) {
+      sphere1.material.visible = false;
+      cube1.material.visible = false;
+      tetra1.material.visible = false;
+      sphere2.material.visible = true;
+      newObject.material.visible = true;
+      newPlanet.material.visible = true;
     }
     orbitAnimation();
   }

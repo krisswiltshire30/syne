@@ -18,6 +18,7 @@ function shapeCreator() {
     this.tetra1 = new Tetra(200, 500, 0, 0, scene);
   } else if (presetTwo) {
     this.sphere2 = new Sphere(70, 0, 0, 0, scene);
+    this.sphere3 = new Sphere(20, 0, 0, 0, scene);
     this.newObject = new Poly(60, 1000, 0, 0, scene, 500);
     this.newPlanet = new Sphere(50, 1200, 0, 0, scene, 850);
     newObject.orbitAngleMod = 1
@@ -49,7 +50,8 @@ function mainLoop() {
       cube1.material.visible = true;
       tetra1.material.visible = true;
       sphere2.material.visible = false;
-      newObject.material.visible = false;
+      sphere3.material.visible = false;
+      newObject.changePosition(0, 0, 200000)
       newPlanet.material.visible = false;
     }
     defaultAnimation();
@@ -68,6 +70,7 @@ function mainLoop() {
       cube1.material.visible = false;
       tetra1.material.visible = false;
       sphere2.material.visible = true;
+      sphere3.material.visible = true;
       newObject.material.visible = true;
       newPlanet.material.visible = true;
     }
@@ -87,7 +90,6 @@ function cameraUpdate() {
     controls.update();
   }
 }
-
 
 // Default animation
 function defaultAnimation() {
@@ -122,7 +124,7 @@ function orbitAnimation() {
 
   newObject.changeScale(newObjectScale);
   sphere2.changeScale(sphereScale);
-  newObject.orbit(sphere2);
+  newObject.orbit(sphere3);
   newPlanet.orbit(sphere2);
 
   if (animationToggles.sphereRotate) {

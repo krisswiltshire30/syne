@@ -5,7 +5,7 @@ const cube1 = new Cube(200, 200, 200, 0, 0, 0, scene);
 const tetra1 = new Tetra(200, 500, 0, 0, scene);
 //const sphere2 = new Sphere(100, -1000, 0, 0, scene, 600);
 //const sphere3 = new Sphere(20, -750, 0, 0, scene, 3);
-const newObject = new Demo(200, 1000, 0, 0, scene);
+const newObject = new Demo(100, 1000, 0, 0, scene);
 
 //sphere3.orbitAngleMod = 5
 

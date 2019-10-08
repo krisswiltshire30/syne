@@ -25,8 +25,6 @@ window.onload = function () {
 
   cubeFolder.add(animationToggles, 'cubeRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
-  cubeFolder.add(animationToggles, 'cubeColor').name("Audio color")
-
   // cubeFolder.add(cube1, 'texture');
 
   //Sphere options
@@ -42,8 +40,6 @@ window.onload = function () {
 
   sphereFolder.add(animationToggles, 'sphereRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
-  sphereFolder.add(animationToggles, 'sphereColor').name("Audio color")
-
   //Tetra options
   tetraFolder.addColor(tetra1, 'color').onChange(function () {
     tetra1.material.color.set(tetra1.color);
@@ -56,8 +52,6 @@ window.onload = function () {
   tetraFolder.add(animationToggles, 'tetraRotate').name('Rotate');
 
   tetraFolder.add(animationToggles, 'tetraRotateSpeed', -0.2, 0.5).name('Rotate speed');
-
-  tetraFolder.add(animationToggles, 'tetraColor').name("Audio color")
 
   //Background colour
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {

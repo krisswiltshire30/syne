@@ -1,7 +1,7 @@
 const MathHelpers = {
 
     standardDeviationVariance: function (values, varianceTrue) {
-        var avg = average(values);
+        var avg = this.average(values);
 
         var squareDiffs = values.map(function (value) {
             var diff = value - avg;
@@ -9,10 +9,10 @@ const MathHelpers = {
             return sqrDiff;
         });
 
-        var variance = average(squareDiffs);
+        var variance = this.average(squareDiffs);
 
         if (varianceTrue) {
-            return variance
+            return variance;
         }
 
         var stdDev = Math.sqrt(variance);

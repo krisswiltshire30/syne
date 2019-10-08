@@ -1,5 +1,6 @@
-const sortingHelpers = {
-    splitEnergyArrays = function (usArray, quartile, sorted) {
+const SortingHelpers = {
+
+    splitEnergyArrays: function (usArray, quartile, sorted) {
 
         if (sorted) {
             var array = this.sortNumberArray(usArray);
@@ -13,7 +14,7 @@ const sortingHelpers = {
 
     },
 
-    getLocalMaxima = function (array) {
+    getLocalMaxima: function (array) {
         var a = array;
         maxes = []
         for (var i = 1; i < a.length - 1; ++i) {
@@ -26,22 +27,21 @@ const sortingHelpers = {
         return this.sortArrayOfObjectsArray(maxes, strength);
     },
 
-    sortArrayOfObjects = function (array, key) {
+    sortArrayOfObjects: function (array, key) {
         array.sort(function (a, b) {
             return a[key] < b[key]
         });
         return array;
     },
 
-    sortNumberArray = function (array) {
+    sortNumberArray: function (array) {
         array.sort(function (a, b) {
             return a - b;
         })
         return array;
     },
 
-
-    getIndexOfMax = function (arr) {
+    getIndexOfMax: function (arr) {
         let i = arr.indexOf(Math.max(...arr));
         return i;
     }

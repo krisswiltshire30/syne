@@ -4,15 +4,15 @@ const sphere1 = new Sphere(150, -500, 0, 0, scene);
 const cube1 = new Cube(200, 200, 200, 0, 0, 0, scene);
 const tetra1 = new Tetra(200, 500, 0, 0, scene);
 
-let sphereScale = 1;
-let cubeScale = 1;
-let tetraScale = 1;
+sphereScale = 1;
+cubeScale = 1;
+tetraScale = 1;
 
 function mainLoop() {
   if (AudioTool.isSetup) {
-    sphereScale = 1 + AudioTool.getBassAverage(true);
-    cubeScale = 1 + AudioTool.getMidAverage(true);
-    tetraScale = 1 + AudioTool.getTrebleAverage(true);
+    sphereScale = Bass.getScale(true);
+    cubeScale = Mids.getScale(true);
+    tetraScale = Treble.getScale(true);
   }
 
   sphere1.changeScale(sphereScale);

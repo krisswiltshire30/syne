@@ -18,3 +18,10 @@ controls.screenSpacePanning = false;
 controls.minDistance = 300;
 controls.maxDistance = 5000;
 controls.maxPolarAngle = Math.PI / 2;
+
+//background color set - important for dat.gui
+bgColor = new THREE.Color(0x000000);
+scene.background = bgColor;
+var color = {
+  value: bgColor.getHex()
+}

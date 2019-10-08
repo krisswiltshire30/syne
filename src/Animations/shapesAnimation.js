@@ -38,6 +38,8 @@ function mainLoop() {
     tetra1.changeRotation(animationToggles.tetraRotateSpeed, animationToggles.tetraRotateSpeed, 0);
   }
 
+  controls.update();
+
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }

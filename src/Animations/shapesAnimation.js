@@ -8,6 +8,7 @@ sphereScale = 1;
 cubeScale = 1;
 tetraScale = 1;
 opacScale = 1;
+twistScale = 1;
 
 var animationToggles = {
   sphereRotate: true,
@@ -24,12 +25,20 @@ function mainLoop() {
     cubeScale = Mids.getScale(true);
     tetraScale = Treble.getScale(true);
     opacScale = MathHelpers.linearRegression(
-      SortingHelpers.splitEnergyArrays(Mids.getEnergy(), 4, false)
+      SortingHelpers.splitEnergyArrays(Bass.getEnergy(), 4, false)
     );
+    twistScale = MathHelpers.linearRegression(SortingHelpers.splitEnergyArrays(Bass.getEnergy(), 4, false));
   }
+
+
 
   if (opacScale > 0.8) {
     cube1.twistCube();
+  }
+
+  if (twistScale < 0.005) {
+    tetra1.twistCube();
+
   }
   cube1.changeOpacity(opacScale);
   sphere1.changeScale(sphereScale);

@@ -37,5 +37,6 @@ class Cube extends Solid {
       this.shape.geometry.vertices[i].applyQuaternion(quaternion);
     }
     this.shape.geometry.verticesNeedUpdate = true;
+
   }
 }

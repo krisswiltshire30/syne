@@ -3,11 +3,11 @@ class Demo extends Solid {
         super(scene, orbitAlt, orbitAngle, orbitAngleMod);
         var points = [];
         for (var i = 0; i < 80; i++) {
-            points.push(new THREE.Vector2(Math.sin(i * 0.05) * 50 + 30, (i - 5) * 2));
+            points.push(new THREE.Vector2(Math.sin(i * 0.05) * 30 + 45, (i - 5) * 2));
         }
         var box = new THREE.LatheGeometry(points);
         var smallMaterial = new THREE.MeshNormalMaterial({
-            wireframe: true
+            color: new THREE.Color('green')
         });
         var boxMesh = new THREE.Mesh(box, smallMaterial);
         //boxMesh.translate(0, 20, 0)

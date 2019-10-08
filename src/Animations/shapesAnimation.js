@@ -9,7 +9,8 @@ cubeScale = 1;
 tetraScale = 1;
 
 var animationToggles = {
-  bgColor: false
+  bgColor: false,
+  cubeColor: false,
 }
 
 function mainLoop() {
@@ -26,17 +27,24 @@ function mainLoop() {
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
 
-
   sphere1.shape.rotation.z += 0.01;
   cube1.shape.rotation.x += 0.01;
   cube1.shape.rotation.y += 0.01;
   tetra1.shape.rotation.x += 0.01;
   tetra1.shape.rotation.y += 0.01;
+  //Background color animation loop
   if (animationToggles.bgColor) {
     bgColor.r = color1;
     bgColor.g = color2;
     bgColor.b = color3;
   }
+  //Cube color animation loop
+  if (animationToggles.cubeColor) {
+    cube1.material.color.r = color1;
+    cube1.material.color.g = color2;
+    cube1.material.color.b = color3;
+  }
+
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }

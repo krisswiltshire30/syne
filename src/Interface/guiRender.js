@@ -22,6 +22,8 @@ window.onload = function () {
     cube1.material.wireframe = !cube1.material.wireframe
   });
 
+  cubeFolder.add(animationToggles, 'cubeColor').name("Audio color")
+
   // cubeFolder.add(cube1, 'texture');
 
   //Sphere options

@@ -1,7 +1,7 @@
 describe('AudioTool', () => {
 
     AudioTool.source = jasmine.createSpyObj('AudioNode', {
-        'connect': true
+      'connect': true
     });
 
     let analyser = AudioTool.getAnalyser();

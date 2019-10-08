@@ -1,20 +1,29 @@
 class Demo extends Solid {
     constructor(radius, posX, posY, posZ, scene, orbitAlt, orbitAngle = 0, orbitAngleMod = 1) {
         super(scene, orbitAlt, orbitAngle, orbitAngleMod);
-        var box = new THREE.SphereGeometry((radius / 4), 64, 64);
-        var sphere = new THREE.SphereGeometry(radius, 64, 64);
-
-        var singleGeometry = new THREE.Geometry();
-        var boxMesh = new THREE.Mesh(box);
-        var sphereMesh = new THREE.Mesh(sphere);
-        boxMesh.updateMatrix(); // as needed
-        this.geometry = singleGeometry.merge(boxMesh.geometry, boxMesh.matrix);
-
-        sphereMesh.updateMatrix(); // as needed
-        this.material = new THREE.MeshNormalMaterial({
+        var points = [];
+        for (var i = 0; i < 100; i++) {
+            points.push(new THREE.Vector2(Math.sin(i * 200) * 100 + 50, (i - 50) * 20));
+        }
+        var box = new THREE.LatheGeometry(points);
+        var smallMaterial = new THREE.MeshNormalMaterial({
             wireframe: true
         });
-        this.shape = new THREE.Mesh(this.geometry, this.material);
+        var boxMesh = new THREE.Mesh(box, smallMaterial);
+        //boxMesh.translate(0, 20, 0)
+        //var sphereMesh = new THREE.Mesh(avocado);
+        var avocado = new THREE.SphereGeometry(radius, 64, 64);
+
+        boxMesh.updateMatrix(); // as needed
+
+        avocado.merge(boxMesh.geometry, boxMesh.matrix, 10);
+
+        //sphereMesh.updateMatrix(); // as needed
+        //this.geometry = singleGeometry.merge(sphereMesh.geometry, sphereMesh.matrix);
+        //this.material = new THREE.MeshNormalMaterial({
+        //    wireframe: true
+        //});
+        this.shape = new THREE.Mesh(avocado, smallMaterial);
         this.shape.position.x = posX
         this.shape.position.y = posY
         this.shape.position.z = posZ

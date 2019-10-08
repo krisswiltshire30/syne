@@ -12,6 +12,13 @@ var animationToggles = {
   bgColor: false,
   cubeColor: false,
   sphereColor: false,
+  tetraColor: false,
+  sphereRotate: true,
+  sphereRotateSpeed: 0.01,
+  cubeRotate: true,
+  cubeRotateSpeed: 0.01,
+  tetraRotate: true,
+  tetraRotateSpeed: 0.01,
 }
 
 function mainLoop() {
@@ -28,9 +35,6 @@ function mainLoop() {
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
 
-  sphere1.changeRotation(0.01, 0, 0);
-  cube1.changeRotation(0.01, 0.01, 0);
-  tetra1.changeRotation(0.01, 0.01, 0);
   //Background color animation loop
   if (animationToggles.bgColor) {
     bgColor.r = color1;
@@ -39,17 +43,32 @@ function mainLoop() {
   }
   //Cube color animation loop
   if (animationToggles.cubeColor) {
-    cube1.material.color.r = color1;
-    cube1.material.color.g = color2;
-    cube1.material.color.b = color3;
+    cube1.material.color.r = color2;
+    cube1.material.color.g = color3;
+    cube1.material.color.b = color1;
   }
-
+  //Sphere color animation loop
   if (animationToggles.sphereColor) {
     sphere1.material.color.r = color1;
     sphere1.material.color.g = color3;
     sphere1.material.color.b = color2;
   }
-
+  //Tetra color animation loop
+  if (animationToggles.tetraColor) {
+    tetra1.material.color.r = color3;
+    tetra1.material.color.g = color2;
+    tetra1.material.color.b = color1;
+  }
+  //Rotation loops
+  if (animationToggles.sphereRotate) {
+    sphere1.changeRotation(animationToggles.sphereRotateSpeed, 0, 0);
+  }
+  if (animationToggles.cubeRotate) {
+    cube1.changeRotation(animationToggles.cubeRotateSpeed, animationToggles.cubeRotateSpeed, 0);
+  }
+  if (animationToggles.tetraRotate) {
+    tetra1.changeRotation(animationToggles.tetraRotateSpeed, animationToggles.tetraRotateSpeed, 0);
+  }
 
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);

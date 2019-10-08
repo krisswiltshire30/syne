@@ -24,6 +24,7 @@ var animationToggles = {
   cubeRotateSpeed: 0.01,
   tetraRotate: true,
   tetraRotateSpeed: 0.01,
+  cameraControl: true,
 }
 
 function mainLoop() {
@@ -54,7 +55,15 @@ function mainLoop() {
   //}
   newObject.shape.rotation.y += 0.01
 
+  cameraUpdate();  
+
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }
 mainLoop();
+
+function cameraUpdate() {
+  if (animationToggles.cameraControl) {
+    controls.update();
+  }
+}

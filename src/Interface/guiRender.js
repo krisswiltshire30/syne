@@ -1,6 +1,5 @@
 window.onload = function () {
 
-
   var gui = new dat.GUI({
     load: JSON
   });

@@ -1,9 +1,12 @@
 class Sphere extends Solid {
   constructor(radius, posX, posY, posZ, scene, orbitAlt, orbitAngle = 0, orbitAngleMod = 1) {
     super(scene, orbitAlt, orbitAngle, orbitAngleMod);
-    this.geometry = new THREE.SphereGeometry(radius, 64, 64);
-    this.material = new THREE.MeshNormalMaterial({
-      wireframe: true
+    this.color = "#003e98";
+    this.wireframe = true;
+    this.geometry = new THREE.SphereGeometry(radius, 64, 64, 100);
+    this.material = new THREE.MeshBasicMaterial({
+      wireframe: this.wireframe,
+      color: this.color
     });
     this.shape = new THREE.Mesh(this.geometry, this.material);
     this.shape.position.x = posX

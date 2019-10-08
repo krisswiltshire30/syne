@@ -1,7 +1,7 @@
 class Solid {
   constructor(scene, orbitAlt, orbitAngle = 0, orbitAngleMod = 1) {
     this.scene = scene;
-    this.material = new THREE.MeshNormalMaterial({
+    this.material = new THREE.MeshBasicMaterial({
       wireframe: true
     });
     this.orbitAlt = orbitAlt;
@@ -36,7 +36,7 @@ class Solid {
   orbit(object) {
     this.shape.position.x = object.shape.position.x + this.orbitAlt * Math.cos(this.radians(this.orbitAngle));
     this.shape.position.y = object.shape.position.y + this.orbitAlt * Math.sin(this.radians(this.orbitAngle));
-    this.shape.position.z = object.shape.position.z + this.orbitAlt * Math.sin(this.radians(this.orbitAngle));
+    //this.shape.position.z = object.shape.position.z + this.orbitAlt * Math.sin(this.radians(this.orbitAngle));
 
     this.orbitAngle = this.orbitAngle + this.orbitAngleMod;
     if (this.orbitAngle >= 360) {
@@ -46,5 +46,31 @@ class Solid {
 
   radians(degrees) {
     return (degrees * Math.PI / 180)
+  }
+  changeRotation(rotationX, rotationY, rotationZ) {
+    this.rotateX(rotationX);
+    this.rotateY(rotationY);
+    this.rotateZ(rotationZ);
+  }
+
+  rotateX(value) {
+    this.shape.rotation.x += value;
+    if (this.shape.rotation.x > 360) {
+      this.shape.rotation.x -= 360
+    }
+  }
+
+  rotateY(value) {
+    this.shape.rotation.y += value;
+    if (this.shape.rotation.y > 360) {
+      this.shape.rotation.y -= 360
+    }
+  }
+
+  rotateZ(value) {
+    this.shape.rotation.z += value;
+    if (this.shape.rotation.z > 360) {
+      this.shape.rotation.z -= 360
+    }
   }
 }

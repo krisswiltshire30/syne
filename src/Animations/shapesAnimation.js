@@ -15,6 +15,7 @@ var animationToggles = {
   cubeRotateSpeed: 0.01,
   tetraRotate: true,
   tetraRotateSpeed: 0.01,
+  cameraControl: true,
 }
 
 function mainLoop() {
@@ -38,9 +39,15 @@ function mainLoop() {
     tetra1.changeRotation(animationToggles.tetraRotateSpeed, animationToggles.tetraRotateSpeed, 0);
   }
 
-  controls.update();
+  cameraUpdate();  
 
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }
 mainLoop();
+
+function cameraUpdate() {
+  if (animationToggles.cameraControl) {
+    controls.update();
+  }
+}

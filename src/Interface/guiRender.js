@@ -4,70 +4,80 @@ window.onload = function () {
     load: JSON
   });
 
-  gui.remember(cube1, sphere1, tetra1, scene.background);
 
-  // Create folders
-  var cubeFolder = gui.addFolder('Cube');
-  var sphereFolder = gui.addFolder('Sphere');
-  var tetraFolder = gui.addFolder('Tetra');
-  var canvasFolder = gui.addFolder('Canvas');
+  if (animationToggles.preset == 'A') {
+    gui.remember(cube1, sphere1, tetra1, scene.background);
 
-  //Cube options
-  cubeFolder.addColor(cube1, 'color').onChange(function () {
-    cube1.material.color.set(cube1.color);
-  });
+    // Create folders
+    var cubeFolder = gui.addFolder('Cube');
+    var sphereFolder = gui.addFolder('Sphere');
+    var tetraFolder = gui.addFolder('Tetra');
+    var canvasFolder = gui.addFolder('Canvas');
 
-  cubeFolder.add(cube1, 'wireframe').onChange(function () {
-    cube1.material.wireframe = !cube1.material.wireframe
-  });
+    //Cube options
+    cubeFolder.addColor(cube1, 'color').onChange(function () {
+      cube1.material.color.set(cube1.color);
+    });
 
-  cubeFolder.add(animationToggles, 'cubeRotate').name('Rotate');
+    cubeFolder.add(cube1, 'wireframe').onChange(function () {
+      cube1.material.wireframe = !cube1.material.wireframe
+    });
 
-  cubeFolder.add(animationToggles, 'cubeRotateSpeed', -0.2, 0.5).name('Rotate speed');
+    cubeFolder.add(animationToggles, 'cubeRotate').name('Rotate');
 
-  // cubeFolder.add(cube1, 'texture');
+    cubeFolder.add(animationToggles, 'cubeRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
-  //Sphere options
-  sphereFolder.addColor(sphere1, 'color').onChange(function () {
-    sphere1.material.color.set(sphere1.color);
-  });
+    // cubeFolder.add(cube1, 'texture');
 
-  sphereFolder.add(sphere1, 'wireframe').onChange(function () {
-    sphere1.material.wireframe = !sphere1.material.wireframe
-  });
+    //Sphere options
+    sphereFolder.addColor(sphere1, 'color').onChange(function () {
+      sphere1.material.color.set(sphere1.color);
+    });
 
-  sphereFolder.add(animationToggles, 'sphereRotate').name('Rotate');
+    sphereFolder.add(sphere1, 'wireframe').onChange(function () {
+      sphere1.material.wireframe = !sphere1.material.wireframe
+    });
 
-  sphereFolder.add(animationToggles, 'sphereRotateSpeed', -0.2, 0.5).name('Rotate speed');
+    sphereFolder.add(animationToggles, 'sphereRotate').name('Rotate');
 
-  //Tetra options
-  tetraFolder.addColor(tetra1, 'color').onChange(function () {
-    tetra1.material.color.set(tetra1.color);
-  });
+    sphereFolder.add(animationToggles, 'sphereRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
-  tetraFolder.add(tetra1, 'wireframe').onChange(function () {
-    tetra1.material.wireframe = !tetra1.material.wireframe
-  });
+    //Tetra options
+    tetraFolder.addColor(tetra1, 'color').onChange(function () {
+      tetra1.material.color.set(tetra1.color);
+    });
 
-  tetraFolder.add(animationToggles, 'tetraRotate').name('Rotate');
+    tetraFolder.add(tetra1, 'wireframe').onChange(function () {
+      tetra1.material.wireframe = !tetra1.material.wireframe
+    });
 
-  tetraFolder.add(animationToggles, 'tetraRotateSpeed', -0.2, 0.5).name('Rotate speed');
+    tetraFolder.add(animationToggles, 'tetraRotate').name('Rotate');
 
-  //Background colour
-  canvasFolder.addColor(color, "value").name("background").onChange((value) => {
-    bgColor.set(value);
-  });
+    tetraFolder.add(animationToggles, 'tetraRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
-  let cameraControl = canvasFolder.add(animationToggles, 'cameraControl');
-  cameraControl.name('Camera controls');
-  cameraControl.onChange((value) => {
-    if(!value) {
-      camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
-      camera.position.z = 2000
-    }
-    else {
-      controls = this.setupOrbitCameraControls();
-    }
-  });
+    //Background colour
+    canvasFolder.addColor(color, "value").name("background").onChange((value) => {
+      bgColor.set(value);
+    });
+
+    let cameraControl = canvasFolder.add(animationToggles, 'cameraControl');
+    cameraControl.name('Camera controls');
+    cameraControl.onChange((value) => {
+      if (!value) {
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+        camera.position.z = 1200
+      } else {
+        controls = this.setupOrbitCameraControls();
+      }
+    });
+  }
+
+  gui.add(animationToggles, 'preset', {
+    Default: 'A',
+    Orbit: 'B',
+    Avocado: 'C',
+    Gomme_mode: 'D',
+  }).name('Presets');
+
 
 }

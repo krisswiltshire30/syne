@@ -28,11 +28,9 @@ function mainLoop() {
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
 
-  sphere1.shape.rotation.z += 0.01;
-  cube1.shape.rotation.x += 0.01;
-  cube1.shape.rotation.y += 0.01;
-  tetra1.shape.rotation.x += 0.01;
-  tetra1.shape.rotation.y += 0.01;
+  sphere1.changeRotation(0.01, 0, 0);
+  cube1.changeRotation(0.01, 0.01, 0);
+  tetra1.changeRotation(0.01, 0.01, 0);
   //Background color animation loop
   if (animationToggles.bgColor) {
     bgColor.r = color1;
@@ -51,6 +49,7 @@ function mainLoop() {
     sphere1.material.color.g = color3;
     sphere1.material.color.b = color2;
   }
+
 
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);

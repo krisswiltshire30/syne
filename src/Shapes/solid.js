@@ -29,4 +29,31 @@ class Solid {
     this.shape.position.z = posZ;
     return this.shape.position
   }
+
+  changeRotation(rotationX, rotationY, rotationZ) {
+    this.rotateX(rotationX);
+    this.rotateY(rotationY);
+    this.rotateZ(rotationZ);
+  }
+
+  rotateX(value) {
+    this.shape.rotation.x += value;
+    if (this.shape.rotation.x > 360) {
+      this.shape.rotation.x -= 360
+    }
+  }
+
+  rotateY(value) {
+    this.shape.rotation.y += value;
+    if (this.shape.rotation.y > 360) {
+      this.shape.rotation.y -= 360
+    }
+  }
+
+  rotateZ(value) {
+    this.shape.rotation.z += value;
+    if (this.shape.rotation.z > 360) {
+      this.shape.rotation.z -= 360
+    }
+  }
 }

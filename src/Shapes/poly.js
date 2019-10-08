@@ -2,12 +2,14 @@ class Poly extends Solid {
     constructor(radius, posX, posY, posZ, scene, orbitAlt, orbitAngle = 0, orbitAngleMod = 1) {
         super(scene, orbitAlt, orbitAngle, orbitAngleMod);
         var points = [];
-        for (var i = 0; i < 81; i++) {
-            points.push(new THREE.Vector2(Math.sin(i * 0.1) * 50 + 200, (i - 1) * 0.1));
+        this.wireframe = true;
+        for (var i = 0; i < 80; i++) {
+            points.push(new THREE.Vector2(Math.sin(i * 100) * 40 + 200, (i - 1) * 10));
         }
         var box = new THREE.LatheGeometry(points);
         var smallMaterial = new THREE.MeshNormalMaterial({
-            color: new THREE.Color('green')
+            color: new THREE.Color('green'),
+            wireframe: this.wireframe
         });
         var boxMesh = new THREE.Mesh(box, smallMaterial);
         var avocado = new THREE.SphereGeometry(radius, 64, 64);

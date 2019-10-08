@@ -1,6 +1,5 @@
 window.onload = function () {
 
-
   var gui = new dat.GUI({
     load: JSON
   });
@@ -22,6 +21,10 @@ window.onload = function () {
     cube1.material.wireframe = !cube1.material.wireframe
   });
 
+  cubeFolder.add(animationToggles, 'cubeRotate').name('Rotate');
+
+  cubeFolder.add(animationToggles, 'cubeRotateSpeed', -0.2, 0.5).name('Rotate speed');
+
   // cubeFolder.add(cube1, 'texture');
 
   //Sphere options
@@ -33,6 +36,10 @@ window.onload = function () {
     sphere1.material.wireframe = !sphere1.material.wireframe
   });
 
+  sphereFolder.add(animationToggles, 'sphereRotate').name('Rotate');
+
+  sphereFolder.add(animationToggles, 'sphereRotateSpeed', -0.2, 0.5).name('Rotate speed');
+
   //Tetra options
   tetraFolder.addColor(tetra1, 'color').onChange(function () {
     tetra1.material.color.set(tetra1.color);
@@ -41,6 +48,10 @@ window.onload = function () {
   tetraFolder.add(tetra1, 'wireframe').onChange(function () {
     tetra1.material.wireframe = !tetra1.material.wireframe
   });
+
+  tetraFolder.add(animationToggles, 'tetraRotate').name('Rotate');
+
+  tetraFolder.add(animationToggles, 'tetraRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
   //Background colour
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {

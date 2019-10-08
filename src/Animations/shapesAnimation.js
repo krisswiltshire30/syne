@@ -46,18 +46,24 @@ function mainLoop() {
     cube1.material.color.r = color2;
     cube1.material.color.g = color3;
     cube1.material.color.b = color1;
+  } else {
+    cube1.material.color = new THREE.Color("#003e98")
   }
   //Sphere color animation loop
   if (animationToggles.sphereColor) {
     sphere1.material.color.r = color1;
     sphere1.material.color.g = color3;
     sphere1.material.color.b = color2;
+  } else {
+    sphere1.material.color = new THREE.Color("#003e98")
   }
   //Tetra color animation loop
   if (animationToggles.tetraColor) {
     tetra1.material.color.r = color3;
     tetra1.material.color.g = color2;
     tetra1.material.color.b = color1;
+  } else {
+    tetra1.material.color = new THREE.Color("#003e98")
   }
   //Rotation loops
   if (animationToggles.sphereRotate) {

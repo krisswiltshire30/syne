@@ -35,6 +35,8 @@ window.onload = function () {
     sphere1.material.wireframe = !sphere1.material.wireframe
   });
 
+  sphereFolder.add(animationToggles, 'sphereColor').name("Audio color")
+
   //Tetra options
   tetraFolder.addColor(tetra1, 'color').onChange(function () {
     tetra1.material.color.set(tetra1.color);

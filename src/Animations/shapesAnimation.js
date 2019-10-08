@@ -11,6 +11,7 @@ tetraScale = 1;
 var animationToggles = {
   bgColor: false,
   cubeColor: false,
+  sphereColor: false,
 }
 
 function mainLoop() {
@@ -43,6 +44,12 @@ function mainLoop() {
     cube1.material.color.r = color1;
     cube1.material.color.g = color2;
     cube1.material.color.b = color3;
+  }
+
+  if (animationToggles.sphereColor) {
+    sphere1.material.color.r = color1;
+    sphere1.material.color.g = color3;
+    sphere1.material.color.b = color2;
   }
 
   renderer.render(scene, camera);

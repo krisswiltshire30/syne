@@ -28,7 +28,11 @@ const MathHelpers = {
         return avg;
     },
 
-    linearRegression: function (dataArray) {
+    linearRegression: function (dataArray, sorted) {
+        if (sorted) {
+            dataArray = SortingHelpers.sortNumberArray(dataArray)
+        }
+
 
         var freqBands = [];
         let n = dataArray.length

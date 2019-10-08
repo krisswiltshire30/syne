@@ -7,6 +7,7 @@ const tetra1 = new Tetra(200, 500, 0, 0, scene);
 sphereScale = 1;
 cubeScale = 1;
 tetraScale = 1;
+opacScale = 1;
 
 var animationToggles = {
   sphereRotate: true,
@@ -14,16 +15,23 @@ var animationToggles = {
   cubeRotate: true,
   cubeRotateSpeed: 0.01,
   tetraRotate: true,
-  tetraRotateSpeed: 0.01,
-}
+  tetraRotateSpeed: 0.01
+};
 
 function mainLoop() {
   if (AudioTool.isSetup) {
     sphereScale = Bass.getScale(true);
     cubeScale = Mids.getScale(true);
     tetraScale = Treble.getScale(true);
+    opacScale = MathHelpers.linearRegression(
+      SortingHelpers.splitEnergyArrays(Mids.getEnergy(), 4, false)
+    );
   }
 
+  if (opacScale > 0.8) {
+    cube1.twistCube();
+  }
+  cube1.changeOpacity(opacScale);
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
@@ -32,10 +40,18 @@ function mainLoop() {
     sphere1.changeRotation(animationToggles.sphereRotateSpeed, 0, 0);
   }
   if (animationToggles.cubeRotate) {
-    cube1.changeRotation(animationToggles.cubeRotateSpeed, animationToggles.cubeRotateSpeed, 0);
+    cube1.changeRotation(
+      animationToggles.cubeRotateSpeed,
+      animationToggles.cubeRotateSpeed,
+      0
+    );
   }
   if (animationToggles.tetraRotate) {
-    tetra1.changeRotation(animationToggles.tetraRotateSpeed, animationToggles.tetraRotateSpeed, 0);
+    tetra1.changeRotation(
+      animationToggles.tetraRotateSpeed,
+      animationToggles.tetraRotateSpeed,
+      0
+    );
   }
 
   renderer.render(scene, camera);

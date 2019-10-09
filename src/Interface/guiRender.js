@@ -71,4 +71,11 @@ window.onload = function () {
     }
   });
 
+
+  gui.add(animationToggles, 'preset', {
+    Default: 'A',
+    Orbit: 'B',
+  }).name('Presets');
+
+
 }

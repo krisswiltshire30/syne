@@ -15,8 +15,8 @@ var animationToggles = {
   sphereRotateSpeed: 0.01,
   cubeRotate: true,
   cubeRotateSpeed: 0.01,
-  tetraRotate: true,
-  tetraRotateSpeed: 0.01
+  tetraRotateSpeed: 0.01,
+  cameraControl: true,
 };
 
 function mainLoop() {
@@ -24,23 +24,8 @@ function mainLoop() {
     sphereScale = Bass.getScale(true);
     cubeScale = Mids.getScale(true);
     tetraScale = Treble.getScale(true);
-    opacScale = MathHelpers.linearRegression(
-      SortingHelpers.splitEnergyArrays(Bass.getEnergy(), 4, false)
-    );
-    twistScale = MathHelpers.linearRegression(
-      SortingHelpers.splitEnergyArrays(Bass.getEnergy(), 1, false)
-    );
   }
 
-  if (opacScale > 0.8) {
-    cube1.twistCube();
-  }
-
-  if (twistScale < 0.005) {
-    tetra1.twistCube();
-  }
-  cube1.changeOpacity(opacScale);
-  sphere1.changeOpacity(twistScale);
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
@@ -63,7 +48,15 @@ function mainLoop() {
     );
   }
 
+  cameraUpdate();  
+
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }
 mainLoop();
+
+function cameraUpdate() {
+  if (animationToggles.cameraControl) {
+    controls.update();
+  }
+}

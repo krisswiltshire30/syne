@@ -58,4 +58,22 @@ window.onload = function () {
     bgColor.set(value);
   });
 
+  let cameraControl = canvasFolder.add(animationToggles, 'cameraControl');
+  cameraControl.name('Camera controls');
+  cameraControl.onChange((value) => {
+    if (!value) {
+      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+      camera.position.z = 1200
+    } else {
+      controls = this.setupOrbitCameraControls();
+    }
+  });
+
+
+  gui.add(animationToggles, 'preset', {
+    Default: 'A',
+    Orbit: 'B',
+  }).name('Presets');
+
+
 }

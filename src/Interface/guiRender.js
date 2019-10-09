@@ -4,12 +4,13 @@ window.onload = function () {
     load: JSON
   });
 
-  gui.remember(cube1, sphere1, tetra1, scene.background);
+  gui.remember(cube1, sphere1, tetra1, torus1, scene.background);
 
   // Create folders
   var cubeFolder = gui.addFolder('Cube');
   var sphereFolder = gui.addFolder('Sphere');
   var tetraFolder = gui.addFolder('Tetra');
+  var torusFolder = gui.addFolder('Torus');
   var canvasFolder = gui.addFolder('Canvas');
 
   //Cube options
@@ -53,6 +54,18 @@ window.onload = function () {
 
   tetraFolder.add(animationToggles, 'tetraRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
+  //Torus options
+  torusFolder.addColor(sphere1, 'color').name('Color').onChange(function () {
+    torus1.material.color.set(torus1.color);
+  });
+
+  torusFolder.add(sphere1, 'wireframe').name('Wireframe').onChange(function () {
+    torus1.material.wireframe = !torus1.material.wireframe
+  });
+
+  torusFolder.add(animationToggles, 'torusRotate').name('Rotate');
+
+  torusFolder
   //Background colour
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {
     bgColor.set(value);

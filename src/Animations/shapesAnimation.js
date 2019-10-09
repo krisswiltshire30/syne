@@ -38,47 +38,16 @@ presetOneShapes = false;
 presetTwo = false;
 presetTwoShapes = false
 
-//Animation loop
+//Main animation loop
 function mainLoop() {
   if (animationToggles.preset == 'A') {
-    if (!presetOneShapes) {
-      shapeCreator();
-      presetOneShapes = true
-    }
-    if (presetTwoShapes) {
-      sphere1.material.visible = true;
-      cube1.material.visible = true;
-      tetra1.material.visible = true;
-      sphere2.material.visible = false;
-      sphere3.material.visible = false;
-      newObject.changePosition(0, 0, 200000)
-      newPlanet.material.visible = false;
-    }
+    defaultPresets();
     defaultAnimation();
   } else {
-    if (!presetTwoShapes) {
-      sphere1.material.visible = false;
-      cube1.material.visible = false;
-      tetra1.material.visible = false;
-      presetOne = false
-      presetTwo = true
-      presetTwoShapes = true
-      shapeCreator()
-    }
-    if (presetOneShapes) {
-      sphere1.material.visible = false;
-      cube1.material.visible = false;
-      tetra1.material.visible = false;
-      sphere2.material.visible = true;
-      sphere3.material.visible = true;
-      newObject.material.visible = true;
-      newPlanet.material.visible = true;
-    }
+    orbitsPresets();
     orbitAnimation();
   }
-
   cameraUpdate();
-
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }
@@ -88,6 +57,44 @@ mainLoop();
 function cameraUpdate() {
   if (animationToggles.cameraControl) {
     controls.update();
+  }
+}
+
+//Animation preset loops
+function defaultPresets() {
+  if (!presetOneShapes) {
+    shapeCreator();
+    presetOneShapes = true
+  }
+  if (presetTwoShapes) {
+    sphere1.material.visible = true;
+    cube1.material.visible = true;
+    tetra1.material.visible = true;
+    sphere2.material.visible = false;
+    sphere3.material.visible = false;
+    newObject.changePosition(0, 0, 200000)
+    newPlanet.material.visible = false;
+  }
+}
+
+function orbitsPresets() {
+  if (!presetTwoShapes) {
+    sphere1.material.visible = false;
+    cube1.material.visible = false;
+    tetra1.material.visible = false;
+    presetOne = false
+    presetTwo = true
+    presetTwoShapes = true
+    shapeCreator()
+  }
+  if (presetOneShapes) {
+    sphere1.material.visible = false;
+    cube1.material.visible = false;
+    tetra1.material.visible = false;
+    sphere2.material.visible = true;
+    sphere3.material.visible = true;
+    newObject.material.visible = true;
+    newPlanet.material.visible = true;
   }
 }
 

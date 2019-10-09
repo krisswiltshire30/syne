@@ -22,9 +22,15 @@ window.onload = function () {
     cube1.material.wireframe = !cube1.material.wireframe
   });
 
+  cubeFolder.add(cube1, 'visible').name('Visible').onChange(function () {
+    cube1.material.visible = !cube1.material.visible
+  });
+
   cubeFolder.add(animationToggles, 'cubeRotate').name('Rotate');
 
   cubeFolder.add(animationToggles, 'cubeRotateSpeed', -0.2, 0.5).name('Rotate speed');
+
+
 
   // cubeFolder.add(cube1, 'texture');
 
@@ -36,6 +42,11 @@ window.onload = function () {
   sphereFolder.add(sphere1, 'wireframe').name('Wireframe').onChange(function () {
     sphere1.material.wireframe = !sphere1.material.wireframe
   });
+
+  sphereFolder.add(sphere1, 'visible').name('Visible').onChange(function () {
+    sphere1.material.visible = !sphere1.material.visible
+  });
+
 
   sphereFolder.add(animationToggles, 'sphereRotate').name('Rotate');
 

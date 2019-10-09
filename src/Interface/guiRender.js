@@ -4,9 +4,9 @@ window.onload = function () {
     load: JSON
   });
 
-  guipresetOne()
+  guiPresetOne();
 
-  function guipresetOne() {
+  function guiPresetOne() {
     if (presetOne) {
       gui.remember(cube1, sphere1, tetra1, torus1, scene.background);
       // Create folders
@@ -121,24 +121,70 @@ window.onload = function () {
       canvasFolder.add(animationToggles, 'bgColor').name("Audio color");
     }
 
-    gui.add(animationToggles, 'preset', {
-      Default: 'A',
-      Orbit: 'B',
-    }).name('Presets').onChange(function () {
-      guipresetOne();
-    });
-
   }
-
-  let cameraControl = canvasFolder.add(animationToggles, 'cameraControl');
-  cameraControl.name('Camera controls');
-  cameraControl.onChange((value) => {
-    if (!value) {
-      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
-      camera.position.z = 1500;
+  gui.add(animationToggles, 'preset', {
+    Default: 'A',
+    Orbit: 'B',
+  }).name('Presets').onChange(function () {
+    if (animationToggles.preset == 'A') {
+      return guiPresetOne();
     } else {
-      controls = this.setupOrbitCameraControls();
+      return guiPresetTwo();
     }
   });
+}
 
+let cameraControl = canvasFolder.add(animationToggles, 'cameraControl');
+cameraControl.name('Camera controls');
+cameraControl.onChange((value) => {
+  if (!value) {
+    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.z = 1500;
+  } else {
+    controls = this.setupOrbitCameraControls();
+  }
+});
+
+function guiPresetTwo() {
+
+  gui.remember(sphere2, newObject, scene.background);
+
+  var sphere2Folder = gui.addFolder('Centre Sphere');
+  var newObjectFolder = gui.addFolder('Ringed Planet');
+
+  //Cube options
+  sphere2Folder.addColor(sphere2, 'color').onChange(function () {
+    sphere2.material.color.set(sphere2.color);
+  });
+
+  sphere2Folder.add(sphere2, 'wireframe').onChange(function () {
+    sphere2.material.wireframe = !sphere2.material.wireframe
+  });
+
+  sphere2Folder.add(animationToggles, 'cubeRotate').name('Rotate');
+
+  sphere2Folder.add(animationToggles, 'cubeRotateSpeed', -0.2, 0.5).name('Rotate speed');
+
+  // cubeFolder.add(cube1, 'texture');
+
+  //Sphere options
+  newObjectFolder.addColor(newObject, 'color').name('Color').onChange(function () {
+    newObject.material.color.set(newObject.color);
+  });
+
+  newObjectFolder.add(newObject, 'wireframe').name('Wireframe').onChange(function () {
+    newObject.material.wireframe = !newObject.material.wireframe
+  });
+
+  newObjectFolder.add(animationToggles, 'sphereRotate').name('Rotate');
+
+  newObjectFolder.add(animationToggles, 'sphereRotateSpeed', -0.2, 0.5).name('Rotate speed');
+
+
+  //Background colour
+  canvasFolder.addColor(color, "value").name("background").onChange((value) => {
+    bgColor.set(value);
+  });
+
+  canvasFolder.add(animationToggles, 'bgColor').name("Audio color");
 }

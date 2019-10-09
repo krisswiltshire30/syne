@@ -11,7 +11,19 @@ Syne, at it's most basic operation, is an API that makes geometric shapes move t
 
 It takes an audio input and converts the data into readable numbers, which can be used to effect the many parameters of 3D objects.
 
-After that, the possibilities are endless. 
+After that, the possibilities are endless.
+## Tech stack
+- Karma
+- ESlint
+- THREE.js
+- Node.js
+- DAT.gui
+- Heroku
+- Travis CI
+- Web Audio API
+- Javascript
+- HTML
+- CSS
 
 ## Installation instructions
 
@@ -28,10 +40,6 @@ $ git clone git@github.com:krisswiltshire30/syne.git
  - Run tests
   ```bash
  $ npm test
- ```
- - Run linter
-  ```bash
- $ npm linter
  ```
  - To view the demo, open the index.html file in a browser or use live server
 

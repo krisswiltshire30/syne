@@ -7,8 +7,6 @@ const tetra1 = new Tetra(200, 500, 0, 0, scene);
 sphereScale = 1;
 cubeScale = 1;
 tetraScale = 1;
-opacScale = 1;
-twistScale = 1;
 
 var animationToggles = {
   sphereRotate: true,
@@ -24,23 +22,8 @@ function mainLoop() {
     sphereScale = Bass.getScale(true);
     cubeScale = Mids.getScale(true);
     tetraScale = Treble.getScale(true);
-    opacScale = MathHelpers.linearRegression(
-      SortingHelpers.splitEnergyArrays(Bass.getEnergy(), 4, false)
-    );
-    twistScale = MathHelpers.linearRegression(
-      SortingHelpers.splitEnergyArrays(Bass.getEnergy(), 1, false)
-    );
   }
 
-  if (opacScale > 0.8) {
-    cube1.twistCube();
-  }
-
-  if (twistScale < 0.005) {
-    tetra1.twistCube();
-  }
-  cube1.changeOpacity(opacScale);
-  sphere1.changeOpacity(twistScale);
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);

@@ -30,6 +30,7 @@ window.onload = function () {
     sphereBand: "Bass",
     tetraBand: "Treble",
   }
+
   let cubeBandSelector = cubeFolder.add(bands, 'cubeBand', {
     Bass: "Bass",
     Mids: "Mids",
@@ -53,7 +54,7 @@ window.onload = function () {
       default:
         break;
     }
-  })
+  });
 
   // cubeFolder.add(cube1, 'texture');
 
@@ -70,6 +71,30 @@ window.onload = function () {
 
   sphereFolder.add(animationToggles, 'sphereRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
+  let sphereBandSelector = sphereFolder.add(bands, 'sphereBand', {
+    Bass: "Bass",
+    Mids: "Mids",
+    Treble: "Treble"
+  }).name("Band");
+
+  sphereBandSelector.onChange(function(value) {
+    switch (value) {
+      case "Bass":
+        animationToggles.sphereBand = Bass;
+        break;
+      
+      case "Mids":
+        animationToggles.sphereBand = Mids;
+        break;
+
+      case "Treble":
+        animationToggles.sphereBand = Treble;
+        break;
+
+      default:
+        break;
+    }
+  });
   //Tetra options
   tetraFolder.addColor(tetra1, 'color').onChange(function () {
     tetra1.material.color.set(tetra1.color);
@@ -83,6 +108,30 @@ window.onload = function () {
 
   tetraFolder.add(animationToggles, 'tetraRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
+  let tetraBandSelector = tetraFolder.add(bands, 'tetraBand', {
+    Bass: "Bass",
+    Mids: "Mids",
+    Treble: "Treble"
+  }).name("Band");
+
+  tetraBandSelector.onChange(function(value) {
+    switch (value) {
+      case "Bass":
+        animationToggles.tetraBand = Bass;
+        break;
+      
+      case "Mids":
+        animationToggles.tetraBand = Mids;
+        break;
+
+      case "Treble":
+        animationToggles.tetraBand = Treble;
+        break;
+
+      default:
+        break;
+    }
+  });
   //Background colour
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {
     bgColor.set(value);

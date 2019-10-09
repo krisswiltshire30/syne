@@ -50,3 +50,8 @@ Note: Use firefox to run the demo
 
 To see the API at work, have a look at the [Latest deployment demo](https://syne.herokuapp.com)
 
+## Meet the Team
+| Kriss |  Guillaume | Fenton | Guy | Rhys |
+| :-----: | :-------:  | :------:  | :------:  | :------:  
+|<a href='https://github.com/krisswiltshire30'><img src='https://github.com/krisswiltshire30.png' width='100'></a>|<a href='https://github.com/Clepsysd'><img src='https://github.com/Clepsyd.png' width='100'></a>|<a href='https://github.com/Fentonhaslam'><img src='https://github.com/Fentonhaslam.png' width='100'></a>|<a href='https://github.com/GuyCalloway'><img src='https://github.com/GuyCalloway.png' width='100'></a>|<a href='https://github.com/RMaughan93'><img src='https://github.com/RMaughan93.png' width='100'></a>
+

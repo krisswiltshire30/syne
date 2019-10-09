@@ -17,9 +17,9 @@ var animationToggles = {
 
 function shapeCreator() {
   if (presetOne) {
-    this.sphere1 = new Sphere(200, -500, 0, 0, scene);
-    this.cube1 = new Cube(200, 200, 200, 0, 0, 0, scene);
-    this.tetra1 = new Tetra(200, 500, 0, 0, scene);
+    this.sphere1 = new Sphere(200, -250, 0, 0, scene);
+    this.cube1 = new Cube(200, 200, 250, 0, 0, 0, scene);
+    this.tetra1 = new Tetra(200, 750, 0, 0, scene);
     this.torus1 = new Torus(100, -750, 0, 0, scene);
   } else if (presetTwo) {
     this.sphere2 = new Sphere(70, 0, 0, 0, scene);

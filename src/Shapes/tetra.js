@@ -3,7 +3,7 @@ class Tetra extends Solid {
     super(scene)
     this.color = "#003e98";
     this.wireframe = true;
-    this.geometry = new THREE.OctahedronGeometry(radius, 1, 5);
+    this.geometry = new THREE.TetrahedronGeometry(radius, 0, 5);
     this.material = new THREE.MeshBasicMaterial({
       wireframe: true,
       color: this.color

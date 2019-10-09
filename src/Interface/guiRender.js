@@ -79,11 +79,14 @@ window.onload = function () {
     torus1.material.wireframe = !torus1.material.wireframe
   });
 
+  torusFolder.add(torus1, 'visible').name('Visible').onChange(function () {
+    torus1.material.visible = !torus1.material.visible
+  });
+
   torusFolder.add(animationToggles, 'torusRotate').name('Rotate');
 
   torusFolder.add(animationToggles, 'torusRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
-  torusFolder
   //Background colour
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {
     bgColor.set(value);

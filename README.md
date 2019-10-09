@@ -13,7 +13,7 @@ It takes an audio input and converts the data into readable numbers, which can b
 
 After that, the possibilities are endless. 
 
-**_••Installation instructions••_**
+## Installation instructions
 
 Node is required to run this application.
 [Here](https://treehouse.github.io/installation-guides/mac/node-mac.html) is a good tutorial on how to install if you need it.
@@ -37,10 +37,4 @@ $ git clone git@github.com:krisswiltshire30/syne.git
 
 ## Demo
 To see the API at work, have a look at the [Latest deployment demo](https://syne.herokuapp.com)
-
-#### Demo features
-
-```javascript
-#Paste a basic usage outline from IRB here
-```
 

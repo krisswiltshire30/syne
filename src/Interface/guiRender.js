@@ -59,11 +59,11 @@ window.onload = function () {
   // cubeFolder.add(cube1, 'texture');
 
   //Sphere options
-  sphereFolder.addColor(sphere1, 'color').onChange(function () {
+  sphereFolder.addColor(sphere1, 'color').name('Color').onChange(function () {
     sphere1.material.color.set(sphere1.color);
   });
 
-  sphereFolder.add(sphere1, 'wireframe').onChange(function () {
+  sphereFolder.add(sphere1, 'wireframe').name('Wireframe').onChange(function () {
     sphere1.material.wireframe = !sphere1.material.wireframe
   });
 
@@ -137,16 +137,24 @@ window.onload = function () {
     bgColor.set(value);
   });
 
+  canvasFolder.add(animationToggles, 'bgColor').name("Audio color");
+
   let cameraControl = canvasFolder.add(animationToggles, 'cameraControl');
   cameraControl.name('Camera controls');
   cameraControl.onChange((value) => {
-    if(!value) {
-      camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
-      camera.position.z = 2000
-    }
-    else {
+    if (!value) {
+      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+      camera.position.z = 1500;
+    } else {
       controls = this.setupOrbitCameraControls();
     }
   });
+
+
+  gui.add(animationToggles, 'preset', {
+    Default: 'A',
+    Orbit: 'B',
+  }).name('Presets');
+
 
 }

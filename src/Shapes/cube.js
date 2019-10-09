@@ -15,7 +15,6 @@ class Cube extends Solid {
     this.material = new THREE.MeshBasicMaterial({
       wireframe: this.wireframe,
       color: this.color,
-      map: this.texture,
     });
     this.shape = new THREE.Mesh(this.geometry, this.material);
     this.shape.position.x = posX;

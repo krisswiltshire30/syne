@@ -4,8 +4,8 @@ window.onload = function () {
     load: JSON
   });
 
-  gui.remember(cube1, sphere1, tetra1, torus1, scene.background);
   if (presetOne) {
+    gui.remember(cube1, sphere1, tetra1, torus1, scene.background);
     // Create folders
     var cubeFolder = gui.addFolder('Cube');
     var sphereFolder = gui.addFolder('Sphere');
@@ -76,19 +76,18 @@ window.onload = function () {
     canvasFolder.add(animationToggles, 'bgColor').name("Audio color");
   } // end of if statement
   else if (presetTwo) {
+    gui.remember(sphere2, newObject, scene.background);
+
     var sphere2Folder = gui.addFolder('Centre Sphere');
     var newObjectFolder = gui.addFolder('Ringed Planet');
-    var tetraFolder = gui.addFolder('Tetra');
-    var torusFolder = gui.addFolder('Torus');
-    var canvasFolder = gui.addFolder('Canvas');
 
     //Cube options
-    sphere2Folder.addColor(cube1, 'color').onChange(function () {
-      cube1.material.color.set(cube1.color);
+    sphere2Folder.addColor(sphere2, 'color').onChange(function () {
+      sphere2.material.color.set(sphere2.color);
     });
 
-    sphere2Folder.add(cube1, 'wireframe').onChange(function () {
-      cube1.material.wireframe = !cube1.material.wireframe
+    sphere2Folder.add(sphere2, 'wireframe').onChange(function () {
+      sphere2.material.wireframe = !sphere2.material.wireframe
     });
 
     sphere2Folder.add(animationToggles, 'cubeRotate').name('Rotate');
@@ -98,12 +97,12 @@ window.onload = function () {
     // cubeFolder.add(cube1, 'texture');
 
     //Sphere options
-    newObjectFolder.addColor(sphere1, 'color').name('Color').onChange(function () {
-      sphere1.material.color.set(sphere1.color);
+    newObjectFolder.addColor(newObject, 'color').name('Color').onChange(function () {
+      newObject.material.color.set(newObject.color);
     });
 
-    newObjectFolder.add(sphere1, 'wireframe').name('Wireframe').onChange(function () {
-      sphere1.material.wireframe = !sphere1.material.wireframe
+    newObjectFolder.add(newObject, 'wireframe').name('Wireframe').onChange(function () {
+      newObject.material.wireframe = !newObject.material.wireframe
     });
 
     newObjectFolder.add(animationToggles, 'sphereRotate').name('Rotate');
@@ -133,6 +132,5 @@ window.onload = function () {
     Default: 'A',
     Orbit: 'B',
   }).name('Presets');
-
 
 }

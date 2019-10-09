@@ -9,7 +9,6 @@ var animationToggles = {
   sphereRotateSpeed: 0.01,
   cubeRotate: true,
   cubeRotateSpeed: 0.01,
-  tetraRotate: true,
   tetraRotateSpeed: 0.01,
   cameraControl: true,
   preset: 'A'
@@ -139,10 +138,18 @@ function defaultAnimation() {
     sphere1.changeRotation(animationToggles.sphereRotateSpeed, 0, 0);
   }
   if (animationToggles.cubeRotate) {
-    cube1.changeRotation(animationToggles.cubeRotateSpeed, animationToggles.cubeRotateSpeed, 0);
+    cube1.changeRotation(
+      animationToggles.cubeRotateSpeed,
+      animationToggles.cubeRotateSpeed,
+      0
+    );
   }
   if (animationToggles.tetraRotate) {
-    tetra1.changeRotation(animationToggles.tetraRotateSpeed, animationToggles.tetraRotateSpeed, 0);
+    tetra1.changeRotation(
+      animationToggles.tetraRotateSpeed,
+      animationToggles.tetraRotateSpeed,
+      0
+    );
   }
 }
 mainLoop();

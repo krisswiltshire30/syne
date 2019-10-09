@@ -1,7 +1,7 @@
 const MathHelpers = {
 
     standardDeviationVariance: function (values, varianceTrue) {
-        var avg = average(values);
+        var avg = this.average(values);
 
         var squareDiffs = values.map(function (value) {
             var diff = value - avg;
@@ -9,10 +9,10 @@ const MathHelpers = {
             return sqrDiff;
         });
 
-        var variance = average(squareDiffs);
+        var variance = this.average(squareDiffs);
 
         if (varianceTrue) {
-            return variance
+            return variance;
         }
 
         var stdDev = Math.sqrt(variance);
@@ -28,7 +28,11 @@ const MathHelpers = {
         return avg;
     },
 
-    linearRegression: function (dataArray) {
+    linearRegression: function (dataArray, sorted) {
+        if (sorted) {
+            dataArray = SortingHelpers.sortNumberArray(dataArray)
+        }
+
 
         var freqBands = [];
         let n = dataArray.length
@@ -43,12 +47,12 @@ const MathHelpers = {
         let sum_xx = 0;
         let sum_yy = 0;
 
-        for (var i = 0; i < n; i++) {
-            sum_x += dataArray[i];
-            sum_y += freqBands[i];
-            sum_xy += (dataArray[i] * freqBands[i]);
-            sum_xx += (dataArray[i] * dataArray[i]);
-            sum_yy += (freqBands[i] * freqBands[i]);
+        for (var j = 0; j < n; j++) {
+            sum_x += dataArray[j];
+            sum_y += freqBands[j];
+            sum_xy += (dataArray[j] * freqBands[j]);
+            sum_xx += (dataArray[j] * dataArray[j]);
+            sum_yy += (freqBands[j] * freqBands[j]);
         }
 
         return Math.pow((n * sum_xy - sum_x * sum_y) / Math.sqrt((n * sum_xx - sum_x * sum_x) * (n * sum_yy - sum_y * sum_y)), 2);

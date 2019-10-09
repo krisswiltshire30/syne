@@ -1,6 +1,10 @@
 AudioTool.setup();
 
 var animationToggles = {
+  bgColor: false,
+  cubeColor: false,
+  sphereColor: false,
+  tetraColor: false,
   sphereRotate: true,
   sphereRotateSpeed: 0.01,
   cubeRotate: true,
@@ -103,6 +107,9 @@ function defaultAnimation() {
   if (AudioTool.isSetup) {
     cubeScale = Mids.getScale(true);
     tetraScale = Treble.getScale(true);
+    var color1 = Bass.getAvg(true);
+    var color2 = Mids.getAvg(true);
+    var color3 = Treble.getAvg(true);
     sphereScale = Bass.getScale(true);
   }
 
@@ -110,6 +117,13 @@ function defaultAnimation() {
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
 
+  //Background color animation loop
+  if (animationToggles.bgColor) {
+    bgColor.r = color1;
+    bgColor.g = color2;
+    bgColor.b = color3;
+  }
+  //Rotation loops
   if (animationToggles.sphereRotate) {
     sphere1.changeRotation(animationToggles.sphereRotateSpeed, 0, 0);
   }
@@ -127,6 +141,15 @@ function orbitAnimation() {
     sphereScale = Bass.getScale(true);
     newObjectScale = Treble.getScale(true);
     newPlanetScale = Mids.getScale(true);
+    var color1 = Bass.getAvg(true);
+    var color2 = Mids.getAvg(true);
+    var color3 = Treble.getAvg(true);
+  }
+
+  if (animationToggles.bgColor) {
+    bgColor.r = color1;
+    bgColor.g = color2;
+    bgColor.b = color3;
   }
 
   newObject.changeScale(newObjectScale);

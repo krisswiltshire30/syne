@@ -1,10 +1,9 @@
 class Cube extends Solid {
   constructor(width, height, depth, posX, posY, posZ, scene) {
     super(scene);
-    this.color = new THREE.Color(0x003e98);
+    this.color = "#003e98";
     this.wireframe = true;
-    this.texture = new THREE.TextureLoader().load("textures/gomme.png");
-    this.segments = 1;
+    this.segments = 20;
     this.geometry = new THREE.BoxGeometry(
       width,
       height,
@@ -15,8 +14,7 @@ class Cube extends Solid {
     );
     this.material = new THREE.MeshBasicMaterial({
       wireframe: this.wireframe,
-      color: this.color.getHex(),
-      map: this.texture,
+      color: this.color,
     });
     this.shape = new THREE.Mesh(this.geometry, this.material);
     this.shape.position.x = posX;

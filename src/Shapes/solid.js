@@ -15,6 +15,7 @@ class Solid {
     return this.material.opacity;
   }
 
+
   changeScale(sizeScaler) {
     this.shape.scale.x = sizeScaler;
     this.shape.scale.y = sizeScaler;

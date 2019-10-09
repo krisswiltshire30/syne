@@ -10,6 +10,7 @@ var animationToggles = {
   sphereRotateSpeed: 0.01,
   cubeRotate: true,
   cubeRotateSpeed: 0.01,
+  tetraRotate: true,
   tetraRotateSpeed: 0.01,
   torusRotate: true,
   torusRotateSpeed: 0.01,
@@ -134,7 +135,11 @@ function defaultAnimation() {
   }
   //Rotation loops
   if (animationToggles.sphereRotate) {
-    sphere1.changeRotation(animationToggles.sphereRotateSpeed, 0, 0);
+    sphere1.changeRotation(
+      animationToggles.sphereRotateSpeed,
+      0,
+      0
+    );
   }
   if (animationToggles.cubeRotate) {
     cube1.changeRotation(
@@ -151,7 +156,11 @@ function defaultAnimation() {
     );
   }
   if (animationToggles.torusRotate) {
-    torus1.changeRotation(animationToggles.torusRotateSpeed, animationToggles.torusRotateSpeed, 0);
+    torus1.changeRotation(
+      animationToggles.torusRotateSpeed,
+      animationToggles.torusRotateSpeed, 
+      0
+    );
   }
 }
 mainLoop();

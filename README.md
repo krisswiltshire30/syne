@@ -7,7 +7,7 @@
 
 If the answer to any of the above is 'HELL YES',  then welcome!
 
-Syne, at it's most basic operation, is an API that makes geomtryic shapes move to audio stimulus. 
+Syne, at it's most basic operation, is an API that makes geometric shapes move to audio stimulus. 
 
 It takes an audio input and converts the data into readable numbers, which can be used to effect the many parameters of 3D objects.
 

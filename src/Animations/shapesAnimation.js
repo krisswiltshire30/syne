@@ -13,8 +13,8 @@ var animationToggles = {
   sphereRotateSpeed: 0.01,
   cubeRotate: true,
   cubeRotateSpeed: 0.01,
-  tetraRotate: true,
-  tetraRotateSpeed: 0.01
+  tetraRotateSpeed: 0.01,
+  cameraControl: true,
 };
 
 function mainLoop() {
@@ -46,7 +46,15 @@ function mainLoop() {
     );
   }
 
+  cameraUpdate();  
+
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
 }
 mainLoop();
+
+function cameraUpdate() {
+  if (animationToggles.cameraControl) {
+    controls.update();
+  }
+}

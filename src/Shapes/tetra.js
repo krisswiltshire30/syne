@@ -15,15 +15,19 @@ class Tetra extends Solid {
     this.scene.add(this.shape);
   }
 
-  changeScale(sizeScaler) {
-    this.shape.scale.x = sizeScaler;
-    this.shape.scale.y = sizeScaler;
-    this.shape.scale.z = sizeScaler;
-  }
+  twistCube() {
+    //look into Euler Vectors and Quaternion methods
+    const quaternion = new THREE.Quaternion();
+    for (let i = 0; i < this.shape.geometry.vertices.length; i++) {
+      const yPos = this.shape.geometry.vertices[i].y;
 
-  changePosition(posX, posY, posZ) {
-    this.shape.position.x = posX;
-    this.shape.position.y = posY;
-    this.shape.position.z = posZ;
+      const upVec = new THREE.Vector3(0, -1, 0);
+      var a = new THREE.Euler(0, 1, 1.57, 'XYZ');
+      quaternion.setFromEuler(a, 2);
+
+      this.shape.geometry.vertices[i].applyQuaternion(quaternion);
+    }
+    this.shape.geometry.verticesNeedUpdate = true;
+
   }
 }

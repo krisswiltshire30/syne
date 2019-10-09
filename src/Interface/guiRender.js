@@ -61,6 +61,11 @@ window.onload = function () {
     tetra1.material.wireframe = !tetra1.material.wireframe
   });
 
+  tetraFolder.add(tetra1, 'visible').name('Visible').onChange(function () {
+    tetra1.material.visible = !tetra1.material.visible
+  });
+
+
   tetraFolder.add(animationToggles, 'tetraRotate').name('Rotate');
 
   tetraFolder.add(animationToggles, 'tetraRotateSpeed', -0.2, 0.5).name('Rotate speed');

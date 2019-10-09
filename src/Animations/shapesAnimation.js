@@ -5,12 +5,15 @@ var animationToggles = {
   cubeColor: false,
   sphereColor: false,
   tetraColor: false,
+  torusColor: false,
   sphereRotate: true,
   sphereRotateSpeed: 0.01,
   cubeRotate: true,
   cubeRotateSpeed: 0.01,
   tetraRotate: true,
   tetraRotateSpeed: 0.01,
+  torusRotate: true,
+  torusRotateSpeed: 0.01,
   cameraControl: true,
   preset: 'A'
 }
@@ -18,7 +21,7 @@ var animationToggles = {
 function shapeCreator() {
   if (presetOne) {
     this.sphere1 = new Sphere(200, -250, 0, 0, scene);
-    this.cube1 = new Cube(200, 200, 250, 0, 0, 0, scene);
+    this.cube1 = new Cube(200, 200, 200, 250, 0, 0, scene);
     this.tetra1 = new Tetra(200, 750, 0, 0, scene);
     this.torus1 = new Torus(100, -750, 0, 0, scene);
   } else if (presetTwo) {
@@ -76,6 +79,7 @@ function defaultPresets() {
     sphere1.material.visible = true;
     cube1.material.visible = true;
     tetra1.material.visible = true;
+    torus1.material.visible = true;
     sphere2.material.visible = false;
     sphere3.material.visible = false;
     newObject.changePosition(0, 0, 200000)
@@ -88,6 +92,7 @@ function orbitsPresets() {
     sphere1.material.visible = false;
     cube1.material.visible = false;
     tetra1.material.visible = false;
+    torus1.material.visible = false;
     presetOne = false
     presetTwo = true
     presetTwoShapes = true
@@ -97,6 +102,7 @@ function orbitsPresets() {
     sphere1.material.visible = false;
     cube1.material.visible = false;
     tetra1.material.visible = false;
+    torus1.material.visible = false;
     sphere2.material.visible = true;
     sphere3.material.visible = true;
     newObject.material.visible = true;
@@ -120,13 +126,6 @@ function defaultAnimation() {
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
   torus1.changeScale(torusScale);
-  sphere1.shape.rotation.z += 0.01;
-  cube1.shape.rotation.x += 0.01;
-  cube1.shape.rotation.y += 0.01;
-  tetra1.shape.rotation.x += 0.01;
-  tetra1.shape.rotation.y += 0.01;
-  torus1.shape.rotation.x += 0.01;
-  torus1.shape.rotation.y += 0.01;
 
   //Background color animation loop
   if (animationToggles.bgColor) {
@@ -143,6 +142,9 @@ function defaultAnimation() {
   }
   if (animationToggles.tetraRotate) {
     tetra1.changeRotation(animationToggles.tetraRotateSpeed, animationToggles.tetraRotateSpeed, 0);
+  }
+  if (animationToggles.torusRotate) {
+    torus1.changeRotation(animationToggles.torusRotateSpeed, animationToggles.torusRotateSpeed, 0);
   }
 }
 mainLoop();

@@ -55,15 +55,17 @@ window.onload = function () {
   tetraFolder.add(animationToggles, 'tetraRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
   //Torus options
-  torusFolder.addColor(sphere1, 'color').name('Color').onChange(function () {
+  torusFolder.addColor(torus1, 'color').name('Color').onChange(function () {
     torus1.material.color.set(torus1.color);
   });
 
-  torusFolder.add(sphere1, 'wireframe').name('Wireframe').onChange(function () {
+  torusFolder.add(torus1, 'wireframe').name('Wireframe').onChange(function () {
     torus1.material.wireframe = !torus1.material.wireframe
   });
 
   torusFolder.add(animationToggles, 'torusRotate').name('Rotate');
+
+  torusFolder.add(animationToggles, 'torusRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
   torusFolder
   //Background colour
@@ -78,7 +80,7 @@ window.onload = function () {
   cameraControl.onChange((value) => {
     if (!value) {
       camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
-      camera.position.z = 2000
+      camera.position.z = 1500;
     } else {
       controls = this.setupOrbitCameraControls();
     }

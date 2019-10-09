@@ -75,8 +75,6 @@ window.onload = function () {
   gui.add(animationToggles, 'preset', {
     Default: 'A',
     Orbit: 'B',
-    Avocado: 'C',
-    Gomme_mode: 'D',
   }).name('Presets');
 
 

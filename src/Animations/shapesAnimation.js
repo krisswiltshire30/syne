@@ -11,18 +11,21 @@ tetraScale = 1;
 var animationToggles = {
   sphereRotate: true,
   sphereRotateSpeed: 0.01,
+  sphereBand: Bass,
   cubeRotate: true,
   cubeRotateSpeed: 0.01,
+  cubeBand: Mids,
   tetraRotate: true,
   tetraRotateSpeed: 0.01,
+  tetraBand: Treble,
   cameraControl: true,
 }
 
 function mainLoop() {
   if (AudioTool.isSetup) {
-    sphereScale = Bass.getScale(true);
-    cubeScale = Mids.getScale(true);
-    tetraScale = Treble.getScale(true);
+    sphereScale = animationToggles.sphereBand.getScale();
+    cubeScale = animationToggles.cubeBand.getScale();
+    tetraScale = animationToggles.tetraBand.getScale();
   }
 
   sphere1.changeScale(sphereScale);

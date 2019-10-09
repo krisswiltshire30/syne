@@ -25,6 +25,36 @@ window.onload = function () {
 
   cubeFolder.add(animationToggles, 'cubeRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
+  let bands = {
+    cubeBand: "Mids",
+    sphereBand: "Bass",
+    tetraBand: "Treble",
+  }
+  let cubeBandSelector = cubeFolder.add(bands, 'cubeBand', {
+    Bass: "Bass",
+    Mids: "Mids",
+    Treble: "Treble"
+  }).name("Band");
+
+  cubeBandSelector.onChange(function(value) {
+    switch (value) {
+      case "Bass":
+        animationToggles.cubeBand = Bass;
+        break;
+      
+      case "Mids":
+        animationToggles.cubeBand = Mids;
+        break;
+
+      case "Treble":
+        animationToggles.cubeBand = Treble;
+        break;
+
+      default:
+        break;
+    }
+  })
+
   // cubeFolder.add(cube1, 'texture');
 
   //Sphere options

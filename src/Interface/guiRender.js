@@ -4,13 +4,12 @@ window.onload = function () {
     load: JSON
   });
 
-  gui.remember(cube1, sphere1, tetra1, torus1, scene.background);
+  gui.remember(cube1, sphere1, tetra1, scene.background);
 
   // Create folders
   var cubeFolder = gui.addFolder('Cube');
   var sphereFolder = gui.addFolder('Sphere');
   var tetraFolder = gui.addFolder('Tetra');
-  var torusFolder = gui.addFolder('Torus');
   var canvasFolder = gui.addFolder('Canvas');
 
   //Cube options
@@ -30,7 +29,36 @@ window.onload = function () {
 
   cubeFolder.add(animationToggles, 'cubeRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
+  let bands = {
+    cubeBand: "Mids",
+    sphereBand: "Bass",
+    tetraBand: "Treble",
+  }
 
+  let cubeBandSelector = cubeFolder.add(bands, 'cubeBand', {
+    Bass: "Bass",
+    Mids: "Mids",
+    Treble: "Treble"
+  }).name("Band");
+
+  cubeBandSelector.onChange(function (value) {
+    switch (value) {
+      case "Bass":
+        animationToggles.cubeBand = Bass;
+        break;
+
+      case "Mids":
+        animationToggles.cubeBand = Mids;
+        break;
+
+      case "Treble":
+        animationToggles.cubeBand = Treble;
+        break;
+
+      default:
+        break;
+    }
+  });
 
   // cubeFolder.add(cube1, 'texture');
 
@@ -52,6 +80,30 @@ window.onload = function () {
 
   sphereFolder.add(animationToggles, 'sphereRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
+  let sphereBandSelector = sphereFolder.add(bands, 'sphereBand', {
+    Bass: "Bass",
+    Mids: "Mids",
+    Treble: "Treble"
+  }).name("Band");
+
+  sphereBandSelector.onChange(function (value) {
+    switch (value) {
+      case "Bass":
+        animationToggles.sphereBand = Bass;
+        break;
+
+      case "Mids":
+        animationToggles.sphereBand = Mids;
+        break;
+
+      case "Treble":
+        animationToggles.sphereBand = Treble;
+        break;
+
+      default:
+        break;
+    }
+  });
   //Tetra options
   tetraFolder.addColor(tetra1, 'color').onChange(function () {
     tetra1.material.color.set(tetra1.color);
@@ -70,23 +122,30 @@ window.onload = function () {
 
   tetraFolder.add(animationToggles, 'tetraRotateSpeed', -0.2, 0.5).name('Rotate speed');
 
-  //Torus options
-  torusFolder.addColor(torus1, 'color').name('Color').onChange(function () {
-    torus1.material.color.set(torus1.color);
+  let tetraBandSelector = tetraFolder.add(bands, 'tetraBand', {
+    Bass: "Bass",
+    Mids: "Mids",
+    Treble: "Treble"
+  }).name("Band");
+
+  tetraBandSelector.onChange(function (value) {
+    switch (value) {
+      case "Bass":
+        animationToggles.tetraBand = Bass;
+        break;
+
+      case "Mids":
+        animationToggles.tetraBand = Mids;
+        break;
+
+      case "Treble":
+        animationToggles.tetraBand = Treble;
+        break;
+
+      default:
+        break;
+    }
   });
-
-  torusFolder.add(torus1, 'wireframe').name('Wireframe').onChange(function () {
-    torus1.material.wireframe = !torus1.material.wireframe
-  });
-
-  torusFolder.add(torus1, 'visible').name('Visible').onChange(function () {
-    torus1.material.visible = !torus1.material.visible
-  });
-
-  torusFolder.add(animationToggles, 'torusRotate').name('Rotate');
-
-  torusFolder.add(animationToggles, 'torusRotateSpeed', -0.2, 0.5).name('Rotate speed');
-
   //Background colour
   canvasFolder.addColor(color, "value").name("background").onChange((value) => {
     bgColor.set(value);

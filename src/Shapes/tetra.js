@@ -3,7 +3,7 @@ class Tetra extends Solid {
     super(scene)
     this.color = "#003e98";
     this.wireframe = true;
-    this.geometry = new THREE.TetrahedronGeometry(radius, 0, 5);
+    this.geometry = new THREE.OctahedronGeometry(radius, 1, 5);
     this.material = new THREE.MeshBasicMaterial({
       wireframe: true,
       color: this.color
@@ -34,8 +34,9 @@ class Tetra extends Solid {
       const yPos = this.shape.geometry.vertices[i].y;
 
       const upVec = new THREE.Vector3(0, -1, 0);
+      var a = new THREE.Euler(0, 1, 1.57, 'XYZ');
+      quaternion.setFromEuler(a, 2);
 
-      quaternion.setFromAxisAngle(upVec, (Math.PI / 180) * yPos);
       this.shape.geometry.vertices[i].applyQuaternion(quaternion);
     }
     this.shape.geometry.verticesNeedUpdate = true;

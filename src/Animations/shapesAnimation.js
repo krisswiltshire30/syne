@@ -1,8 +1,8 @@
 AudioTool.setup();
 
-const sphere1 = new Sphere(150, -500, 0, 0, scene);
+const sphere1 = new Sphere(150, -500, 200, 0, scene);
 const cube1 = new Cube(200, 200, 200, 0, 0, 0, scene);
-const tetra1 = new Tetra(200, 500, 0, 0, scene);
+const tetra1 = new Tetra(200, 500, -200, 0, scene);
 
 sphereScale = 1;
 cubeScale = 1;
@@ -27,10 +27,10 @@ function mainLoop() {
     opacScale = MathHelpers.linearRegression(
       SortingHelpers.splitEnergyArrays(Bass.getEnergy(), 4, false)
     );
-    twistScale = MathHelpers.linearRegression(SortingHelpers.splitEnergyArrays(Bass.getEnergy(), 4, false));
+    twistScale = MathHelpers.linearRegression(
+      SortingHelpers.splitEnergyArrays(Bass.getEnergy(), 1, false)
+    );
   }
-
-
 
   if (opacScale > 0.8) {
     cube1.twistCube();
@@ -38,9 +38,9 @@ function mainLoop() {
 
   if (twistScale < 0.005) {
     tetra1.twistCube();
-
   }
   cube1.changeOpacity(opacScale);
+  sphere1.changeOpacity(twistScale);
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);

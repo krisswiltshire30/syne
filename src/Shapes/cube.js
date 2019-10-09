@@ -17,6 +17,7 @@ class Cube extends Solid {
       wireframe: this.wireframe,
       color: this.color.getHex(),
       map: this.texture
+      color: this.color,
     });
     this.shape = new THREE.Mesh(this.geometry, this.material);
     this.shape.position.x = posX;

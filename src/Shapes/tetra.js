@@ -6,7 +6,7 @@ class Tetra extends Solid {
     this.geometry = new THREE.TetrahedronGeometry(radius, 0, 5);
     this.material = new THREE.MeshBasicMaterial({
       wireframe: true,
-      color: this.color
+      color: this.color,
     });
     this.shape = new THREE.Mesh(this.geometry, this.material);
     this.shape.position.x = posX

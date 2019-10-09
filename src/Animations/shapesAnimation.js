@@ -5,6 +5,9 @@ var animationToggles = {
   cubeColor: false,
   sphereColor: false,
   tetraColor: false,
+  cubeVisible: true,
+  sphereVisible: true,
+  tetraVisible: true,
   sphereRotate: true,
   sphereRotateSpeed: 0.01,
   sphereBand: Bass,
@@ -81,6 +84,7 @@ function defaultPresets() {
     sphere3.material.visible = false;
     newObject.changePosition(0, 0, 200000)
     newPlanet.material.visible = false;
+    presetTwoShapes = false;
   }
 }
 

@@ -21,6 +21,10 @@ window.onload = function () {
     cube1.material.wireframe = !cube1.material.wireframe
   });
 
+  cubeFolder.add(cube1, 'visible').name('Visible').onChange(function () {
+    cube1.material.visible = !cube1.material.visible
+  });
+
   cubeFolder.add(animationToggles, 'cubeRotate').name('Rotate');
 
   cubeFolder.add(animationToggles, 'cubeRotateSpeed', -0.2, 0.5).name('Rotate speed');
@@ -37,12 +41,12 @@ window.onload = function () {
     Treble: "Treble"
   }).name("Band");
 
-  cubeBandSelector.onChange(function(value) {
+  cubeBandSelector.onChange(function (value) {
     switch (value) {
       case "Bass":
         animationToggles.cubeBand = Bass;
         break;
-      
+
       case "Mids":
         animationToggles.cubeBand = Mids;
         break;
@@ -67,6 +71,11 @@ window.onload = function () {
     sphere1.material.wireframe = !sphere1.material.wireframe
   });
 
+  sphereFolder.add(sphere1, 'visible').name('Visible').onChange(function () {
+    sphere1.material.visible = !sphere1.material.visible
+  });
+
+
   sphereFolder.add(animationToggles, 'sphereRotate').name('Rotate');
 
   sphereFolder.add(animationToggles, 'sphereRotateSpeed', -0.2, 0.5).name('Rotate speed');
@@ -77,12 +86,12 @@ window.onload = function () {
     Treble: "Treble"
   }).name("Band");
 
-  sphereBandSelector.onChange(function(value) {
+  sphereBandSelector.onChange(function (value) {
     switch (value) {
       case "Bass":
         animationToggles.sphereBand = Bass;
         break;
-      
+
       case "Mids":
         animationToggles.sphereBand = Mids;
         break;
@@ -104,6 +113,11 @@ window.onload = function () {
     tetra1.material.wireframe = !tetra1.material.wireframe
   });
 
+  tetraFolder.add(tetra1, 'visible').name('Visible').onChange(function () {
+    tetra1.material.visible = !tetra1.material.visible
+  });
+
+
   tetraFolder.add(animationToggles, 'tetraRotate').name('Rotate');
 
   tetraFolder.add(animationToggles, 'tetraRotateSpeed', -0.2, 0.5).name('Rotate speed');
@@ -114,12 +128,12 @@ window.onload = function () {
     Treble: "Treble"
   }).name("Band");
 
-  tetraBandSelector.onChange(function(value) {
+  tetraBandSelector.onChange(function (value) {
     switch (value) {
       case "Bass":
         animationToggles.tetraBand = Bass;
         break;
-      
+
       case "Mids":
         animationToggles.tetraBand = Mids;
         break;

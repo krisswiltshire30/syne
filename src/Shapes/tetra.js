@@ -16,16 +16,4 @@ class Tetra extends Solid {
     this.shape.position.z = posZ
     this.scene.add(this.shape);
   }
-
-  changeScale(sizeScaler) {
-    this.shape.scale.x = sizeScaler;
-    this.shape.scale.y = sizeScaler;
-    this.shape.scale.z = sizeScaler;
-  }
-
-  changePosition(posX, posY, posZ) {
-    this.shape.position.x = posX;
-    this.shape.position.y = posY;
-    this.shape.position.z = posZ;
-}
 }

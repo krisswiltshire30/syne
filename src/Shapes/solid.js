@@ -16,10 +16,10 @@ class Solid {
   }
 
 
-  changeScale(sizeScaler) {
-    this.shape.scale.x = sizeScaler;
-    this.shape.scale.y = sizeScaler;
-    this.shape.scale.z = sizeScaler;
+  changeScale(sizeScalerX, sizeScalerY, sizeScalerZ) {
+    this.shape.scale.x = sizeScalerX;
+    this.shape.scale.y = sizeScalerY;
+    this.shape.scale.z = sizeScalerZ;
     return this.shape.scale
   }
 

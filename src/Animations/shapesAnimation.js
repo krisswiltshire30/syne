@@ -116,9 +116,9 @@ function defaultAnimation() {
     var color3 = Treble.getAvg(true);
   }
 
-  sphere1.changeScale(sphereScale);
-  cube1.changeScale(cubeScale);
-  tetra1.changeScale(tetraScale);
+  sphere1.changeScale(sphereScale, tetraScale, tetraScale);
+  cube1.changeScale(cubeScale, cubeScale, cubeScale);
+  tetra1.changeScale(tetraScale, tetraScale, tetraScale);
 
   //Background color animation loop
   if (animationToggles.bgColor) {

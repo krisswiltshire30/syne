@@ -169,8 +169,8 @@ function orbitAnimation() {
     bgColor.b = color3;
   }
 
-  newObject.changeScale(newObjectScale);
-  sphere2.changeScale(sphereScale);
+  newObject.changeScale(newObjectScale, newObjectScale, newObjectScale);
+  sphere2.changeScale(sphereScale, sphereScale, sphereScale);
   newObject.orbit(sphere3);
   newPlanet.orbit(sphere2);
 

@@ -20,6 +20,7 @@ function shapeCreator() {
     this.sphere1 = new Sphere(200, -500, 0, 0, scene);
     this.cube1 = new Cube(200, 200, 200, 0, 0, 0, scene);
     this.tetra1 = new Tetra(200, 500, 0, 0, scene);
+    this.torus1 = new Torus(100, -750, 0, 0, scene);
   } else if (presetTwo) {
     this.sphere2 = new Sphere(70, 0, 0, 0, scene);
     this.sphere3 = new Sphere(20, 0, 0, 0, scene);
@@ -35,6 +36,7 @@ function shapeCreator() {
 sphereScale = 1;
 cubeScale = 1;
 tetraScale = 1;
+torusScale = 1;
 newObjectScale = 1;
 newPlanetScale = 1;
 presetOne = true;
@@ -107,6 +109,7 @@ function defaultAnimation() {
   if (AudioTool.isSetup) {
     cubeScale = Mids.getScale(true);
     tetraScale = Treble.getScale(true);
+    torusScale = Sub.getScale(true);
     var color1 = Bass.getAvg(true);
     var color2 = Mids.getAvg(true);
     var color3 = Treble.getAvg(true);
@@ -116,6 +119,14 @@ function defaultAnimation() {
   sphere1.changeScale(sphereScale);
   cube1.changeScale(cubeScale);
   tetra1.changeScale(tetraScale);
+  torus1.changeScale(torusScale);
+  sphere1.shape.rotation.z += 0.01;
+  cube1.shape.rotation.x += 0.01;
+  cube1.shape.rotation.y += 0.01;
+  tetra1.shape.rotation.x += 0.01;
+  tetra1.shape.rotation.y += 0.01;
+  torus1.shape.rotation.x += 0.01;
+  torus1.shape.rotation.y += 0.01;
 
   //Background color animation loop
   if (animationToggles.bgColor) {
@@ -134,6 +145,8 @@ function defaultAnimation() {
     tetra1.changeRotation(animationToggles.tetraRotateSpeed, animationToggles.tetraRotateSpeed, 0);
   }
 }
+mainLoop();
+
 
 //Orbit animation
 function orbitAnimation() {

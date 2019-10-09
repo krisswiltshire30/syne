@@ -5,25 +5,27 @@ var animationToggles = {
   cubeColor: false,
   sphereColor: false,
   tetraColor: false,
-  torusColor: false,
+  cubeVisible: true,
+  sphereVisible: true,
+  tetraVisible: true,
   sphereRotate: true,
   sphereRotateSpeed: 0.01,
+  sphereBand: Bass,
   cubeRotate: true,
   cubeRotateSpeed: 0.01,
+  cubeBand: Mids,
   tetraRotate: true,
   tetraRotateSpeed: 0.01,
-  torusRotate: true,
-  torusRotateSpeed: 0.01,
+  tetraBand: Treble,
   cameraControl: true,
   preset: 'A'
 }
 
 function shapeCreator() {
   if (presetOne) {
-    this.sphere1 = new Sphere(200, -250, 0, 0, scene);
-    this.cube1 = new Cube(200, 200, 200, 250, 0, 0, scene);
-    this.tetra1 = new Tetra(200, 750, 0, 0, scene);
-    this.torus1 = new Torus(100, -750, 0, 0, scene);
+    this.sphere1 = new Sphere(150, -700, 0, 0, scene);
+    this.cube1 = new Cube(200, 200, 200, 0, 0, 0, scene);
+    this.tetra1 = new Tetra(200, 700, 0, 0, scene);
   } else if (presetTwo) {
     this.sphere2 = new Sphere(70, 0, 0, 0, scene);
     this.sphere3 = new Sphere(20, 0, 0, 0, scene);
@@ -39,7 +41,6 @@ function shapeCreator() {
 sphereScale = 1;
 cubeScale = 1;
 tetraScale = 1;
-torusScale = 1;
 newObjectScale = 1;
 newPlanetScale = 1;
 presetOne = true;
@@ -79,11 +80,11 @@ function defaultPresets() {
     sphere1.material.visible = true;
     cube1.material.visible = true;
     tetra1.material.visible = true;
-    torus1.material.visible = true;
     sphere2.material.visible = false;
     sphere3.material.visible = false;
     newObject.changePosition(0, 0, 200000)
     newPlanet.material.visible = false;
+    presetTwoShapes = false;
   }
 }
 
@@ -92,7 +93,6 @@ function orbitsPresets() {
     sphere1.material.visible = false;
     cube1.material.visible = false;
     tetra1.material.visible = false;
-    torus1.material.visible = false;
     presetOne = false
     presetTwo = true
     presetTwoShapes = true
@@ -102,7 +102,6 @@ function orbitsPresets() {
     sphere1.material.visible = false;
     cube1.material.visible = false;
     tetra1.material.visible = false;
-    torus1.material.visible = false;
     sphere2.material.visible = true;
     sphere3.material.visible = true;
     newObject.material.visible = true;
@@ -113,19 +112,17 @@ function orbitsPresets() {
 // Default animation
 function defaultAnimation() {
   if (AudioTool.isSetup) {
-    cubeScale = Mids.getScale(true);
-    tetraScale = Treble.getScale(true);
-    torusScale = Sub.getScale(true);
+    sphereScale = animationToggles.sphereBand.getScale();
+    cubeScale = animationToggles.cubeBand.getScale();
+    tetraScale = animationToggles.tetraBand.getScale();
     var color1 = Bass.getAvg(true);
     var color2 = Mids.getAvg(true);
     var color3 = Treble.getAvg(true);
-    sphereScale = Bass.getScale(true);
   }
 
-  sphere1.changeScale(sphereScale);
-  cube1.changeScale(cubeScale);
-  tetra1.changeScale(tetraScale);
-  torus1.changeScale(torusScale);
+  sphere1.changeScale(sphereScale, sphereScale, sphereScale);
+  cube1.changeScale(cubeScale, cubeScale, cubeScale);
+  tetra1.changeScale(tetraScale, tetraScale, tetraScale);
 
   //Background color animation loop
   if (animationToggles.bgColor) {
@@ -135,16 +132,25 @@ function defaultAnimation() {
   }
   //Rotation loops
   if (animationToggles.sphereRotate) {
-    sphere1.changeRotation(animationToggles.sphereRotateSpeed, 0, 0);
+    sphere1.changeRotation(
+      animationToggles.sphereRotateSpeed,
+      0,
+      0
+    );
   }
   if (animationToggles.cubeRotate) {
-    cube1.changeRotation(animationToggles.cubeRotateSpeed, animationToggles.cubeRotateSpeed, 0);
+    cube1.changeRotation(
+      animationToggles.cubeRotateSpeed,
+      animationToggles.cubeRotateSpeed,
+      0
+    );
   }
   if (animationToggles.tetraRotate) {
-    tetra1.changeRotation(animationToggles.tetraRotateSpeed, animationToggles.tetraRotateSpeed, 0);
-  }
-  if (animationToggles.torusRotate) {
-    torus1.changeRotation(animationToggles.torusRotateSpeed, animationToggles.torusRotateSpeed, 0);
+    tetra1.changeRotation(
+      animationToggles.tetraRotateSpeed,
+      animationToggles.tetraRotateSpeed,
+      0
+    );
   }
 }
 mainLoop();
@@ -167,8 +173,8 @@ function orbitAnimation() {
     bgColor.b = color3;
   }
 
-  newObject.changeScale(newObjectScale);
-  sphere2.changeScale(sphereScale);
+  newObject.changeScale(newObjectScale, newObjectScale, newObjectScale);
+  sphere2.changeScale(sphereScale, sphereScale, sphereScale);
   newObject.orbit(sphere3);
   newPlanet.orbit(sphere2);
 

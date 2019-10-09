@@ -26,6 +26,7 @@ After that, the possibilities are endless.
 - CSS
 
 ## Installation instructions
+Note: Currently, the best browser to run this API in is firefox. We are looking into full chrome support.
 
 Node is required to run this application.
 [Here](https://treehouse.github.io/installation-guides/mac/node-mac.html) is a good tutorial on how to install if you need it.
@@ -44,5 +45,8 @@ $ git clone git@github.com:krisswiltshire30/syne.git
  - To view the demo, open the index.html file in a browser or use live server
 
 ## Demo
+
+Note: Use firefox to run the demo
+
 To see the API at work, have a look at the [Latest deployment demo](https://syne.herokuapp.com)
 

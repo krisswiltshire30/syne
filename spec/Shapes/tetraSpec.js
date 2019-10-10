@@ -1,10 +1,9 @@
 describe('Tetra', () => {
-  let tetra;
 
   beforeEach(() => {
-    var scene = new THREE.Scene();
-    tetra = new Sphere(1, 1, 2, 3, scene);
-  })
+    scene = setupScene();
+    tetra = new Tetra(1, 1, 2, 3, scene);
+  });
 
   it('Can change the position of the tetra', () => {
     expect(tetra.changePosition(400, 100, 200)).toEqual(new THREE.Vector3(400, 100, 200))

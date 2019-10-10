@@ -1,8 +1,6 @@
 describe('Sub', () => {
 
-    AudioTool.source = jasmine.createSpyObj('AudioNode', {
-        'connect': true
-    }); 
+    audioSourceNodeSetup();
 
     describe(':getEnergy', () => {
         it('should return a Uint8Array', () => {

@@ -1,9 +1,7 @@
-
 describe('Sphere', () => {
-  let sphere;
 
   beforeEach(() => {
-    var scene = new THREE.Scene();
+    scene = setupScene();
     sphere = new Sphere(1, 1, 2, 3, scene);
   })
 

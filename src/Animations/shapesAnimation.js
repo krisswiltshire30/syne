@@ -111,6 +111,7 @@ function orbitsPresets() {
 
 // Default animation
 function defaultAnimation() {
+  
   if (AudioTool.isSetup) {
     sphereScale = animationToggles.sphereBand.getScale();
     cubeScale = animationToggles.cubeBand.getScale();
@@ -125,12 +126,22 @@ function defaultAnimation() {
   tetra1.changeScale(tetraScale, tetraScale, tetraScale);
 
   //Background color animation loop
+  backgroundColorAnimationLoop(color1, color2, color3);
+  
+  //Rotation loops
+  rotationLoops();
+}
+mainLoop();
+
+function backgroundColorAnimationLoop( color1, color2, color3) {
   if (animationToggles.bgColor) {
     bgColor.r = color1;
     bgColor.g = color2;
     bgColor.b = color3;
   }
-  //Rotation loops
+}
+
+function rotationLoops() {
   if (animationToggles.sphereRotate) {
     sphere1.changeRotation(
       animationToggles.sphereRotateSpeed,
@@ -153,7 +164,6 @@ function defaultAnimation() {
     );
   }
 }
-mainLoop();
 
 
 //Orbit animation
@@ -184,3 +194,4 @@ function orbitAnimation() {
 
   newObject.shape.rotation.y += 0.01
 }
+

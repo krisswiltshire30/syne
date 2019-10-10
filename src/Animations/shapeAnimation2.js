@@ -68,10 +68,10 @@ let pulseScale2 = 0;
 
 function realTimeStdDev(energyVal, energyVal2) {
     if (performance.now() - timeOfLastReading > 20) {
-        peakArray.push(energyVal)
+        freqArray.push(energyVal)
         freqArray2.push(energyVal2)
         freqArray.shift()
-        peakArray2.shift()
+        freqArray2.shift()
         timeOfLastReading = performance.now()
         pulseScale = MathHelpers.linearRegression(freqArray2, false)
         pulseScale2 = MathHelpers.linearRegression(freqArray, false)
@@ -83,6 +83,9 @@ function mainLoop() {
     if (animationToggles.preset == 'A') {
         defaultPresets();
         defaultAnimation();
+    } else if (animationToggles.preset != 'A') {
+        defaultPresets();
+        twistPulseAnimation();
     } else {
         orbitsPresets();
         orbitAnimation();
@@ -139,8 +142,8 @@ function orbitsPresets() {
     }
 }
 
-// Default animation
-function defaultAnimation() {
+//default2
+function twistPulseAnimation() {
     if (AudioTool.isSetup) {
         sphereScale = animationToggles.sphereBand.getScale();
         cubeScale = animationToggles.cubeBand.getScale();
@@ -149,7 +152,7 @@ function defaultAnimation() {
         var color2 = Mids.getAvg(true);
         var color3 = Treble.getAvg(true);
         var x = Bass.getEnergy();
-        var y = Treble.getEnergy();
+        var y = Mids.getEnergy();
         twister(cube1, x);
         realTimeStdDev(x[6], y[6]);
 
@@ -163,6 +166,50 @@ function defaultAnimation() {
 
     //Background color animation loop
 
+    if (animationToggles.bgColor) {
+        bgColor.r = color1;
+        bgColor.g = color2;
+        bgColor.b = color3;
+    }
+    //Rotation loops
+    if (animationToggles.sphereRotate) {
+        sphere1.changeRotation(
+            animationToggles.sphereRotateSpeed,
+            0,
+            0
+        );
+    }
+    if (animationToggles.cubeRotate) {
+        cube1.changeRotation(
+            animationToggles.cubeRotateSpeed,
+            animationToggles.cubeRotateSpeed,
+            0
+        );
+    }
+    if (animationToggles.tetraRotate) {
+        tetra1.changeRotation(
+            animationToggles.tetraRotateSpeed,
+            animationToggles.tetraRotateSpeed,
+            0
+        );
+    }
+}
+// Default animation
+function defaultAnimation() {
+    if (AudioTool.isSetup) {
+        sphereScale = animationToggles.sphereBand.getScale();
+        cubeScale = animationToggles.cubeBand.getScale();
+        tetraScale = animationToggles.tetraBand.getScale();
+        var color1 = Bass.getAvg(true);
+        var color2 = Mids.getAvg(true);
+        var color3 = Treble.getAvg(true);
+    }
+
+    sphere1.changeScale(sphereScale, sphereScale, sphereScale);
+    cube1.changeScale(cubeScale, cubeScale, cubeScale);
+    tetra1.changeScale(tetraScale, tetraScale, tetraScale);
+
+    //Background color animation loop
     if (animationToggles.bgColor) {
         bgColor.r = color1;
         bgColor.g = color2;

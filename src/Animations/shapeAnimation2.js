@@ -59,8 +59,8 @@ function twister(cube1, array) {
     }
 }
 
-let peakArray = Array(40).fill(0);
-let peakArray2 = Array(40).fill(0);
+let freqArray = Array(40).fill(0);
+let freqArray2 = Array(40).fill(0);
 //time of last reading: which gets varialbe set a timestamp within the if else of 
 let timeOfLastReading = performance.now();
 let pulseScale = 0;
@@ -69,12 +69,12 @@ let pulseScale2 = 0;
 function realTimeStdDev(energyVal, energyVal2) {
     if (performance.now() - timeOfLastReading > 20) {
         peakArray.push(energyVal)
-        peakArray2.push(energyVal2)
-        peakArray.shift()
+        freqArray2.push(energyVal2)
+        freqArray.shift()
         peakArray2.shift()
         timeOfLastReading = performance.now()
-        pulseScale = MathHelpers.linearRegression(peakArray2, false)
-        pulseScale2 = MathHelpers.linearRegression(peakArray, false)
+        pulseScale = MathHelpers.linearRegression(freqArray2, false)
+        pulseScale2 = MathHelpers.linearRegression(freqArray, false)
     }
 }
 

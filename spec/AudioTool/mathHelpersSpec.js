@@ -1,6 +1,6 @@
-describe('mathHelpers', () => {
+describe('MathHelpers', () => {
 
-    describe('standardDeviationVariance', () => {
+    describe(':standardDeviationVariance', () => {
         it('should return standard deviation when called with true', () => {
             let stdDev = MathHelpers.standardDeviationVariance([1, 1, 1, 1], false)
             expect(stdDev).toEqual(0);
@@ -11,13 +11,13 @@ describe('mathHelpers', () => {
         });
     });
 
-    describe('linear regression', () => {
-        it('should return linear Regression', () => {
+    describe(':linearRegression', () => {
+        it('should sort number array then return linear Regression from this', () => {
             let linR = MathHelpers.linearRegression([5, 2, 1, 4], true)
             expect(linR.toFixed(2)).toEqual('0.98');
         });
 
-        it('should return linear Regression', () => {
+        it('should return linear Regression from number array passed to it with out sorting it first', () => {
             let linR = MathHelpers.linearRegression([1, 2, 4, 5], false)
             expect(linR.toFixed(2)).toEqual('0.98');
         });

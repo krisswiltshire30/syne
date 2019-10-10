@@ -1,6 +1,6 @@
 const SortingHelpers = {
 
-  splitEnergyArrays: function (usArray, quartile, sorted) {
+  splitEnergyArrays: function (usArray, segments, segment, sorted) {
     var array1 = []
     if (sorted) {
       array1 = this.sortNumberArray(usArray);
@@ -8,9 +8,9 @@ const SortingHelpers = {
       array1 = usArray;
     }
 
-    var x = (array1.length / 4);
+    var x = (array1.length / segments);
 
-    return array1.slice(((quartile - 1) * x), ((quartile) * x))
+    return array1.slice(((segment - 1) * x), ((segment) * x))
 
   },
 
@@ -29,7 +29,7 @@ const SortingHelpers = {
 
   sortArrayOfObjects: function (obArray, key) {
     obArray.sort(function (a, b) {
-      return a[key] < b[key]
+      return b[key] - a[key]
     });
     return obArray;
   },

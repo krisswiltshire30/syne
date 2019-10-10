@@ -240,7 +240,6 @@ function defaultAnimation() {
 }
 mainLoop();
 
-
 //Orbit animation
 function orbitAnimation() {
   if (AudioTool.isSetup) {

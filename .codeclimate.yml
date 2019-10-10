@@ -32,4 +32,4 @@ checks:
       threshold: # language-specific defaults. an override will affect all languages.
   identical-code:
     config:
-      threshold: # language-specific defaults. an override will affect all languages
+      threshold: 4 # language-specific defaults. an override will affect all languages

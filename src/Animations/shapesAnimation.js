@@ -157,8 +157,6 @@ function twistPulseAnimation() {
     var y = Treble.getEnergy();
     twister(cube1, x);
     realTimeStdDev(x[6], y[6]);
-
-
   }
   tetra1.changeOpacity((pulseScale * 2))
   sphere1.changeOpacity(pulseScale2)

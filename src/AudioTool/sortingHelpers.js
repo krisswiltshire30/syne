@@ -20,15 +20,15 @@ const SortingHelpers = {
     for (var i = 1; i < a.length - 1; ++i) {
       if (a[i - 1] < a[i] && a[i] > a[i + 1])
         maxes.push({
-          strength: a[i],
-          index: i
+          "strength": a[i],
+          "index": i
         })
     }
-    return this.sortArrayOfObjectsArray(maxes, strength);
+    return this.sortArrayOfObjects(maxes, "strength");
   },
 
   sortArrayOfObjects: function (obArray, key) {
-    obAarray.sort(function (a, b) {
+    obArray.sort(function (a, b) {
       return a[key] < b[key]
     });
     return obArray;

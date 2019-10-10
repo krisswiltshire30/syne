@@ -2,27 +2,39 @@
   "name": "syne",
   "private": false,
   "scripts": {
-    "test": "karma start --browsers Firefox --single-run",
-    "linter": "eslint . --fix"
+    "test": "nyc karma start --browsers Firefox --single-run",
+    "linter": "eslint . --fix",
+    "coverage": "nyc -x '/spec' npm run test"
   },
   "version": "0.1.0",
   "devDependencies": {
     "eslint": "^6.5.1",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-jasmine": "^2.10.1",
+    "istanbul": "^0.4.5",
     "jasmine": "^3.5.0",
+    "jasmine-console-reporter": "^3.1.0",
     "jasmine-core": "^3.5.0",
+    "jasmine-node": "^3.0.0",
+    "jasmine-supertest": "^1.0.0",
     "karma": "^4.3.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-firefox-launcher": "^1.2.0",
     "karma-jasmine": "^2.0.1",
     "karma-safari-launcher": "^1.0.0",
     "nyc": "^14.1.1",
+    "supertest": "^4.0.2",
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9"
   },
   "license": "MIT",
   "dependencies": {
     "three": "^0.109.0"
+  },
+  "nyc" : {
+    "all": true,
+    "include": [
+      "src/**/*.js"
+    ]
   }
 }

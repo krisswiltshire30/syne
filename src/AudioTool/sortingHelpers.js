@@ -20,8 +20,8 @@ const SortingHelpers = {
     for (var i = 1; i < a.length - 1; ++i) {
       if (a[i - 1] < a[i] && a[i] > a[i + 1])
         maxes.push({
-          "strength": a[i],
-          "index": i
+          strength: a[i],
+          index: i
         })
     }
     return this.sortArrayOfObjects(maxes, "strength");

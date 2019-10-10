@@ -1,4 +1,4 @@
-# Syne [![Build Status](https://travis-ci.com/krisswiltshire30/syne.svg?branch=master)](https://travis-ci.com/krisswiltshire30/syne)
+# Syne [![Build Status](https://travis-ci.com/krisswiltshire30/syne.svg?branch=master)](https://travis-ci.com/krisswiltshire30/syne) <a href="https://codeclimate.com/github/krisswiltshire30/syne/maintainability"><img src="https://api.codeclimate.com/v1/badges/06a0b423c5246455d8b7/maintainability" /></a>
 
 ## Welcome to Syne!
 - Have you ever wanted to see what a sphere looks like, jumping to the bass of your latest track? Look no further!

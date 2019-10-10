@@ -55,13 +55,11 @@ function twister(cube1, array) {
   twistScale = MathHelpers.linearRegression(array, false)
   if (twistScale > 0.71) {
     cube1.twistCube();
-    // tetra1.twistTetra();
   }
 }
 
 let freqArray = Array(40).fill(0);
 let freqArray2 = Array(40).fill(0);
-//time of last reading: which gets varialbe set a timestamp within the if else of 
 let timeOfLastReading = performance.now();
 let pulseScale = 0;
 let pulseScale2 = 0;
@@ -90,6 +88,8 @@ function mainLoop() {
     orbitsPresets();
     orbitAnimation();
   }
+
+
   cameraUpdate();
   renderer.render(scene, camera);
   requestAnimationFrame(mainLoop);
@@ -110,6 +110,7 @@ function defaultPresets() {
     presetOneShapes = true
   }
   if (presetTwoShapes) {
+
     sphere1.material.visible = true;
     cube1.material.visible = true;
     tetra1.material.visible = true;
@@ -132,6 +133,7 @@ function orbitsPresets() {
     shapeCreator()
   }
   if (presetOneShapes) {
+
     sphere1.material.visible = false;
     cube1.material.visible = false;
     tetra1.material.visible = false;
@@ -152,13 +154,13 @@ function twistPulseAnimation() {
     var color2 = Mids.getAvg(true);
     var color3 = Treble.getAvg(true);
     var x = Bass.getEnergy();
-    var y = Mids.getEnergy();
+    var y = Treble.getEnergy();
     twister(cube1, x);
     realTimeStdDev(x[6], y[6]);
 
 
   }
-  tetra1.changeOpacity(pulseScale)
+  tetra1.changeOpacity((pulseScale * 2))
   sphere1.changeOpacity(pulseScale2)
   sphere1.changeScale(sphereScale, tetraScale, tetraScale);
   cube1.changeScale(cubeScale, cubeScale, cubeScale);

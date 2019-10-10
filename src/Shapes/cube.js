@@ -5,11 +5,18 @@ class Cube extends Solid {
     this.wireframe = true;
     this.segments = 1;
     this.visible = true;
-    this.geometry = new THREE.BoxGeometry(width, height, depth, this.segments, this.segments, this.segments);
+    this.geometry = new THREE.BoxGeometry(
+      width,
+      height,
+      depth,
+      this.segments,
+      this.segments,
+      this.segments
+    );
     this.material = new THREE.MeshBasicMaterial({
       wireframe: this.wireframe,
       color: this.color,
-      visible: this.visible,
+      visible: this.visible
     });
     this.shape = new THREE.Mesh(this.geometry, this.material);
     this.shape.position.x = posX;
@@ -29,6 +36,6 @@ class Cube extends Solid {
       this.shape.geometry.vertices[i].applyQuaternion(quaternion);
     }
     this.shape.geometry.verticesNeedUpdate = true;
-
   }
+
 }

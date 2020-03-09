@@ -1,30 +1,30 @@
 const MathHelpers = {
 
     standardDeviationVariance: function (values, varianceTrue) {
-        var avg = this.average(values);
+        let avg = this.average(values);
 
-        var squareDiffs = values.map(function (value) {
-            var diff = value - avg;
-            var sqrDiff = diff * diff;
+        let squareDiffs = values.map(function (value) {
+            let diff = value - avg;
+            let sqrDiff = diff * diff;
             return sqrDiff;
         });
 
-        var variance = this.average(squareDiffs);
+        let variance = this.average(squareDiffs);
 
         if (varianceTrue) {
             return variance;
         }
 
-        var stdDev = Math.sqrt(variance);
+        let stdDev = Math.sqrt(variance);
         return stdDev;
     },
 
     average: function (data) {
-        var sum = data.reduce(function (sum, value) {
+        let sum = data.reduce(function (sum, value) {
             return sum + value;
         }, 0);
 
-        var avg = sum / data.length;
+        let avg = sum / data.length;
         return avg;
     },
 
@@ -34,7 +34,7 @@ const MathHelpers = {
         }
 
 
-        var freqBands = [];
+        let freqBands = [];
         let n = dataArray.length
 
         for (var i = 1; i <= n; i++) {

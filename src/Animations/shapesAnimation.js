@@ -48,11 +48,44 @@ presetOneShapes = false;
 presetTwo = false;
 presetTwoShapes = false
 
+let linRegress = 0;
+let twistScale = 0;
+
+function twister(cube1, array) {
+  twistScale = MathHelpers.linearRegression(array, false)
+  if (twistScale > 0.71) {
+    cube1.twistCube();
+    // tetra1.twistTetra();
+  }
+}
+
+let freqArray = Array(40).fill(0);
+let freqArray2 = Array(40).fill(0);
+//time of last reading: which gets varialbe set a timestamp within the if else of 
+let timeOfLastReading = performance.now();
+let pulseScale = 0;
+let pulseScale2 = 0;
+
+function realTimeStdDev(energyVal, energyVal2) {
+  if (performance.now() - timeOfLastReading > 20) {
+    freqArray.push(energyVal)
+    freqArray2.push(energyVal2)
+    freqArray.shift()
+    freqArray2.shift()
+    timeOfLastReading = performance.now()
+    pulseScale = MathHelpers.linearRegression(freqArray2, false)
+    pulseScale2 = MathHelpers.linearRegression(freqArray, false)
+  }
+}
+
 //Main animation loop
 function mainLoop() {
   if (animationToggles.preset == 'A') {
     defaultPresets();
     defaultAnimation();
+  } else if (animationToggles.preset == 'B') {
+    defaultPresets();
+    twistPulseAnimation();
   } else {
     orbitsPresets();
     orbitAnimation();
@@ -109,6 +142,58 @@ function orbitsPresets() {
   }
 }
 
+//default2
+function twistPulseAnimation() {
+  if (AudioTool.isSetup) {
+    sphereScale = animationToggles.sphereBand.getScale();
+    cubeScale = animationToggles.cubeBand.getScale();
+    tetraScale = animationToggles.tetraBand.getScale();
+    var color1 = Bass.getAvg(true);
+    var color2 = Mids.getAvg(true);
+    var color3 = Treble.getAvg(true);
+    var x = Bass.getEnergy();
+    var y = Mids.getEnergy();
+    twister(cube1, x);
+    realTimeStdDev(x[6], y[6]);
+
+
+  }
+  tetra1.changeOpacity(pulseScale)
+  sphere1.changeOpacity(pulseScale2)
+  sphere1.changeScale(sphereScale, tetraScale, tetraScale);
+  cube1.changeScale(cubeScale, cubeScale, cubeScale);
+  tetra1.changeScale(tetraScale, tetraScale, tetraScale);
+
+  //Background color animation loop
+
+  if (animationToggles.bgColor) {
+    bgColor.r = color1;
+    bgColor.g = color2;
+    bgColor.b = color3;
+  }
+  //Rotation loops
+  if (animationToggles.sphereRotate) {
+    sphere1.changeRotation(
+      animationToggles.sphereRotateSpeed,
+      0,
+      0
+    );
+  }
+  if (animationToggles.cubeRotate) {
+    cube1.changeRotation(
+      animationToggles.cubeRotateSpeed,
+      animationToggles.cubeRotateSpeed,
+      0
+    );
+  }
+  if (animationToggles.tetraRotate) {
+    tetra1.changeRotation(
+      animationToggles.tetraRotateSpeed,
+      animationToggles.tetraRotateSpeed,
+      0
+    );
+  }
+}
 // Default animation
 function defaultAnimation() {
   

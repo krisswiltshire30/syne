@@ -28,7 +28,8 @@ window.onload = function () {
 
   gui.add(animationToggles, 'preset', {
     Default: 'A',
-    Orbit: 'B',
+    Twister: 'B',
+    Orbit: 'C'
   }).name('Presets');
 
 }
